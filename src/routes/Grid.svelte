@@ -1,0 +1,23 @@
+<script lang="ts">
+	import Cell from "./Cell.svelte"
+
+  interface Props { size: number, cells: number[] }
+
+  const { size, cells } : Props = $props()
+</script>
+
+<div class="grid" style:--grid-size={size}>
+  <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
+  {#each { length: size * size } as _, i}
+    <Cell cell={cells[i] || 0} />
+  {/each}
+</div>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-size), 1fr);
+    grid-template-rows: repeat(var(--grid-size), 1fr);
+    gap: clamp(0.5rem, 5vw, 1rem);
+  }
+</style>

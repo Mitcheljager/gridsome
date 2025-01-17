@@ -1,2 +1,11 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script lang="ts">
+	import Grid from "./Grid.svelte"
+
+  let gridSize = 2
+  let cells = $state([0, 1, 1, 0])
+</script>
+
+<button onclick={() => cells = cells.map(c => c + 1)}>Add</button>
+<button onclick={() => cells = cells.map(c => c - 1)}>Subtract</button>
+
+<Grid {cells} size={gridSize} />
