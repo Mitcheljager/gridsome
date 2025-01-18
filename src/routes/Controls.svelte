@@ -90,7 +90,20 @@
     width: calc(100% - 0.5rem);
     height: calc(100% - 0.5rem);
     border-radius: calc(var(--cell-width) * 0.15);
-    background: grey;
+    background: rgba(255, 255, 255, 0.25);
+    outline: 0.25rem solid transparent;
+    mix-blend-mode: overlay;
     z-index: -1;
+    transition: transform 50ms, background-color 50ms, outline 50ms;
+  }
+
+  button:hover::before {
+    transform: scale(1.025);
+  }
+
+  button:active::before {
+    transform: scale(0.9);
+    background: rgba(255, 255, 255, 0.35);
+    outline: 0.25rem solid rgba(255, 255, 255, 0.5);
   }
 </style>

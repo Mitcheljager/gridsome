@@ -2,8 +2,14 @@
   box-sizing: border-box;
 }
 
+html,
 body {
-  background: black;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: darkslategray;
   color: white;
   font-family: sans-serif;
 }

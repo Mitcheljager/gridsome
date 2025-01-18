@@ -6,13 +6,13 @@
 	import Matcher from "./Matcher.svelte"
 
   const gridSize = 2
-  const maxCellValue = 10
+  const maxCellValue = 5
   const goal = [1, 1, 2, 2]
 
-  let cells = $state(Array(gridSize * gridSize).fill(0))
+  let cells = $state(Array(gridSize * gridSize).fill(1))
   let clientWidth = $state(0)
 
-  if (browser) console.log(solver(gridSize, maxCellValue, [2, 2, 2, 2], [8, 8, 8, 8]))
+  if (browser) console.log(solver(gridSize, maxCellValue, [5, 4, 3, 2], [5, 3, 2, 5]))
 </script>
 
 <div style:--grid-size={gridSize}>
