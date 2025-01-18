@@ -4,6 +4,8 @@
   // eslint-disable-next-line prefer-const
   let { gridSize, maxCellValue, cells, onchange } : Props = $props()
 
+  $effect(() => console.log(cells))
+
   function clampValue(value: number): number {
     if (value > maxCellValue) return 1
     if (value < 1) return maxCellValue
@@ -45,26 +47,26 @@
 </script>
 
 {#each { length: gridSize } as _, i}
-  <button onclick={() : void => setColumn(1, i)} style:--column={i + 1}>+</button>
+  <button aria-label="Add to column {i + 1}" onclick={() : void => setColumn(1, i)} style:--column={i + 1}>+</button>
 {/each}
 
 {#each { length: gridSize } as _, i}
-  <button onclick={() : void => setColumn(-1, i)} style:--column={i + 1} style:--row={gridSize + 1}>-</button>
+  <button aria-label="Subtract from column {i + 1}" onclick={() : void => setColumn(-1, i)} style:--column={i + 1} style:--row={gridSize + 1}>-</button>
 {/each}
 
 {#each { length: gridSize } as _, i}
-  <button onclick={() : void => setRow(1, i)} style:--row={i + 1} style:--column={gridSize + 1}>+</button>
+  <button aria-label="Add to row {i + 1}" onclick={() : void => setRow(1, i)} style:--row={i + 1} style:--column={gridSize + 1}>+</button>
 {/each}
 
 {#each { length: gridSize } as _, i}
-  <button onclick={() : void => setRow(-1, i)} style:--row={i + 1}>-</button>
+  <button aria-label="Subtract from row {i + 1}" onclick={() : void => setRow(-1, i)} style:--row={i + 1}>-</button>
 {/each}
 
-<button onclick={() : void => setDiagonal(1, "main")} style:--column={gridSize + 1} style:--row={gridSize + 1}>+</button>
-<button onclick={() : void => setDiagonal(-1, "main")}>-</button>
+<button aria-label="Add to main diagonal" onclick={() : void => setDiagonal(1, "main")} style:--column={gridSize + 1} style:--row={gridSize + 1}>+</button>
+<button aria-label="Subtract from main diagonal" onclick={() : void => setDiagonal(-1, "main")}>-</button>
 
-<button onclick={() : void => setDiagonal(1, "anti")} style:--column={gridSize + 1}>+</button>
-<button onclick={() : void => setDiagonal(-1, "anti")} style:--row={gridSize + 1}>-</button>
+<button aria-label="Add to anti diagonal" onclick={() : void => setDiagonal(1, "anti")} style:--column={gridSize + 1}>+</button>
+<button aria-label="Subtract from anti diagonal" onclick={() : void => setDiagonal(-1, "anti")} style:--row={gridSize + 1}>-</button>
 
 <style>
   button {

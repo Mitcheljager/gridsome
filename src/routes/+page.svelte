@@ -5,12 +5,12 @@
 	import Grid from "./Grid.svelte"
 
   const gridSize = 2
-  const maxCellValue = 6
+  const maxCellValue = 20
 
-  let cells = $state([1, 2, 2, 1] || Array(gridSize * gridSize).fill(0))
+  let cells = $state([2, 2, 2, 2] || Array(gridSize * gridSize).fill(0))
   let clientWidth = $state(0)
 
-  if (browser) console.log(solver(gridSize, maxCellValue, cells, [1, 4, 3, 2]))
+  if (browser) console.log(solver(gridSize, maxCellValue, cells, [8, 20, 17, 9]))
 </script>
 
 <div class="board" style:--board-width="{clientWidth}px" style:--grid-size={gridSize} bind:clientWidth>
