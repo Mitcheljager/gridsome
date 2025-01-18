@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { fly } from "svelte/transition"
+	import { fly, scale } from "svelte/transition"
 
-  interface Props { cell: number, active?: boolean, maxCellValue?: number }
+  interface Props { cell: number, active?: boolean, maxCellValue?: number, animate?: boolean }
 
-  const { cell, active = false, maxCellValue = 0 } : Props = $props()
+  const { cell, active = false, maxCellValue = 0, animate = false } : Props = $props()
   const transitionDuration = 50
   const changedBorderDuration = 300
 
@@ -43,7 +43,12 @@
   }
 </script>
 
-<div class="cell" class:active class:changing={hasRecentlyChanged} style:--cell={cell}>
+<div
+  class="cell"
+  class:active
+  class:changing={hasRecentlyChanged}
+  style:--cell={cell}
+  in:scale|global={animate ? { start: 0.5, duration: 200, delay: Math.random() * 500 } : { duration: 0 }}>
   {#key cell}
     <span
       in:fly={{ y: -getTransitionDistance(), duration: transitionDuration }}

@@ -45,28 +45,38 @@
 </script>
 
 {#each { length: gridSize } as _, i}
-  <button aria-label="Add to column {i + 1}" onclick={() : void => setColumn(1, i)} style:--column={i + 1}>+</button>
+  <button aria-label="Add to column {i + 1}" onclick={() : void => setColumn(1, i)} style:--column={i + 1} style:--animation-delay="{Math.random() * 500}ms">+</button>
 {/each}
 
 {#each { length: gridSize } as _, i}
-  <button aria-label="Subtract from column {i + 1}" onclick={() : void => setColumn(-1, i)} style:--column={i + 1} style:--row={gridSize + 1}>-</button>
+  <button aria-label="Subtract from column {i + 1}" onclick={() : void => setColumn(-1, i)} style:--column={i + 1} style:--row={gridSize + 1} style:--animation-delay="{Math.random() * 500}ms">-</button>
 {/each}
 
 {#each { length: gridSize } as _, i}
-  <button aria-label="Add to row {i + 1}" onclick={() : void => setRow(1, i)} style:--row={i + 1} style:--column={gridSize + 1}>+</button>
+  <button aria-label="Add to row {i + 1}" onclick={() : void => setRow(1, i)} style:--row={i + 1} style:--column={gridSize + 1} style:--animation-delay="{Math.random() * 500}ms">+</button>
 {/each}
 
 {#each { length: gridSize } as _, i}
-  <button aria-label="Subtract from row {i + 1}" onclick={() : void => setRow(-1, i)} style:--row={i + 1}>-</button>
+  <button aria-label="Subtract from row {i + 1}" onclick={() : void => setRow(-1, i)} style:--row={i + 1} style:--animation-delay="{Math.random() * 500}ms">-</button>
 {/each}
 
-<button aria-label="Add to main diagonal" onclick={() : void => setDiagonal(1, "main")} style:--column={gridSize + 1} style:--row={gridSize + 1}>+</button>
-<button aria-label="Subtract from main diagonal" onclick={() : void => setDiagonal(-1, "main")}>-</button>
+<button aria-label="Add to main diagonal" onclick={() : void => setDiagonal(1, "main")} style:--column={gridSize + 1} style:--row={gridSize + 1} style:--animation-delay="{Math.random() * 500}ms">+</button>
+<button aria-label="Subtract from main diagonal" onclick={() : void => setDiagonal(-1, "main")} style:--animation-delay="{Math.random() * 500}ms">-</button>
 
-<button aria-label="Add to anti diagonal" onclick={() : void => setDiagonal(1, "anti")} style:--column={gridSize + 1}>+</button>
-<button aria-label="Subtract from anti diagonal" onclick={() : void => setDiagonal(-1, "anti")} style:--row={gridSize + 1}>-</button>
+<button aria-label="Add to anti diagonal" onclick={() : void => setDiagonal(1, "anti")} style:--column={gridSize + 1} style:--animation-delay="{Math.random() * 500}ms">+</button>
+<button aria-label="Subtract from anti diagonal" onclick={() : void => setDiagonal(-1, "anti")} style:--row={gridSize + 1} style:--animation-delay="{Math.random() * 500}ms">-</button>
 
 <style>
+  @keyframes fade-in-color {
+    from {
+      color: transparent;
+    }
+
+    to {
+      color: rgba(255, 255, 255, 0.85);
+    }
+  }
+
   button {
     display: flex;
     align-items: center;
@@ -79,12 +89,25 @@
     height: var(--cell-width);
     border: 0;
     background: transparent;
-    color: rgba(255, 255, 255, 0.85);
+    color: transparent;
     font-size: calc(var(--cell-width) * 0.75);
     font-family: inherit;
     cursor: pointer;
-    transition: color 50ms, font-size 50ms;
     overflow: hidden;
+    animation: fade-in-color 200ms var(--animation-delay) forwards;
+    transition: color 50ms, font-size 50ms;
+  }
+
+  @keyframes pop-in {
+    from {
+      opacity: 0;
+      transform: scale(0.75);
+    }
+
+    to {
+      opactity: 1;
+      transform: scale(1);
+    }
   }
 
   button::before {
@@ -100,6 +123,8 @@
     border: 0.25rem solid transparent;
     mix-blend-mode: overlay;
     z-index: -1;
+    transform: scale(0);
+    animation: pop-in 200ms var(--animation-delay) forwards;
     transition: transform 50ms, background-color 50ms, border 50ms;
   }
 
