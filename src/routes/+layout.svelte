@@ -10,6 +10,6 @@
 
 <style>
   main {
-    max-width: 400px;
+    max-width: 600px;
   }
 </style>

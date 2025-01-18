@@ -45,29 +45,52 @@
 </script>
 
 {#each { length: gridSize } as _, i}
-  <button onclick={() : void => setColumn(1, i)}>+</button>
+  <button onclick={() : void => setColumn(1, i)} style:--column={i + 1}>+</button>
 {/each}
 
 {#each { length: gridSize } as _, i}
-  <button onclick={() : void => setColumn(-1, i)}>-</button>
-{/each}
-
----
-
-{#each { length: gridSize } as _, i}
-  <button onclick={() : void => setRow(1, i)}>+</button>
+  <button onclick={() : void => setColumn(-1, i)} style:--column={i + 1} style:--row={gridSize + 1}>-</button>
 {/each}
 
 {#each { length: gridSize } as _, i}
-  <button onclick={() : void => setRow(-1, i)}>-</button>
+  <button onclick={() : void => setRow(1, i)} style:--row={i + 1} style:--column={gridSize + 1}>+</button>
 {/each}
 
----
+{#each { length: gridSize } as _, i}
+  <button onclick={() : void => setRow(-1, i)} style:--row={i + 1}>-</button>
+{/each}
 
-<button onclick={() : void => setDiagonal(1, "main")}>+</button>
+<button onclick={() : void => setDiagonal(1, "main")} style:--column={gridSize + 1} style:--row={gridSize + 1}>+</button>
 <button onclick={() : void => setDiagonal(-1, "main")}>-</button>
 
----
+<button onclick={() : void => setDiagonal(1, "anti")} style:--column={gridSize + 1}>+</button>
+<button onclick={() : void => setDiagonal(-1, "anti")} style:--row={gridSize + 1}>-</button>
 
-<button onclick={() : void => setDiagonal(1, "anti")}>+</button>
-<button onclick={() : void => setDiagonal(-1, "anti")}>-</button>
+<style>
+  button {
+    appearance: none;
+    position: absolute;
+    top: calc(var(--cell-width) * var(--row, 0));
+    left: calc(var(--cell-width) * var(--column, 0));
+    width: var(--cell-width);
+    height: var(--cell-width);
+    border: 0;
+    background: transparent;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+
+  button::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0.25rem;
+    left: 0.25rem;
+    width: calc(100% - 0.5rem);
+    height: calc(100% - 0.5rem);
+    border-radius: 1rem;
+    background: grey;
+    z-index: -1;
+  }
+</style>

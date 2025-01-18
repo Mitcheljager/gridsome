@@ -17,6 +17,6 @@
     display: grid;
     grid-template-columns: repeat(var(--grid-size), 1fr);
     grid-template-rows: repeat(var(--grid-size), 1fr);
-    gap: clamp(0.5rem, 5vw, 1rem);
+    width: 100%;
   }
 </style>
