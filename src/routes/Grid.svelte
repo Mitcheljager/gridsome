@@ -6,7 +6,7 @@
   const { gridSize, cells } : Props = $props()
 </script>
 
-<div class="grid" style:--grid-size={gridSize}>
+<div class="grid">
   {#each { length: gridSize * gridSize } as _, i}
     <Cell cell={cells[i] || 0} />
   {/each}

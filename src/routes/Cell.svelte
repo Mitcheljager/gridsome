@@ -12,8 +12,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    aspect-ratio: 1 / 1;
+    width: var(--cell-width);
+    height: var(--cell-width);
     font-size: clamp(2rem - (0.25rem * var(--grid-size)), 5vw, 5rem - (1rem * var(--grid-size)));
     padding: 1rem;
   }

@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount } from "svelte"
 	import Controls from "./Controls.svelte"
 	import Grid from "./Grid.svelte"
 
@@ -7,18 +6,10 @@
   const maxCellValue = 6
 
   let cells = $state(Array(gridSize * gridSize).fill(0))
-  let cellWidth = $state(0)
-
-  onMount(setCellWidth)
-
-  function setCellWidth(): void {
-    cellWidth = document.querySelector(".cell")!.getBoundingClientRect().width
-  }
+  let clientWidth = $state(0)
 </script>
 
-<svelte:window on:resize={setCellWidth} />
-
-<div class="board" style:--cell-width="{cellWidth}px">
+<div class="board" style:--board-width="{clientWidth}px" style:--grid-size={gridSize} bind:clientWidth>
   <Controls {gridSize} {maxCellValue} {cells} onchange={(value): void => { cells = value }} />
 
   <Grid {cells} {gridSize} />
@@ -26,6 +17,7 @@
 
 <style>
   .board {
+    --cell-width: calc(var(--board-width) / (var(--grid-size) + 2));
     position: relative;
     padding: var(--cell-width);
   }
