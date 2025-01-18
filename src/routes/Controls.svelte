@@ -31,6 +31,17 @@
 
     onchange(newCells)
   }
+
+  function setDiagonal(increment: number, type: "main" | "anti"): void {
+    const newCells = cells.map((cell, i): number => {
+      if (type === "main" && i % (gridSize + 1) === 0) return clampValue(cell + increment)
+      if (type === "anti" && i % (gridSize - 1) === 0 && i !== 0 && i !== gridSize * gridSize - 1) return clampValue(cell + increment)
+
+      return cell
+    })
+
+    onchange(newCells)
+  }
 </script>
 
 {#each { length: gridSize } as _, i}
@@ -50,3 +61,13 @@
 {#each { length: gridSize } as _, i}
   <button onclick={() : void => setRow(-1, i)}>-</button>
 {/each}
+
+---
+
+<button onclick={() : void => setDiagonal(1, "main")}>+</button>
+<button onclick={() : void => setDiagonal(-1, "main")}>-</button>
+
+---
+
+<button onclick={() : void => setDiagonal(1, "anti")}>+</button>
+<button onclick={() : void => setDiagonal(-1, "anti")}>-</button>

@@ -2,7 +2,7 @@
 	import Controls from "./Controls.svelte"
 	import Grid from "./Grid.svelte"
 
-  const gridSize = 2
+  const gridSize = 3
   const maxCellValue = 3
 
   let cells = $state(Array(gridSize * gridSize).fill(0))
