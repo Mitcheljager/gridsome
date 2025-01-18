@@ -15,6 +15,7 @@
     width: var(--cell-width);
     height: var(--cell-width);
     font-size: calc(var(--cell-width) * 0.5);
+    line-height: 0.5em;
     padding: 1rem;
   }
 

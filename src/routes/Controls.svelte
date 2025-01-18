@@ -68,6 +68,9 @@
 
 <style>
   button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     appearance: none;
     position: absolute;
     top: calc(var(--cell-width) * var(--row, 0));
@@ -76,9 +79,11 @@
     height: var(--cell-width);
     border: 0;
     background: transparent;
-    color: white;
-    font-size: calc(var(--cell-width) * 0.5);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: calc(var(--cell-width) * 0.75);
+    font-family: inherit;
     cursor: pointer;
+    transition: color 50ms, font-size 50ms;
   }
 
   button::before {
@@ -91,10 +96,19 @@
     height: calc(100% - 0.5rem);
     border-radius: calc(var(--cell-width) * 0.15);
     background: rgba(255, 255, 255, 0.25);
-    outline: 0.25rem solid transparent;
+    border: 0.25rem solid transparent;
     mix-blend-mode: overlay;
     z-index: -1;
-    transition: transform 50ms, background-color 50ms, outline 50ms;
+    transition: transform 50ms, background-color 50ms, border 50ms;
+  }
+
+  button:hover,
+  button:active {
+    color: white;
+  }
+
+  button:active {
+    font-size: calc(var(--cell-width) * 0.7);
   }
 
   button:hover::before {
@@ -104,6 +118,6 @@
   button:active::before {
     transform: scale(0.9);
     background: rgba(255, 255, 255, 0.35);
-    outline: 0.25rem solid rgba(255, 255, 255, 0.5);
+    border: 0.25rem solid rgba(255, 255, 255, 0.5);
   }
 </style>

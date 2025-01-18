@@ -19,6 +19,10 @@
 </div>
 
 <style>
+  p {
+    margin: 0;
+  }
+
   .matcher {
     display: flex;
     flex-direction: column;

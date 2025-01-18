@@ -1,3 +1,10 @@
+@font-face {
+  src: url("/fonts/Manufaktur.woff2");
+  font-family: "Manufaktur";
+  font-optical-sizing: auto;
+  font-display: swap;
+}
+
 *,
 *::before,
 *::after {
@@ -15,5 +22,7 @@ body {
   height: 100vh;
   width: 100vw;
   color: white;
-  font-family: sans-serif;
+  font-family: "Manufaktur", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
 }
