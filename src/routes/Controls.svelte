@@ -5,8 +5,8 @@
   let { gridSize, maxCellValue, cells, onchange } : Props = $props()
 
   function clampValue(value: number): number {
-    if (value > maxCellValue) return 0
-    if (value < 0) return maxCellValue
+    if (value > maxCellValue) return 1
+    if (value < 1) return maxCellValue
 
     return value
   }
