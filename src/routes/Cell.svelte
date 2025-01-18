@@ -1,22 +1,62 @@
 <script lang="ts">
-  interface Props { cell: number, active?: boolean }
+	import { fly } from "svelte/transition"
 
-  const { cell, active = false } : Props = $props()
+  interface Props { cell: number, active?: boolean, maxCellValue?: number }
+
+  const { cell, active = false, maxCellValue = 0 } : Props = $props()
+  const transitionDuration = 50
+
+  let previousCell = $state(cell)
+  let previousDistance = 0
+  let isTransitioning = false
+
+  function getTransitionDistance(): number {
+    if (isTransitioning) return previousDistance
+
+    const distance = Math.min(window.innerWidth / 20, 30)
+
+    let direction = previousCell > cell ? 1 : -1
+
+    if (previousCell === maxCellValue && cell === 1) direction = -1
+    if (previousCell === 1 && cell === maxCellValue) direction = 1
+
+    previousCell = cell
+    previousDistance = distance * direction
+
+    isTransitioning = true
+    setTimeout(() => isTransitioning = false, transitionDuration)
+
+    return distance * direction
+  }
 </script>
 
-<div class="cell" class:active style:--cell={cell}>{cell}</div>
+<div class="cell" class:active style:--cell={cell}>
+  {#key cell}
+    <span
+      in:fly={{ y: -getTransitionDistance(), duration: transitionDuration }}
+      out:fly={{ y: getTransitionDistance(), duration: transitionDuration }}>
+      {cell}
+    </span>
+  {/key}
+</div>
 
 <style>
+  span {
+    grid-area: number;
+  }
+
   .cell {
     position: relative;
-    display: flex;
+    display: grid;
+    grid-template: "number";
     align-items: center;
     justify-content: center;
     width: var(--cell-width);
     height: var(--cell-width);
     font-size: calc(var(--cell-width) * 0.5);
     line-height: 0.5em;
-    padding: 1rem;
+    text-align: center;
+    overflow: hidden;
   }
 
   .cell::before {

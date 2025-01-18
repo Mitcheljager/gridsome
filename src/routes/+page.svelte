@@ -6,7 +6,7 @@
 	import Matcher from "./Matcher.svelte"
 
   const gridSize = 2
-  const maxCellValue = 5
+  const maxCellValue = 20
   const goal = [1, 1, 2, 2]
 
   let cells = $state(Array(gridSize * gridSize).fill(1))
@@ -20,7 +20,7 @@
 
   <div class="board" style:--board-width="{clientWidth}px" bind:clientWidth>
     <Controls {gridSize} {maxCellValue} {cells} onchange={(value): void => { cells = value }} />
-    <Grid {cells} {gridSize} {goal} />
+    <Grid {cells} {gridSize} {maxCellValue} {goal} />
   </div>
 </div>
 

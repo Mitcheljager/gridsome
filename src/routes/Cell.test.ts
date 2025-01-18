@@ -13,6 +13,6 @@ describe("Cell.svelte", () => {
   it("Should have active class when given", () => {
     const { getByText } = render(Cell, { cell: 2, active: true })
 
-    expect(getByText(2).classList).toContain("active")
+    expect(getByText(2).parentElement!.classList).toContain("active")
   })
 })
