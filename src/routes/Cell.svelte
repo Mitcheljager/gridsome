@@ -4,7 +4,7 @@
   const { cell } : Props = $props()
 </script>
 
-<div class="cell">{cell}</div>
+<div class="cell" style:--cell={cell}>{cell}</div>
 
 <style>
   .cell {
@@ -27,7 +27,8 @@
     width: calc(100% - 0.5rem);
     height: calc(100% - 0.5rem);
     border-radius: calc(var(--cell-width) * 0.15);
-    background: rebeccapurple;
+    background: hsl(calc(160 + var(--cell) * 18), 70%, 40%);
     z-index: -1;
+    transition: background-color 200ms
   }
 </style>
