@@ -13,8 +13,7 @@
   let cells: number[] = $state(start)
   let clientWidth = $state(0)
 
-  // eslint-disable-next-line svelte/valid-compile
-  // if (browser) console.log(solver(gridSize, maxCellValue, start, goal))
+    // if (browser) console.log(solver(gridSize, maxCellValue, start, goal))
 </script>
 
 <div class="game" style:--grid-size={gridSize}>
@@ -36,7 +35,7 @@
   .board {
     --cell-width: calc(var(--board-width) / (var(--grid-size) + 2));
     position: relative;
-    padding: var(--cell-width);
+    padding: var(--cell-width) var(--cell-width) calc(var(--cell-width) + env(safe-area-inset-bottom));
     margin-top: auto;
   }
 </style>
