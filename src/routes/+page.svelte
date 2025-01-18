@@ -1,11 +1,13 @@
 <script lang="ts">
+	import Controls from "./Controls.svelte"
 	import Grid from "./Grid.svelte"
 
-  let gridSize = 2
-  let cells = $state([0, 1, 1, 0])
+  const gridSize = 2
+  const maxCellValue = 3
+
+  let cells = $state(Array(gridSize * gridSize).fill(0))
 </script>
 
-<button onclick={() => cells = cells.map(c => c + 1)}>Add</button>
-<button onclick={() => cells = cells.map(c => c - 1)}>Subtract</button>
+<Controls {gridSize} {maxCellValue} {cells} onchange={(value): void => { cells = value }} />
 
-<Grid {cells} size={gridSize} />
+<Grid {cells} {gridSize} />

@@ -1,14 +1,13 @@
 <script lang="ts">
 	import Cell from "./Cell.svelte"
 
-  interface Props { size: number, cells: number[] }
+  interface Props { gridSize: number, cells: number[] }
 
-  const { size, cells } : Props = $props()
+  const { gridSize, cells } : Props = $props()
 </script>
 
-<div class="grid" style:--grid-size={size}>
-  <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
-  {#each { length: size * size } as _, i}
+<div class="grid" style:--grid-size={gridSize}>
+  {#each { length: gridSize * gridSize } as _, i}
     <Cell cell={cells[i] || 0} />
   {/each}
 </div>
