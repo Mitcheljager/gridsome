@@ -5,12 +5,18 @@
 
   const { cell, active = false, maxCellValue = 0 } : Props = $props()
   const transitionDuration = 50
+  const changedBorderDuration = 300
 
+  let isTransitioning = $state(false)
+  let hasRecentlyChanged = $state(false)
+  // eslint-disable-next-line no-undef
+  let previousChangedTimeout: NodeJS.Timeout | number | null = null
   let previousCell = $state(cell)
   let previousDistance = 0
-  let isTransitioning = false
 
   function getTransitionDistance(): number {
+    setRecentlyChanged()
+
     if (isTransitioning) return previousDistance
 
     const distance = Math.min(window.innerWidth / 20, 30)
@@ -28,9 +34,16 @@
 
     return distance * direction
   }
+
+  function setRecentlyChanged(): void {
+    if (previousChangedTimeout) clearTimeout(previousChangedTimeout)
+
+    hasRecentlyChanged = true
+    previousChangedTimeout = setTimeout(() => hasRecentlyChanged = false, changedBorderDuration)
+  }
 </script>
 
-<div class="cell" class:active style:--cell={cell}>
+<div class="cell" class:active class:changing={hasRecentlyChanged} style:--cell={cell}>
   {#key cell}
     <span
       in:fly={{ y: -getTransitionDistance(), duration: transitionDuration }}
@@ -72,6 +85,11 @@
     background: hsl(calc(280 + var(--cell) * 18), 70%, 40%);
     z-index: -1;
     transition: background-color 200ms, border 200ms;
+  }
+
+  .changing:before {
+    transition: background-color 200ms, border 50ms;
+    border-color: rgb(255, 255, 255);
   }
 
   .active {
