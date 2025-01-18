@@ -14,7 +14,7 @@
     justify-content: center;
     width: var(--cell-width);
     height: var(--cell-width);
-    font-size: clamp(2rem - (0.25rem * var(--grid-size)), 5vw, 5rem - (1rem * var(--grid-size)));
+    font-size: calc(var(--cell-width) * 0.5);
     padding: 1rem;
   }
 
@@ -26,7 +26,7 @@
     left: 0.25rem;
     width: calc(100% - 0.5rem);
     height: calc(100% - 0.5rem);
-    border-radius: 1rem;
+    border-radius: calc(var(--cell-width) * 0.15);
     background: rebeccapurple;
     z-index: -1;
   }

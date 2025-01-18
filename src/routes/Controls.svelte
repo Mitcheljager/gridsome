@@ -4,8 +4,6 @@
   // eslint-disable-next-line prefer-const
   let { gridSize, maxCellValue, cells, onchange } : Props = $props()
 
-  $effect(() => console.log(cells))
-
   function clampValue(value: number): number {
     if (value > maxCellValue) return 1
     if (value < 1) return maxCellValue
@@ -79,7 +77,7 @@
     border: 0;
     background: transparent;
     color: white;
-    font-size: 2rem;
+    font-size: calc(var(--cell-width) * 0.5);
     cursor: pointer;
   }
 
@@ -91,7 +89,7 @@
     left: 0.25rem;
     width: calc(100% - 0.5rem);
     height: calc(100% - 0.5rem);
-    border-radius: 1rem;
+    border-radius: calc(var(--cell-width) * 0.15);
     background: grey;
     z-index: -1;
   }
