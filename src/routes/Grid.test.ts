@@ -18,4 +18,9 @@ describe("Grid.svelte", () => {
     const { container } = render(Grid, { gridSize: 4, cells: [] })
     expect(container.querySelectorAll(".cell")).toHaveLength(16)
   })
+
+  it("Should highlight cells that match the goal", () => {
+    const { container } = render(Grid, { gridSize: 2, cells: [1, 2, 3, 4], goal: [1, 1, 1, 4] })
+    expect(container.querySelectorAll(".cell.active")).toHaveLength(2)
+  })
 })

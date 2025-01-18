@@ -20,7 +20,7 @@
 
   <div class="board" style:--board-width="{clientWidth}px" bind:clientWidth>
     <Controls {gridSize} {maxCellValue} {cells} onchange={(value): void => { cells = value }} />
-    <Grid {cells} {gridSize} />
+    <Grid {cells} {gridSize} {goal} />
   </div>
 </div>
 

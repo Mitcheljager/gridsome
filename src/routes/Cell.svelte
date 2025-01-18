@@ -1,10 +1,10 @@
 <script lang="ts">
-  interface Props { cell: number }
+  interface Props { cell: number, active?: boolean }
 
-  const { cell } : Props = $props()
+  const { cell, active = false } : Props = $props()
 </script>
 
-<div class="cell" style:--cell={cell}>{cell}</div>
+<div class="cell" class:active style:--cell={cell}>{cell}</div>
 
 <style>
   .cell {
@@ -27,8 +27,17 @@
     width: calc(100% - 0.5rem);
     height: calc(100% - 0.5rem);
     border-radius: calc(var(--cell-width) * 0.15);
+    border: 0.25rem solid rgb(0, 255, 191, 0);
     background: hsl(calc(280 + var(--cell) * 18), 70%, 40%);
     z-index: -1;
-    transition: background-color 200ms
+    transition: background-color 200ms, border 200ms;
+  }
+
+  .active {
+    color: #00ffbf;
+  }
+
+  .active::before {
+    border-color: rgb(0, 255, 191);
   }
 </style>

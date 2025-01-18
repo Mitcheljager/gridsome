@@ -9,4 +9,10 @@ describe("Cell.svelte", () => {
 
     expect(getByText(2)).toBeTruthy()
   })
+
+  it("Should have active class when given", () => {
+    const { getByText } = render(Cell, { cell: 2, active: true })
+
+    expect(getByText(2).classList).toContain("active")
+  })
 })
