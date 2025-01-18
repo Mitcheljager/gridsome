@@ -84,6 +84,7 @@
     font-family: inherit;
     cursor: pointer;
     transition: color 50ms, font-size 50ms;
+    overflow: hidden;
   }
 
   button::before {
