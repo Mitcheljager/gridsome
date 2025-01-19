@@ -98,10 +98,11 @@
   }
 
   .active {
-    color: var(--success);
+    color: black;
   }
 
   .active::before {
     border-color: var(--success);
+    background: var(--success);
   }
 </style>

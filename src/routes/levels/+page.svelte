@@ -1,13 +1,21 @@
 <script>
 	import { levels } from "$lib/levels"
-	import { getLevelColor } from "$lib/utils"
+	import { fly, scale } from "svelte/transition"
 </script>
 
-<h1>Levels</h1>
+<h1 in:fly={{ y: -30, duration: 300 }}>Levels</h1>
 
 <nav class="levels">
   {#each levels as { id }, i}
-    <a class="level" href="/levels/{id}" style:border-color={getLevelColor(id, 1.5)}>Level {i}</a>
+    {@const completed = Math.random() > 0.5}
+
+    <a
+      class="level"
+      class:completed
+      href="/levels/{id}"
+      in:scale|global={{ duration: 200, delay: 200 + i * 100, start: 0.85 }}>
+      {i + 1}
+    </a>
   {/each}
 </nav>
 
@@ -18,22 +26,27 @@
   }
 
   .levels {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
+    max-width: 400px;
     padding: 0 2rem 2rem;
+    margin: 0 auto;
   }
 
   .level {
     position: relative;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
     padding: 1rem;
     outline: 2px solid transparent;
-    border-left: 1rem solid white;
     border-radius: 0.5rem;
     color: white;
     text-decoration: none;
     line-height: 1;
+    font-size: 3rem;
   }
 
   .level:hover,
@@ -49,16 +62,22 @@
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: 0 0.5rem 0.5rem 0;
-    background: rgba(255, 255, 255, 0.5);
-    border: 2px solid white;
-    border-left: 0;
-    mix-blend-mode: overlay;
+    border-radius: 0.5rem;
+    background: #325763;
     z-index: -1;
   }
 
   .level:hover::before,
   .level:active::before {
     border-color: transparent;
+  }
+
+  .completed {
+    color: var(--success);
+    color: black;
+  }
+
+  .completed::before {
+    background: var(--success);
   }
 </style>
