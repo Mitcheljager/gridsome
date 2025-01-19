@@ -64,7 +64,6 @@
     height: 100%;
     padding: 2rem;
     z-index: 10;
-    background: rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(2rem);
   }
 
