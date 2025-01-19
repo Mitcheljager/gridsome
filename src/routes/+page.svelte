@@ -12,7 +12,7 @@
   </nav>
 
   <div class="background">
-    {#each { length: browser ? Math.floor(window.innerHeight / 20) : 0 } as _}
+    {#each { length: browser ? Math.floor(window.innerHeight / 15) : 0 } as _}
       <div
         class="cell"
         style:opacity={1 - Math.random() * 0.75}
