@@ -91,7 +91,7 @@
   .cell {
     width: 100%;
     aspect-ratio: 1 / 1;
-    border-radius: 1rem;
+    border-radius: clamp(1rem, 2vw, 10rem);
     background: #30535f;
   }
 </style>
