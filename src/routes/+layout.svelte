@@ -4,7 +4,7 @@
   const { children } = $props()
 </script>
 
-<main>
+<main data-sveltekit-preload-code="viewport">
   {@render children()}
 </main>
 
