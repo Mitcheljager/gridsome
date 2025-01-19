@@ -5,6 +5,13 @@
   font-display: swap;
 }
 
+@font-face {
+  src: url("/fonts/OpenDyslexic.woff2");
+  font-family: "Open Dyslexic";
+  font-optical-sizing: auto;
+  font-display: swap;
+}
+
 :root {
   --success: #00ffbf;
   --max-width: 600px;
@@ -33,4 +40,8 @@ body {
   font-size: 24px;
   text-transform: lowercase;
   transition: background-color 200ms;
+}
+
+.alternative-font {
+  font-family: "Open Dyslexic", sans-serif;
 }
