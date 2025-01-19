@@ -2,8 +2,8 @@
 	import { fade, scale } from "svelte/transition"
 </script>
 
-<div class="screen" in:fade={{ duration: 200, delay: 500 }}>
-  <div class="dialog" role="dialog" in:scale={{ duration: 200, delay: 500, start: 0.85 }}>
+<div class="screen" in:fade={{ duration: 200, delay: 1000 }}>
+  <div class="dialog" role="dialog" in:scale={{ duration: 200, delay: 1000, start: 0.85 }}>
     <h1>Level complete</h1>
     <h2>Awesome</h2>
 
