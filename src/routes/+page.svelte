@@ -24,8 +24,12 @@
 <style>
   h1 {
     margin: 2rem 0;
+    background: linear-gradient(-45deg, #e09532, #e13ce7, #1b81bd, #36c7b6);
+    background-size: 100% 100%;
+    background-clip: text;
     font-size: clamp(4rem, 15vw, 8rem);
     text-align: center;
+    -webkit-text-stroke: clamp(1rem, 3vw, 2rem) transparent;
   }
 
   nav {
