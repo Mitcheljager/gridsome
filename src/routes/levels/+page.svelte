@@ -36,13 +36,14 @@
     position: relative;
     max-width: var(--max-width);
     margin: 0 auto;
+    padding: 0 1rem;
   }
 
   .levels {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
-    padding: 0 2rem 2rem;
+    padding: 0 0 2rem;
   }
 
   .level {
