@@ -31,7 +31,7 @@
 
 <style>
   h1 {
-    margin: 2rem 0;
+    margin: -10vh 0 2rem;
     background: linear-gradient(-45deg, #e09532, #e13ce7, #1b81bd, #36c7b6);
     background-size: 100% 100%;
     background-clip: text;
@@ -54,6 +54,9 @@
   }
 
   .menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     position: relative;
     height: 100vh;
     width: 100vw;
