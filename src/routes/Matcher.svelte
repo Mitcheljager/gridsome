@@ -21,6 +21,7 @@
 <style>
   p {
     margin: 0;
+    font-size: clamp(1.5rem, 6vw, 2rem);
   }
 
   .matcher {
@@ -31,7 +32,7 @@
   }
 
   .goal {
-    --cell-width: 3rem;
+    --cell-width: clamp(3rem, 13vw, 5rem);
     width: calc(var(--cell-width) * var(--grid-size));
   }
 </style>
