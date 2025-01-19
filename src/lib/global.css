@@ -7,6 +7,7 @@
 
 :root {
   --success: #00ffbf;
+  --max-width: 600px;
 }
 
 *,

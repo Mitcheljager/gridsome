@@ -3,7 +3,7 @@
 	import { fly, scale } from "svelte/transition"
 </script>
 
-<h1 in:fly={{ y: -30, duration: 300 }}>Levels</h1>
+<h1 in:fly={{ y: -(Math.min(window.innerWidth / 10), 60), duration: 300 }}>Levels</h1>
 
 <nav class="levels">
   {#each levels as { id }, i}
@@ -23,13 +23,14 @@
   h1 {
     margin: 2rem 0;
     text-align: center;
+    font-size: clamp(4rem, 20vw, 7rem);
   }
 
   .levels {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
-    max-width: 400px;
+    max-width: var(--max-width);
     padding: 0 2rem 2rem;
     margin: 0 auto;
   }
@@ -46,7 +47,7 @@
     color: white;
     text-decoration: none;
     line-height: 1;
-    font-size: 3rem;
+    font-size: clamp(3rem, 13vw, 5rem);
   }
 
   .level:hover,

@@ -46,6 +46,8 @@
   .board {
     --cell-width: calc(var(--board-width) / (var(--grid-size) + 2));
     position: relative;
+    max-width: var(--max-width);
+    margin: 0 auto;
     padding: var(--cell-width) var(--cell-width) calc(var(--cell-width) + env(safe-area-inset-bottom));
     margin-top: auto;
   }
