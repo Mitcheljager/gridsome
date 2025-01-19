@@ -19,11 +19,11 @@ describe("Controls.svelte", () => {
     expect(getAllByRole("button")).toHaveLength(16)
   })
 
-  it("Should call given onchange value when clicking any button", () => {
+  it("Should call given onchange value when clicking any button", async() => {
     const mock = vi.fn()
 
     const { getAllByRole } = render(Controls, { gridSize: 1, maxCellValue: 1, cells: [1], onchange: mock })
-    fireEvent.click(getAllByRole("button")[0])
+    await fireEvent.mouseDown(getAllByRole("button")[0])
 
     expect(mock).toHaveBeenCalledWith([1])
   })
@@ -35,7 +35,7 @@ describe("Controls.svelte", () => {
 
       const { getByLabelText } = render(Controls, { gridSize: 2, maxCellValue: 3, cells, onchange: mock })
 
-      await fireEvent.click(getByLabelText("Add to column 1"))
+      await fireEvent.mouseDown(getByLabelText("Add to column 1"))
       expect(cells).toEqual([2, 1, 2, 1])
     })
 
@@ -45,7 +45,7 @@ describe("Controls.svelte", () => {
 
       const { getByLabelText } = render(Controls, { gridSize: 2, maxCellValue: 3, cells, onchange: mock })
 
-      await fireEvent.click(getByLabelText("Subtract from column 1"))
+      await fireEvent.mouseDown(getByLabelText("Subtract from column 1"))
       expect(cells).toEqual([1, 2, 1, 2])
     })
 
@@ -55,7 +55,7 @@ describe("Controls.svelte", () => {
 
       const { getByLabelText } = render(Controls, { gridSize: 2, maxCellValue: 3, cells, onchange: mock })
 
-      await fireEvent.click(getByLabelText("Add to row 1"))
+      await fireEvent.mouseDown(getByLabelText("Add to row 1"))
       expect(cells).toEqual([2, 2, 1, 1])
     })
 
@@ -65,7 +65,7 @@ describe("Controls.svelte", () => {
 
       const { getByLabelText } = render(Controls, { gridSize: 2, maxCellValue: 3, cells, onchange: mock })
 
-      await fireEvent.click(getByLabelText("Subtract from row 1"))
+      await fireEvent.mouseDown(getByLabelText("Subtract from row 1"))
       expect(cells).toEqual([1, 1, 2, 2])
     })
 
@@ -75,7 +75,7 @@ describe("Controls.svelte", () => {
 
       const { getByLabelText } = render(Controls, { gridSize: 2, maxCellValue: 3, cells, onchange: mock })
 
-      await fireEvent.click(getByLabelText("Add to main diagonal"))
+      await fireEvent.mouseDown(getByLabelText("Add to main diagonal"))
       expect(cells).toEqual([2, 1, 1, 2])
     })
 
@@ -85,7 +85,7 @@ describe("Controls.svelte", () => {
 
       const { getByLabelText } = render(Controls, { gridSize: 2, maxCellValue: 3, cells, onchange: mock })
 
-      await fireEvent.click(getByLabelText("Subtract from main diagonal"))
+      await fireEvent.mouseDown(getByLabelText("Subtract from main diagonal"))
       expect(cells).toEqual([1, 2, 2, 1])
     })
 
@@ -95,7 +95,7 @@ describe("Controls.svelte", () => {
 
       const { getByLabelText } = render(Controls, { gridSize: 2, maxCellValue: 3, cells, onchange: mock })
 
-      await fireEvent.click(getByLabelText("Add to anti diagonal"))
+      await fireEvent.mouseDown(getByLabelText("Add to anti diagonal"))
       expect(cells).toEqual([1, 2, 2, 1])
     })
 
@@ -105,7 +105,7 @@ describe("Controls.svelte", () => {
 
       const { getByLabelText } = render(Controls, { gridSize: 2, maxCellValue: 3, cells, onchange: mock })
 
-      await fireEvent.click(getByLabelText("Subtract from anti diagonal"))
+      await fireEvent.mouseDown(getByLabelText("Subtract from anti diagonal"))
       expect(cells).toEqual([2, 1, 1, 2])
     })
   })
@@ -116,7 +116,7 @@ describe("Controls.svelte", () => {
 
     const { getByLabelText } = render(Controls, { gridSize: 2, maxCellValue: 3, cells, onchange: mock })
 
-    await fireEvent.click(getByLabelText("Add to row 1"))
+    await fireEvent.mouseDown(getByLabelText("Add to row 1"))
     expect(cells).toEqual([1, 2, 1, 1])
   })
 
@@ -126,7 +126,7 @@ describe("Controls.svelte", () => {
 
     const { getByLabelText } = render(Controls, { gridSize: 2, maxCellValue: 3, cells, onchange: mock })
 
-    await fireEvent.click(getByLabelText("Subtract from row 1"))
+    await fireEvent.mouseDown(getByLabelText("Subtract from row 1"))
     expect(cells).toEqual([3, 1, 1, 1])
   })
 })
