@@ -1,6 +1,7 @@
 <script>
-	import { levels } from "$lib/levels"
 	import { fly, scale } from "svelte/transition"
+	import { levels } from "$lib/levels"
+	import { getCompletedLevel } from "$lib/game"
 	import BackButton from "../BackButton.svelte"
 </script>
 
@@ -11,7 +12,7 @@
 
   <nav class="levels">
     {#each levels as { id }, i}
-      {@const completed = Math.random() > 0.5}
+      {@const completed = !!getCompletedLevel(id)}
 
       <a
         class="level"
