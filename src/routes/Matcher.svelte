@@ -11,11 +11,11 @@
 </script>
 
 <div class="matcher">
+  <p>Match</p>
+
   <div class="goal">
     <Grid {gridSize} cells={goal} />
   </div>
-
-  <p>Match</p>
 </div>
 
 <style>
@@ -27,6 +27,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    line-height: 1.5;
   }
 
   .goal {
