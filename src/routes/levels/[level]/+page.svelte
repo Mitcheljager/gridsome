@@ -1,13 +1,14 @@
 <script lang="ts">
-	import type { Level } from "../../../types"
+	import { onDestroy, onMount } from "svelte"
 	import { page } from "$app/state"
+	import { browser } from "$app/environment"
 	import { levels } from "$lib/levels"
+	import { getLevelColor } from "$lib/utils"
+	import type { Level } from "../../../types"
 	import Controls from "../../Controls.svelte"
 	import Grid from "../../Grid.svelte"
 	import Matcher from "../../Matcher.svelte"
-	import { onDestroy, onMount } from "svelte"
-	import { browser } from "$app/environment"
-	import { getLevelColor } from "$lib/utils"
+	import MenuButton from "../../MenuButton.svelte"
 
   const { level } = page.params
   const { start, gridSize, maxCellValue, goal } = $derived(levels.find((l: Level) => l.id === level)!)
@@ -28,6 +29,7 @@
 </script>
 
 <div class="game" style:--grid-size={gridSize}>
+  <MenuButton />
   <Matcher {gridSize} {cells} {goal} onmatch={(): void => console.log("Match!")} />
 
   <div class="board" style:--board-width="{clientWidth}px" bind:clientWidth>
@@ -41,14 +43,14 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
+    max-width: var(--max-width);
+    margin: 0 auto;
   }
 
   .board {
     --cell-width: calc(var(--board-width) / (var(--grid-size) + 2));
     position: relative;
     width: 100%;
-    max-width: var(--max-width);
-    margin: 0 auto;
     padding: var(--cell-width) var(--cell-width) calc(var(--cell-width) + env(safe-area-inset-bottom));
     margin-top: auto;
   }

@@ -1,38 +1,48 @@
 <script>
 	import { levels } from "$lib/levels"
 	import { fly, scale } from "svelte/transition"
+	import BackButton from "../BackButton.svelte"
 </script>
 
-<h1 in:fly={{ y: -(Math.min(window.innerWidth / 10), 60), duration: 300 }}>Levels</h1>
+<div class="layout">
+  <BackButton />
 
-<nav class="levels">
-  {#each levels as { id }, i}
-    {@const completed = Math.random() > 0.5}
+  <h1 in:fly={{ y: -(Math.min(window.innerWidth / 10), 60), duration: 300 }}>Levels</h1>
 
-    <a
-      class="level"
-      class:completed
-      href="/levels/{id}"
-      in:scale|global={{ duration: 200, delay: 200 + i * 100, start: 0.85 }}>
-      {i + 1}
-    </a>
-  {/each}
-</nav>
+  <nav class="levels">
+    {#each levels as { id }, i}
+      {@const completed = Math.random() > 0.5}
+
+      <a
+        class="level"
+        class:completed
+        href="/levels/{id}"
+        in:scale|global={{ duration: 200, delay: 200 + i * 100, start: 0.85 }}>
+        {i + 1}
+      </a>
+    {/each}
+  </nav>
+</div>
 
 <style>
   h1 {
-    margin: 2rem 0;
+    margin: 0;
+    padding: 2rem 0;
     text-align: center;
     font-size: clamp(4rem, 20vw, 7rem);
+  }
+
+  .layout {
+    position: relative;
+    max-width: var(--max-width);
+    margin: 0 auto;
   }
 
   .levels {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
-    max-width: var(--max-width);
     padding: 0 2rem 2rem;
-    margin: 0 auto;
   }
 
   .level {
