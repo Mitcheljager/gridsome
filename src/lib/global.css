@@ -5,6 +5,10 @@
   font-display: swap;
 }
 
+:root {
+  --success: #00ffbf;
+}
+
 *,
 *::before,
 *::after {

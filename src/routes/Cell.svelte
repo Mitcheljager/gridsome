@@ -98,10 +98,10 @@
   }
 
   .active {
-    color: #00ffbf;
+    color: var(--success);
   }
 
   .active::before {
-    border-color: rgb(0, 255, 191);
+    border-color: var(--success);
   }
 </style>
