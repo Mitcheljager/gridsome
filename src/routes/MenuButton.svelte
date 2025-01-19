@@ -30,7 +30,7 @@
   .line {
     width: 100%;
     height: 1rem;
-    border-radius: 1rem;
+    border-radius: clamp(0.15rem, 0.75vw, 0.25rem);
     background: white;
     transition: translate 100ms;
   }

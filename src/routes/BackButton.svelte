@@ -44,9 +44,16 @@
     --offset: 3px;
     width: 100%;
     height: 1rem;
-    border-radius: 1rem;
+    border-radius: 0.25rem;
     background: white;
     transition: translate 100ms;
+  }
+
+  @media (min-width: 500px) {
+    .line {
+      --offset: -2px;
+      border-radius: 0.35rem;
+    }
   }
 
   .top {
@@ -55,11 +62,5 @@
 
   .bottom {
     transform: rotate(-135deg) translateY(var(--offset));
-  }
-
-  @media (min-width: 500px) {
-    .line {
-      --offset: -2px;
-    }
   }
 </style>
