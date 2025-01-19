@@ -10,6 +10,7 @@
 	import Grid from "../../Grid.svelte"
 	import Matcher from "../../Matcher.svelte"
 	import MenuButton from "../../MenuButton.svelte"
+	import CompleteScreen from "../../CompleteScreen.svelte"
 
   const { level } = page.params
   const { start, gridSize, maxCellValue, goal } = $derived(levels.find((l: Level) => l.id === level)!)
@@ -28,14 +29,18 @@
   })
 
   function complete(): void {
-    completed = true
     completeLevel(level, 0)
+    completed = true
   }
 
   // if (browser) console.log(solver(gridSize, maxCellValue, start, goal))
 </script>
 
-<div class="game" class:completed style:--grid-size={gridSize}>
+{#if completed}
+  <CompleteScreen />
+{/if}
+
+<div class="game" class:completed style:--grid-size={gridSize} aria-hidden={completed ? "true" : null}>
   <MenuButton />
   <Matcher {gridSize} {cells} {goal} onmatch={complete} />
 
