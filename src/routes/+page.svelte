@@ -1,18 +1,26 @@
-<script>
-	import { browser } from "$app/environment"
-	import { scale } from "svelte/transition"
+<script lang="ts">
+	import { onMount } from "svelte"
+	import { fade, scale } from "svelte/transition"
+
+  let showContent = $state(false)
+
+  onMount(() => {
+    requestAnimationFrame(() => showContent = true)
+  })
 </script>
 
 <div class="menu">
-  <h1>Gridsome</h1>
+  {#if showContent}
+    <h1 in:fade={{ duration: 500, delay: 500 }}>Gridsome</h1>
 
-  <nav>
-    <a href="/levels">Play</a>
-    <a href="/levels">Settings</a>
-  </nav>
+    <nav>
+      <a href="/levels" in:scale={{ duration: 200, delay: 700, start: 0.85 }}>Play</a>
+      <a href="/levels" in:scale={{ duration: 200, delay: 900, start: 0.85 }}>Settings</a>
+    </nav>
+  {/if}
 
   <div class="background">
-    {#each { length: browser ? Math.floor(window.innerHeight / 15) : 0 } as _}
+    {#each { length: showContent ? Math.floor(window.innerHeight / 15) : 0 } as _}
       <div
         class="cell"
         style:opacity={1 - Math.random() * 0.75}
