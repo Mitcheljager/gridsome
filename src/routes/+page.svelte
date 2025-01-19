@@ -53,6 +53,10 @@
     text-decoration: none;
   }
 
+  a:active {
+    transform: scale(0.95);
+  }
+
   .menu {
     display: flex;
     flex-direction: column;

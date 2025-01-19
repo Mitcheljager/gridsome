@@ -48,11 +48,16 @@
     text-decoration: none;
     line-height: 1;
     font-size: clamp(3rem, 13vw, 5rem);
+    transition: transform 50ms;
   }
 
   .level:hover,
   .level:active {
     outline: 2px solid white;
+  }
+
+  .level:active {
+    transform: scale(0.9);
   }
 
   .level::before {
