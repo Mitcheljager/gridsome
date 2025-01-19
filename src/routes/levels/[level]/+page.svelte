@@ -3,6 +3,7 @@
 	import { page } from "$app/state"
 	import { browser } from "$app/environment"
 	import { levels } from "$lib/levels"
+	import { completeLevel } from "$lib/game"
 	import { getLevelColor } from "$lib/utils"
 	import type { Level } from "../../../types"
 	import Controls from "../../Controls.svelte"
@@ -16,6 +17,7 @@
   // svelte-ignore state_referenced_locally
   let cells: number[] = $state(start)
   let clientWidth = $state(0)
+  let completed = $state(false)
 
   onMount(() => {
     document.body.style.backgroundColor = getLevelColor(level)
@@ -25,12 +27,17 @@
     if (browser) document.body.style.backgroundColor = ""
   })
 
+  function complete(): void {
+    completed = true
+    completeLevel(level, 0)
+  }
+
   // if (browser) console.log(solver(gridSize, maxCellValue, start, goal))
 </script>
 
-<div class="game" style:--grid-size={gridSize}>
+<div class="game" class:completed style:--grid-size={gridSize}>
   <MenuButton />
-  <Matcher {gridSize} {cells} {goal} onmatch={(): void => console.log("Match!")} />
+  <Matcher {gridSize} {cells} {goal} onmatch={complete} />
 
   <div class="board" style:--board-width="{clientWidth}px" bind:clientWidth>
     <Controls {gridSize} {maxCellValue} {cells} onchange={(value): void => { cells = value }} />
@@ -55,5 +62,9 @@
     width: 100%;
     padding: var(--cell-width) var(--cell-width) calc(var(--cell-width) + env(safe-area-inset-bottom));
     margin-top: auto;
+  }
+
+  .completed .board {
+    pointer-events: none;
   }
 </style>

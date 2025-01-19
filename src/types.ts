@@ -5,3 +5,8 @@ export interface Level {
   goal: number[],
   maxCellValue: number
 }
+
+export interface CompletedLevel {
+  id: string,
+  score: number
+}

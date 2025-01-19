@@ -1,17 +1,28 @@
 import { cleanup } from "@testing-library/svelte"
 import { afterEach, beforeAll, vi } from "vitest"
 
-const mockAnimations = (): void => {
+beforeAll(() => {
   Element.prototype.animate ??= vi.fn().mockReturnValue({
     finished: Promise.resolve(),
     cancel: vi.fn(),
     startTime: null,
     currentTime: null
   })
-}
 
-beforeAll(() => {
-  mockAnimations()
+  let store: Record<string, string> = {}
+
+  ;(window as any).localStorage = {
+    getItem: (key: string): string => store[key] ?? null,
+    setItem: (key: string, value: string): void => {
+      store[key] = value.toString()
+    },
+    removeItem: (key: string): void => {
+      delete store[key]
+    },
+    clear: (): void => {
+      store = {}
+    }
+  }
 })
 
 afterEach(() => {
