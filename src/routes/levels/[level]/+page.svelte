@@ -1,10 +1,14 @@
 <script lang="ts">
+  // @ts-expect-error No types available
+  import { prng_alea as seedrandom } from "esm-seedrandom"
 	import type { Level } from "../../../types"
 	import { page } from "$app/state"
 	import { levels } from "$lib/levels"
 	import Controls from "../../Controls.svelte"
 	import Grid from "../../Grid.svelte"
 	import Matcher from "../../Matcher.svelte"
+	import { onDestroy, onMount } from "svelte"
+	import { browser } from "$app/environment"
 
   const { level } = page.params
   const { start, gridSize, maxCellValue, goal } = $derived(levels.find((l: Level) => l.id === level)!)
@@ -13,7 +17,16 @@
   let cells: number[] = $state(start)
   let clientWidth = $state(0)
 
-    // if (browser) console.log(solver(gridSize, maxCellValue, start, goal))
+  onMount(() => {
+    const random = seedrandom(level).quick()
+    document.body.style.backgroundColor = `hsl(${random * 360}, 35%, 25%)`
+  })
+
+  onDestroy(() => {
+    if (browser) document.body.style.backgroundColor = ""
+  })
+
+  // if (browser) console.log(solver(gridSize, maxCellValue, start, goal))
 </script>
 
 <div class="game" style:--grid-size={gridSize}>
