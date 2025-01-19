@@ -17,7 +17,7 @@
         class="level"
         class:completed
         href="/levels/{id}"
-        in:scale|global={{ duration: 200, delay: 200 + i * 100, start: 0.85 }}>
+        in:scale|global={{ duration: 200, delay: 150 + i * 50, start: 0.85 }}>
         {i + 1}
       </a>
     {/each}
