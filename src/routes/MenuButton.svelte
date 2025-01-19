@@ -1,4 +1,8 @@
-<a href="/" aria-label="Return to main menu">
+<script>
+	import { fade } from "svelte/transition"
+</script>
+
+<a href="/" aria-label="Return to main menu" in:fade|global={{ duration: 300, delay: 200 }}>
   <div class="line"></div>
   <div class="line"></div>
   <div class="line"></div>
