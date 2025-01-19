@@ -131,6 +131,7 @@
   button:hover,
   button:active {
     color: white;
+    animation-fill-mode: none;
   }
 
   button:active {
@@ -138,10 +139,13 @@
   }
 
   button:hover::before {
+    animation-fill-mode: none;
+    background: rgba(255, 255, 255, 0.3);
     transform: scale(1.025);
   }
 
   button:active::before {
+    animation-fill-mode: none;
     transform: scale(0.9);
     background: rgba(255, 255, 255, 0.35);
     border: 0.25rem solid rgba(255, 255, 255, 0.5);
