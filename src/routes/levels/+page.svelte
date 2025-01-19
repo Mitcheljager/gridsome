@@ -7,7 +7,7 @@
 <div class="layout">
   <BackButton />
 
-  <h1 in:fly={{ y: -(Math.min(window.innerWidth / 10), 60), duration: 300 }}>Levels</h1>
+  <h1 in:fly={{ y: -(Math.min(window.innerWidth / 20, 40)), duration: 300 }}>Levels</h1>
 
   <nav class="levels">
     {#each levels as { id }, i}
