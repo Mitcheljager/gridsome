@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { fly } from "svelte/transition"
 	import Grid from "./Grid.svelte"
 
   interface Props { cells: number[], goal: number[], gridSize: number, onmatch(): void }
@@ -10,7 +11,7 @@
   })
 </script>
 
-<div class="matcher">
+<div class="matcher" in:fly|global={{ y: 20, duration: 300 }}>
   <p>Match</p>
 
   <div class="goal">
