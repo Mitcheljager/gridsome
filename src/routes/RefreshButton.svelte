@@ -13,7 +13,7 @@
     onclick()
 
     animate = true
-    setTimeout(() => animate = false, 1000)
+    setTimeout(() => animate = false, 750)
   }
 </script>
 
