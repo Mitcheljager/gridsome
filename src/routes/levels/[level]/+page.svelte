@@ -11,6 +11,7 @@
 	import Matcher from "../../Matcher.svelte"
 	import MenuButton from "../../MenuButton.svelte"
 	import CompleteScreen from "../../CompleteScreen.svelte"
+	import RefreshButton from "../../RefreshButton.svelte"
 
   const { level } = page.params
   const { start, gridSize, maxCellValue, goal } = $derived(levels.find((l: Level) => l.id === level)!)
@@ -33,6 +34,10 @@
     completed = true
   }
 
+  function reset(): void {
+    cells = start
+  }
+
   // if (browser) console.log(solver(gridSize, maxCellValue, start, goal))
 </script>
 
@@ -42,6 +47,7 @@
 
 <div class="game" class:completed style:--grid-size={gridSize} aria-hidden={completed ? "true" : null}>
   <MenuButton />
+  <RefreshButton onclick={reset} />
   <Matcher {gridSize} {cells} {goal} onmatch={complete} />
 
   <div class="board" style:--board-width="{clientWidth}px" bind:clientWidth>
