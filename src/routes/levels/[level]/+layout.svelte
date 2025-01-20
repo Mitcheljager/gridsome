@@ -4,6 +4,6 @@
   const { children } = $props()
 </script>
 
-{#key page.params.id}
+{#key page.params.level}
   {@render children()}
 {/key}
