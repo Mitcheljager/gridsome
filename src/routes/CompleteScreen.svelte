@@ -1,5 +1,13 @@
-<script>
+<script lang="ts">
+	import { levels } from "$lib/levels"
 	import { fade, scale } from "svelte/transition"
+
+  interface Props { currentLevelId: string }
+
+  const { currentLevelId } : Props = $props()
+
+  const currentLevelIndex = levels.findIndex(l => l.id === currentLevelId)
+  const nextLevelId = currentLevelIndex === -1 ? null : (levels[currentLevelIndex + 1]?.id || null)
 </script>
 
 <div class="screen" in:fade={{ duration: 200, delay: 1000 }}>
@@ -8,7 +16,10 @@
     <h2>Awesome</h2>
 
     <nav>
-      <a href="/levels/1">Next level</a>
+      {#if nextLevelId}
+        <a href="/levels/{nextLevelId}">Next level</a>
+      {/if}
+
       <a href="/levels">Level select</a>
       <a href="/">Main menu</a>
     </nav>

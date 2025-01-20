@@ -42,7 +42,7 @@
 </script>
 
 {#if completed}
-  <CompleteScreen />
+  <CompleteScreen currentLevelId={level} />
 {/if}
 
 <div class="game" class:completed style:--grid-size={gridSize} aria-hidden={completed ? "true" : null}>
