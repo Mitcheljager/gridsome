@@ -8,7 +8,7 @@ describe("game.ts", () => {
   })
 
   describe("getCompletedLevels", () => {
-    it("Should return empty array no localstorage item was found", () => {
+    it("Should return empty array if no localstorage item was found", () => {
       expect(getCompletedLevels()).toEqual([])
     })
 
