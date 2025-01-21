@@ -82,7 +82,7 @@ describe("settings.ts", () => {
       expect(conditionalAnimation({ key: "value" })).toEqual({ duration: 0 })
     })
 
-    it("Should return given object if isUsingReduceAnimations is not", () => {
+    it("Should return given object if isUsingReduceAnimations is not true", () => {
       expect(conditionalAnimation({ key: "value" })).toEqual({ key: "value" })
     })
   })
