@@ -1,11 +1,15 @@
+import { browser } from "$app/environment"
+
 export const alternativeFontKey = "use-alternative-font"
 export const reduceAnimationsKey = "use-reduced-animations"
 
 export function isUsingAlternativeFont(): boolean {
+  if (!browser) return false
   return localStorage.getItem(alternativeFontKey) === "true"
 }
 
 export function isUsingReduceAnimations(): boolean {
+  if (!browser) return false
   return localStorage.getItem(reduceAnimationsKey) === "true"
 }
 
