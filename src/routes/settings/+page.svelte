@@ -2,7 +2,7 @@
 	import { fly, scale } from "svelte/transition"
 	import BackButton from "../BackButton.svelte"
 	import { browser } from "$app/environment"
-	import { alternativeFontKey, conditionalAnimation, isUsingAlternativeFont, isUsingReduceAnimations, setAlternativeFont, setReduceAnimations } from "$lib/settings"
+	import { alternativeFontKey, conditionalAnimation, isUsingAlternativeFont, isUsingReduceAnimations, reduceAnimationsKey, setAlternativeFont } from "$lib/settings"
 
   let useAlternativeFont = $state(browser && isUsingAlternativeFont())
   let useReduceAnimations = $state(browser && isUsingReduceAnimations())
@@ -13,8 +13,7 @@
   }
 
   function toggleReduceAnimations(): void {
-    localStorage.setItem(alternativeFontKey, useReduceAnimations.toString())
-    setReduceAnimations()
+    localStorage.setItem(reduceAnimationsKey, useReduceAnimations.toString())
   }
 </script>
 

@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest"
 import { getLevelColor } from "./utils"
 
 describe("utils.ts", () => {
-  describe("getLevelColor.ts", () => {
+  describe("getLevelColor", () => {
     it("Should return the same color for the same given key", () => {
       expect(getLevelColor("a")).toEqual(getLevelColor("a"))
     })

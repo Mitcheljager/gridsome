@@ -3,7 +3,7 @@
 	import { browser } from "$app/environment"
 	import { levels } from "$lib/levels"
 	import { getCompletedLevel } from "$lib/game"
-	import { conditionalAnimation, isUsingReduceAnimations } from "$lib/settings"
+	import { conditionalAnimation } from "$lib/settings"
 	import BackButton from "../BackButton.svelte"
 
   const selectGridSizeKey = "last-selected-grid-size"
@@ -52,7 +52,7 @@
         class="tile"
         class:completed
         href="/levels/{id}"
-        in:scale|global={isUsingReduceAnimations() ? { duration: 1, delay: 100 } : { duration: 200, delay: 150 + i * 50, start: 0.85 }}>
+        in:scale|global={conditionalAnimation({ duration: 200, delay: 150 + i * 50, start: 0.85 })}>
         {i + 1}
       </a>
     {/each}
