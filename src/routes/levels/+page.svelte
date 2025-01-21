@@ -5,7 +5,14 @@
 	import BackButton from "../BackButton.svelte"
 	import { browser } from "$app/environment"
 
-  let selectedGridSize = $state(2)
+  const selectGridSizeKey = "last-selected-grid-size"
+
+  let selectedGridSize = $state(browser ? parseInt(localStorage.getItem(selectGridSizeKey) || "2") : 2)
+
+  function selectGridSize(size: number): void {
+    selectedGridSize = size
+    localStorage.setItem(selectGridSizeKey, size.toString())
+  }
 </script>
 
 <div class="layout">
@@ -17,7 +24,7 @@
 
   <nav class="options">
     {#each [2, 3] as option, i}
-      <button class="tile option" class:active={option === selectedGridSize} onclick={(): void => { selectedGridSize = option }} in:scale|global={{ duration: 200, delay: 150 + i * 50, start: 0.85 }}>
+      <button class="tile option" class:active={option === selectedGridSize} onclick={(): void => { selectGridSize(option) }} in:scale|global={{ duration: 200, delay: 150 + i * 50, start: 0.85 }}>
         <div class="grid" style:--grid-size={option}>
           {#each { length: option * option } as _}
             <div class="cell"></div>
