@@ -1,7 +1,11 @@
 <script>
   import "$lib/global.css"
+	import { browser } from "$app/environment"
+	import { setAlternativeFont } from "$lib/settings"
 
   const { children } = $props()
+
+  if (browser) setAlternativeFont()
 </script>
 
 <main data-sveltekit-preload-code="viewport">

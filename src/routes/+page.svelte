@@ -15,7 +15,7 @@
 
     <nav>
       <a href="/levels" in:scale={{ duration: 200, delay: 700, start: 0.85 }}>Play</a>
-      <a href="/levels" in:scale={{ duration: 200, delay: 900, start: 0.85 }}>Settings</a>
+      <a href="/settings" in:scale={{ duration: 200, delay: 900, start: 0.85 }}>Settings</a>
     </nav>
   {/if}
 

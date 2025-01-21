@@ -45,4 +45,5 @@ body {
 
 .alternative-font {
   font-family: "Open Dyslexic", sans-serif;
+  text-transform: none;
 }

@@ -56,7 +56,7 @@
 <style>
   h1 {
     margin: 0;
-    padding: 2rem 0;
+    padding: 4rem 0 2rem 0;
     text-align: center;
     font-size: clamp(4rem, 20vw, 7rem);
   }
