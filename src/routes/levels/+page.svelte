@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { fly, scale } from "svelte/transition"
+	import { browser } from "$app/environment"
 	import { levels } from "$lib/levels"
 	import { getCompletedLevel } from "$lib/game"
+	import { conditionalAnimation, isUsingReduceAnimations } from "$lib/settings"
 	import BackButton from "../BackButton.svelte"
-	import { browser } from "$app/environment"
 
   const selectGridSizeKey = "last-selected-grid-size"
 
@@ -18,13 +19,18 @@
 <div class="layout">
   <BackButton />
 
-  <h1 in:fly={{ y: -(Math.min(window.innerWidth / 20, 40)), duration: 300 }}>Levels</h1>
+  <h1 in:fly={conditionalAnimation({ y: -(Math.min(window.innerWidth / 20, 40)), duration: 300 })}>Levels</h1>
 
   <h2>Type</h2>
 
   <nav class="options">
     {#each [2, 3] as option, i}
-      <button class="tile option" class:active={option === selectedGridSize} onclick={(): void => { selectGridSize(option) }} in:scale|global={{ duration: 200, delay: 150 + i * 50, start: 0.85 }}>
+      <button
+        class="tile option"
+        class:active={option === selectedGridSize}
+        onclick={(): void => { selectGridSize(option) }}
+        in:scale|global={conditionalAnimation({ duration: 200, delay: 150 + i * 50, start: 0.85 })}>
+
         <div class="grid" style:--grid-size={option}>
           {#each { length: option * option } as _}
             <div class="cell"></div>
@@ -46,7 +52,7 @@
         class="tile"
         class:completed
         href="/levels/{id}"
-        in:scale|global={{ duration: 200, delay: 150 + i * 50, start: 0.85 }}>
+        in:scale|global={isUsingReduceAnimations() ? { duration: 1, delay: 100 } : { duration: 200, delay: 150 + i * 50, start: 0.85 }}>
         {i + 1}
       </a>
     {/each}

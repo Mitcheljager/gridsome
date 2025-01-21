@@ -1,8 +1,9 @@
 <script>
-	import { fly } from "svelte/transition"
+	import { conditionalAnimation } from "$lib/settings"
+  import { fly } from "svelte/transition"
 </script>
 
-<a href="/" aria-label="Return to main menu" in:fly={{ x: 20, duration: 300 }}>
+<a href="/" aria-label="Return to main menu" in:fly={conditionalAnimation({ x: 20, duration: 300 })}>
   <div class="line top"></div>
   <div class="line bottom"></div>
 </a>

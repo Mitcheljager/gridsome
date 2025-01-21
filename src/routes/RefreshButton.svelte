@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { isUsingReduceAnimations } from "$lib/settings"
 	import { fade } from "svelte/transition"
 
   interface Props { onclick(): void }
@@ -11,6 +12,8 @@
     if (animate) return
 
     onclick()
+
+    if (isUsingReduceAnimations()) return
 
     animate = true
     setTimeout(() => animate = false, 750)

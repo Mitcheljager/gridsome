@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { conditionalAnimation } from "$lib/settings"
 	import { onMount } from "svelte"
 	import { fade, scale } from "svelte/transition"
 
@@ -11,11 +12,11 @@
 
 <div class="menu">
   {#if showContent}
-    <h1 in:fade={{ duration: 500, delay: 500 }}>Gridsome</h1>
+    <h1 in:fade={conditionalAnimation({ duration: 500, delay: 500 })}>Gridsome</h1>
 
     <nav>
-      <a href="/levels" in:scale={{ duration: 200, delay: 700, start: 0.85 }}>Play</a>
-      <a href="/settings" in:scale={{ duration: 200, delay: 900, start: 0.85 }}>Settings</a>
+      <a href="/levels" in:scale={conditionalAnimation({ duration: 200, delay: 700, start: 0.85 })}>Play</a>
+      <a href="/settings" in:scale={conditionalAnimation({ duration: 200, delay: 900, start: 0.85 })}>Settings</a>
     </nav>
   {/if}
 
@@ -24,7 +25,7 @@
       <div
         class="cell"
         style:opacity={1 - Math.random() * 0.75}
-        in:scale|global={{ duration: 200, start: 0.5, delay: 500 * Math.random() }}></div>
+        in:scale|global={conditionalAnimation({ duration: 200, start: 0.5, delay: 500 * Math.random() })}></div>
     {/each}
   </div>
 </div>

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { conditionalAnimation } from "$lib/settings"
 	import { fly, scale } from "svelte/transition"
 
   interface Props { cell: number, active?: boolean, maxCellValue?: number, animate?: boolean }
@@ -48,11 +49,11 @@
   class:active
   class:changing={hasRecentlyChanged}
   style:--cell={cell}
-  in:scale|global={animate ? { start: 0.5, duration: 200, delay: Math.random() * 500 } : { duration: 0 }}>
+  in:scale|global={animate ? conditionalAnimation({ start: 0.5, duration: 200, delay: Math.random() * 500 }) : { duration: 0 }}>
   {#key cell}
     <span
-      in:fly={{ y: -getTransitionDistance(), duration: transitionDuration }}
-      out:fly={{ y: getTransitionDistance(), duration: transitionDuration }}>
+      in:fly={conditionalAnimation({ y: -getTransitionDistance(), duration: transitionDuration })}
+      out:fly={conditionalAnimation({ y: getTransitionDistance(), duration: transitionDuration })}>
       {cell}
     </span>
   {/key}

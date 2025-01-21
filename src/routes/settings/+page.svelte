@@ -2,24 +2,35 @@
 	import { fly, scale } from "svelte/transition"
 	import BackButton from "../BackButton.svelte"
 	import { browser } from "$app/environment"
-	import { alternativeFontKey, isUsingAlternativeFont, setAlternativeFont } from "$lib/settings"
+	import { alternativeFontKey, conditionalAnimation, isUsingAlternativeFont, isUsingReduceAnimations, setAlternativeFont, setReduceAnimations } from "$lib/settings"
 
   let useAlternativeFont = $state(browser && isUsingAlternativeFont())
+  let useReduceAnimations = $state(browser && isUsingReduceAnimations())
 
   function toggleAlternativeFont(): void {
     localStorage.setItem(alternativeFontKey, useAlternativeFont.toString())
     setAlternativeFont()
+  }
+
+  function toggleReduceAnimations(): void {
+    localStorage.setItem(alternativeFontKey, useReduceAnimations.toString())
+    setReduceAnimations()
   }
 </script>
 
 <div class="layout">
   <BackButton />
 
-  <h1 in:fly={{ y: -(Math.min(window.innerWidth / 20, 40)), duration: 300 }}>Settings</h1>
+  <h1 in:fly={conditionalAnimation({ y: -(Math.min(window.innerWidth / 20, 40)), duration: 300 })}>Settings</h1>
 
-  <div class="checkbox" in:scale={{ duration: 100, delay: 200, start: 0.9 }}>
+  <div class="checkbox" in:scale={conditionalAnimation({ duration: 100, delay: 200, start: 0.9 })}>
     <input type="checkbox" bind:checked={useAlternativeFont} onchange={toggleAlternativeFont} id="alternative-font" />
     <label for="alternative-font">Use alternative font</label>
+  </div>
+
+  <div class="checkbox" in:scale={conditionalAnimation({ duration: 100, delay: 300, start: 0.9 })}>
+    <input type="checkbox" bind:checked={useReduceAnimations} onchange={toggleReduceAnimations} id="reduce-animations" />
+    <label for="reduce-animations">Reduce animations</label>
   </div>
 </div>
 
@@ -42,11 +53,11 @@
     display: flex;
     align-items: flex-start;
     gap: 1rem;
-    font-size: clamp(1.5rem, 7vw, 2.5rem);
+    margin-bottom: 1rem
   }
 
   .checkbox input {
-    --size: clamp(2rem, 10vw, 3.5rem);
+    --size: clamp(2rem, 8vw, 3rem);
     appearance: none;
     flex: 0 0 var(--size);
     width: var(--size);
@@ -63,6 +74,8 @@
   }
 
   .checkbox label {
-    line-height: 1.5
+    margin-top: 0.125em;
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    line-height: 1.15;
   }
 </style>

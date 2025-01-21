@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { isUsingReduceAnimations } from "$lib/settings"
+
   interface Props { label: string, column?: number, row?: number, sign: "+" | "-", onclick(): void }
 
   const { label, column = 0, row = 0, sign, onclick } : Props = $props()
@@ -19,7 +21,8 @@
   ontouchstart={click}
   style:--column={column}
   style:--row={row}
-  style:--animation-delay="{Math.random() * 500}ms">
+  style:--animation-delay="{Math.random() * 500}ms"
+  class:no-animations={isUsingReduceAnimations()}>
   {sign}
 </button>
 
@@ -79,7 +82,6 @@
     background: rgba(255, 255, 255, 0.25);
     border: 0.25rem solid transparent;
     mix-blend-mode: overlay;
-    z-index: -1;
     transform: scale(0);
     animation: pop-in 200ms var(--animation-delay) forwards;
     transition: transform 50ms, background-color 50ms, border 50ms;
@@ -106,5 +108,13 @@
     transform: scale(0.9);
     background: rgba(255, 255, 255, 0.35);
     border: 0.25rem solid rgba(255, 255, 255, 0.5);
+  }
+
+  .no-animations,
+  .no-animations::before {
+    opacity: 1;
+    animation: none;
+    transform: none;
+    color: white;
   }
 </style>
