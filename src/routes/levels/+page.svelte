@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { fly, scale } from "svelte/transition"
-	import { browser } from "$app/environment"
 	import { levels } from "$lib/levels"
 	import { getCompletedLevel } from "$lib/game"
 	import { conditionalAnimation } from "$lib/settings"
+	import { browser } from "$lib/utils"
 	import BackButton from "../BackButton.svelte"
 
   const selectGridSizeKey = "last-selected-grid-size"

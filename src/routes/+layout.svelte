@@ -1,7 +1,7 @@
 <script>
   import "$lib/global.css"
-	import { browser } from "$app/environment"
 	import { setAlternativeFont } from "$lib/settings"
+	import { browser } from "$lib/utils"
 
   const { children } = $props()
 

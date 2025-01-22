@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { fly, scale } from "svelte/transition"
-	import BackButton from "../BackButton.svelte"
-	import { browser } from "$app/environment"
+	import { browser } from "$lib/utils"
 	import { alternativeFontKey, conditionalAnimation, isUsingAlternativeFont, isUsingReduceAnimations, reduceAnimationsKey, setAlternativeFont } from "$lib/settings"
+	import BackButton from "../BackButton.svelte"
 
   let useAlternativeFont = $state(browser && isUsingAlternativeFont())
   let useReduceAnimations = $state(browser && isUsingReduceAnimations())

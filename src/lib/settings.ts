@@ -1,4 +1,4 @@
-import { browser } from "$app/environment"
+import { browser } from "$lib/utils"
 
 export const alternativeFontKey = "use-alternative-font"
 export const reduceAnimationsKey = "use-reduced-animations"

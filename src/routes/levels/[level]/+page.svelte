@@ -1,10 +1,9 @@
 <script lang="ts">
 	import { onDestroy, onMount } from "svelte"
 	import { page } from "$app/state"
-	import { browser } from "$app/environment"
 	import { levels } from "$lib/levels"
 	import { completeLevel } from "$lib/game"
-	import { getLevelColor } from "$lib/utils"
+	import { browser, getLevelColor } from "$lib/utils"
 	import type { Level } from "../../../types"
 	import Controls from "../../Controls.svelte"
 	import Grid from "../../Grid.svelte"
