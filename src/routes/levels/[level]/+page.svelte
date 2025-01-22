@@ -21,8 +21,13 @@
   let clientWidth = $state(0)
   let completed = $state(false)
 
-  onMount(() => {
+  onMount(async() => {
     document.body.style.backgroundColor = getLevelColor(level)
+
+    // console.log("Solving...")
+    // await new Promise(res => setTimeout(res))
+    // const solve = solver(gridSize, maxCellValue, start, goal)
+    // console.log(solve)
   })
 
   onDestroy(() => {
@@ -37,8 +42,6 @@
   function reset(): void {
     cells = start
   }
-
-  // if (browser) console.log(solver(gridSize, maxCellValue, start, goal))
 </script>
 
 {#if completed}
