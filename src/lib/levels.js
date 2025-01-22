@@ -47,6 +47,12 @@ export const levels = [{
   goal: [3, 4, 3, 2],
   maxCellValue: 4
 }, {
+  id: "hngy2",
+  gridSize: 2,
+  start: [4, 2, 2, 4],
+  goal: [3, 4, 3, 2],
+  maxCellValue: 4
+}, {
   id: "iasd6",
   gridSize: 2,
   start: [2, 2, 2, 2],
