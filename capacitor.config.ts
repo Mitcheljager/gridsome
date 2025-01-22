@@ -1,9 +1,9 @@
-import type { CapacitorConfig } from '@capacitor/cli';
+import type { CapacitorConfig } from "@capacitor/cli"
 
 const config: CapacitorConfig = {
-  appId: 'com.quitequiet.gridsome',
-  appName: 'gridsome',
-  webDir: 'dist'
-};
+  appId: "com.quitequiet.gridsome",
+  appName: "gridsome",
+  webDir: "build"
+}
 
-export default config;
+export default config
