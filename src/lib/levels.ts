@@ -25,6 +25,12 @@ export const levels: Level[] = [{
   goal: [3, 3, 3, 1],
   maxCellValue: 3
 }, {
+  id: "l9076",
+  gridSize: 2,
+  start: [3, 2, 2, 3],
+  goal: [3, 2, 2, 2],
+  maxCellValue: 3
+}, {
   id: "l9x98",
   gridSize: 2,
   start: [4, 3, 2, 1],
@@ -55,6 +61,12 @@ export const levels: Level[] = [{
   goal: [5, 3, 3, 5],
   maxCellValue: 5
 }, {
+  id: "873t4",
+  gridSize: 2,
+  start: [2, 3, 2, 5],
+  goal: [5, 4, 3, 2],
+  maxCellValue: 5
+}, {
   id: "gojkd",
   gridSize: 2,
   start: [1, 2, 3, 4],
@@ -73,6 +85,12 @@ export const levels: Level[] = [{
   goal: [6, 5, 4, 3],
   maxCellValue: 6
 }, {
+  id: "1p798",
+  gridSize: 2,
+  start: [6, 3, 6, 6],
+  goal: [2, 6, 3, 4],
+  maxCellValue: 6
+}, {
   id: "0ls53",
   gridSize: 2,
   start: [2, 4, 6, 8],
@@ -83,6 +101,12 @@ export const levels: Level[] = [{
   gridSize: 2,
   start: [1, 3, 5, 7],
   goal: [5, 5, 5, 5],
+  maxCellValue: 8
+}, {
+  id: "izjxc",
+  gridSize: 2,
+  start: [5, 2, 7, 4],
+  goal: [2, 4, 6, 8],
   maxCellValue: 8
 }, {
   id: "798eu",
@@ -102,6 +126,18 @@ export const levels: Level[] = [{
   start: [9, 5, 5, 9],
   goal: [1, 4, 9, 1],
   maxCellValue: 9
+}, {
+  id: "yunweg",
+  gridSize: 2,
+  start: [10, 10, 10, 10],
+  goal: [1, 3, 5, 7],
+  maxCellValue: 10
+}, {
+  id: "17890",
+  gridSize: 2,
+  start: [4, 2, 3, 1],
+  goal: [7, 8, 10, 9],
+  maxCellValue: 10
 }, {
   id: "gyer2r",
   gridSize: 2,
