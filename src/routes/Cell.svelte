@@ -88,7 +88,7 @@
     height: calc(100% - 0.5rem);
     border-radius: calc(var(--cell-width) * 0.15);
     border: 0.25rem solid rgb(0, 255, 191, 0);
-    background: hsl(calc(280 + var(--cell) * 18), 70%, 40%);
+    background: hsl(calc(280 + var(--cell) * 20), 70%, 40%);
     z-index: -1;
     transition: background-color 200ms, border 200ms;
   }
