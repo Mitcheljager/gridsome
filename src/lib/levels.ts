@@ -175,15 +175,153 @@ export const levels: Level[] = [{
   goal:  [3, 3, 3, 3, 3, 3, 3, 3, 3],
   maxCellValue: 3
 }, {
+  id: "b7177",
+  gridSize: 3,
+  start: [2, 1, 1, 3, 1, 3, 1, 1, 2],
+  goal:  [3, 2, 1, 3, 2, 1, 3, 2, 1],
+  maxCellValue: 3
+}, {
+  id: "loaio",
+  gridSize: 3,
+  start: [2, 2, 3, 3, 1, 3, 3, 2, 2],
+  goal:  [1, 1, 1, 1, 1, 1, 1, 1, 1],
+  maxCellValue: 3
+}, {
+  id: "ze981",
+  gridSize: 3,
+  start: [3, 3, 3, 3, 3, 3, 3, 3, 3],
+  goal:  [2, 1, 2, 1, 3, 1, 2, 1, 2],
+  maxCellValue: 3
+}, {
+  id: "18gnh",
+  gridSize: 3,
+  start: [3, 2, 1, 1, 4, 1, 1, 2, 3],
+  goal:  [3, 3, 2, 2, 1, 2, 2, 3, 3],
+  maxCellValue: 4
+}, {
+  id: "93azz",
+  gridSize: 3,
+  start: [3, 3, 2, 2, 3, 2, 2, 3, 3],
+  goal:  [3, 3, 2, 2, 1, 2, 2, 3, 3],
+  maxCellValue: 4
+}, {
   id: "65loo",
   gridSize: 3,
   start: [2, 2, 2, 1, 4, 1, 2, 2, 2],
   goal:  [1, 4, 4, 1, 1, 1, 4, 4, 1],
   maxCellValue: 4
 }, {
+  id: "67yau",
+  gridSize: 3,
+  start: [3, 1, 4, 1, 5, 1, 4, 1, 3],
+  goal:  [1, 5, 3, 5, 5, 5, 3, 5, 1],
+  maxCellValue: 5
+}, {
   id: "uajb6",
   gridSize: 3,
   start: [1, 2, 3, 1, 1, 1, 3, 2, 1],
   goal:  [5, 4, 3, 2, 1, 2, 3, 4, 5],
   maxCellValue: 5
+}, {
+  id: "kla1o",
+  gridSize: 3,
+  start: [1, 2, 4, 1, 3, 1, 4, 2, 1],
+  goal:  [1, 4, 3, 3, 3, 3, 3, 4, 1],
+  maxCellValue: 5
+}, {
+  id: "poiiy",
+  gridSize: 3,
+  start: [1, 1, 1, 1, 1, 1, 1, 1, 1],
+  goal:  [2, 5, 2, 6, 6, 6, 2, 5, 2],
+  maxCellValue: 6
+}, {
+  id: "zooq2",
+  gridSize: 3,
+  start: [6, 4, 6, 2, 2, 2, 6, 4, 6],
+  goal:  [1, 5, 1, 4, 1, 4, 1, 5, 1],
+  maxCellValue: 6
+}, {
+  id: "42902",
+  gridSize: 3,
+  start: [5, 2, 6, 2, 2, 2, 6, 2, 5],
+  goal:  [2, 6, 2, 6, 6, 6, 2, 6, 2],
+  maxCellValue: 6
+}, {
+  id: "1ghj8",
+  gridSize: 3,
+  start: [1, 2, 2, 1, 7, 1, 2, 2, 1],
+  goal:  [7, 7, 7, 7, 1, 7, 7, 7, 7],
+  maxCellValue: 7
+}, {
+  id: "gn66l",
+  gridSize: 3,
+  start: [1, 2, 2, 1, 2, 1, 2, 2, 1],
+  goal:  [7, 7, 7, 7, 1, 7, 7, 7, 7],
+  maxCellValue: 7
+}, {
+  id: "71239",
+  gridSize: 3,
+  start: [7, 5, 7, 5, 5, 5, 7, 5, 7],
+  goal:  [1, 1, 1, 1, 7, 1, 1, 1, 1],
+  maxCellValue: 7
+}, {
+  id: "ooiop",
+  gridSize: 3,
+  start: [1, 2, 3, 4, 5, 4, 3, 2, 1],
+  goal:  [7, 1, 1, 1, 7, 1, 1, 1, 7],
+  maxCellValue: 7
+}, {
+  id: "z0989",
+  gridSize: 3,
+  start: [2, 8, 2, 8, 2, 8, 2, 8, 2],
+  goal:  [8, 2, 8, 2, 8, 2, 8, 2, 8],
+  maxCellValue: 8
+}, {
+  id: "yyhaj",
+  gridSize: 3,
+  start: [4, 3, 2, 1, 4, 1, 2, 3, 4],
+  goal:  [4, 4, 4, 4, 4, 4, 4, 4, 4],
+  maxCellValue: 8
+}, {
+  id: "b3jap",
+  gridSize: 3,
+  start: [1, 5, 1, 6, 1, 6, 1, 5, 1],
+  goal:  [8, 2, 2, 8, 8, 8, 2, 2, 8],
+  maxCellValue: 8
+}, {
+  id: "891zx",
+  gridSize: 3,
+  start: [8, 2, 2, 2, 8, 2, 2, 2, 8],
+  goal:  [2, 6, 2, 6, 6, 6, 2, 6, 2],
+  maxCellValue: 8
+}, {
+  id: "qtuww",
+  gridSize: 3,
+  start: [2, 5, 8, 6, 8, 6, 8, 5, 2],
+  goal:  [1, 2, 6, 1, 8, 1, 6, 2, 1],
+  maxCellValue: 8
+}, {
+  id: "zzlxx",
+  gridSize: 3,
+  start: [9, 8, 7, 6, 5, 4, 3, 2, 1],
+  goal:  [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  maxCellValue: 9
+}, {
+  id: "a89us",
+  gridSize: 3,
+  start: [9, 2, 1, 4, 2, 4, 1, 2, 9],
+  goal:  [5, 9, 5, 8, 1, 8, 5, 9, 5],
+  maxCellValue: 9
+}, {
+  id: "7yn4g",
+  gridSize: 3,
+  start: [1, 2, 1, 9, 7, 9, 1, 2, 1],
+  goal:  [6, 6, 7, 9, 7, 9, 7, 6, 6],
+  maxCellValue: 9
+}, {
+  id: "l745g",
+  gridSize: 3,
+  start: [1, 4, 1, 3, 9, 3, 1, 4, 1],
+  goal:  [4, 1, 4, 9, 3, 9, 4, 1, 4],
+  maxCellValue: 9
 }]
