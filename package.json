@@ -38,10 +38,10 @@
 		"vitest": "^2.1.8"
 	},
 	"dependencies": {
-		"@capacitor/android": "^7.0.1",
-		"@capacitor/cli": "^7.0.1",
-		"@capacitor/core": "^7.0.1",
-		"@capacitor/ios": "^7.0.1",
+		"@capacitor/android": "^6.0.0",
+		"@capacitor/cli": "^6.0.0",
+		"@capacitor/core": "^6.0.0",
+		"@capacitor/ios": "^6.0.0",
 		"esm-seedrandom": "^3.0.5-esm.2"
 	}
 }
