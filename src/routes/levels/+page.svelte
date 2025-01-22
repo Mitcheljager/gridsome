@@ -4,7 +4,7 @@
 	import { conditionalAnimation } from "$lib/settings"
 	import { browser } from "$lib/utils"
 	import { levels } from "$lib/levels"
-	import BackButton from "../BackButton.svelte"
+	import BackButton from "../components/BackButton.svelte"
 
   const selectGridSizeKey = "last-selected-grid-size"
 

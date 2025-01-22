@@ -5,12 +5,12 @@
 	import { browser, getLevelColor } from "$lib/utils"
 	import { levels } from "$lib/levels"
 	import type { Level } from "../../../types"
-	import Controls from "../../Controls.svelte"
-	import Grid from "../../Grid.svelte"
-	import Matcher from "../../Matcher.svelte"
-	import MenuButton from "../../MenuButton.svelte"
-	import CompleteScreen from "../../CompleteScreen.svelte"
-	import RefreshButton from "../../RefreshButton.svelte"
+	import Controls from "../../components/Controls.svelte"
+	import Grid from "../../components/Grid.svelte"
+	import Matcher from "../../components/Matcher.svelte"
+	import MenuButton from "../../components/MenuButton.svelte"
+	import CompleteScreen from "../../components/CompleteScreen.svelte"
+	import RefreshButton from "../../components/RefreshButton.svelte"
 
   const { level } = page.params
   const { start, gridSize, maxCellValue, goal } = $derived(levels.find((l: Level) => l.id === level)!)
