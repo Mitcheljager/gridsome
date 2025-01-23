@@ -59,7 +59,7 @@
 </script>
 
 {#if completed}
-  <CompleteScreen currentLevelId={level} />
+  <CompleteScreen currentLevelId={level} currentMoves={moves} />
 {/if}
 
 <div class="game" class:completed style:--grid-size={gridSize} aria-hidden={completed ? "true" : null}>
@@ -70,7 +70,7 @@
   {#if hasPreviousCompletedLevel}
     <div class="moves">
       <span class="current-moves">{moves} Move{moves === 1 ? "" : "s"}</span>
-      <Stars levelId={level} />
+      <Stars currentLevelId={level} delay={500} />
     </div>
   {/if}
 
