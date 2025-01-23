@@ -43,6 +43,11 @@ body {
   transition: background-color 250ms;
 }
 
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .reduce-animations {
   transition: none;
 }
