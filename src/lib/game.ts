@@ -20,7 +20,7 @@ export async function completeLevel(id: string, numberOfMoves: number): Promise<
     score
   })
 
-  setStore(completedLevelsKey, JSON.stringify(completedLevels))
+  await setStore(completedLevelsKey, JSON.stringify(completedLevels))
 }
 
 export function getCompletedLevel(completedLevels: CompletedLevel[], id: string): CompletedLevel | null {

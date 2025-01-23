@@ -1,83 +1,127 @@
 import { beforeEach, describe, expect, it } from "vitest"
 
-import { alternativeFontKey, isUsingAlternativeFont, isUsingReduceAnimations, setAlternativeFont, conditionalAnimation, reduceAnimationsKey } from "./settings"
+import { getStore, alternativeFontKey, isUsingAlternativeFont, isUsingReduceAnimations, setAlternativeFont, conditionalAnimation, reduceAnimationsKey, setStore, setReduceAnimations } from "./settings"
 
 describe("settings.ts", () => {
   beforeEach(() => {
     localStorage.clear()
+    document.body.setAttribute("class", "")
+  })
+
+  describe("setStore", () => {
+    it("Should set the given key with value to localStorage", async() => {
+      await setStore("Some key", "Some value")
+      expect(await getStore("Some key")).toBe("Some value")
+    })
+  })
+
+  describe("getStore", () => {
+    it("Should return the value matching the given key", async() => {
+      await setStore("Some key", "Some value")
+      expect(await getStore("Some key")).toBe("Some value")
+    })
+
+    it("Should return an empty string if key was not found", async() => {
+      expect(await getStore("Some key")).toBe("")
+    })
   })
 
   describe("isUsingAlternativeFont", () => {
-    it("Should return false if no value is stored", () => {
-      expect(isUsingAlternativeFont()).toBe(false)
+    it("Should return false if no value is stored", async() => {
+      expect(await isUsingAlternativeFont()).toBe(false)
     })
 
-    it("Should true if stored value is true", () => {
-      localStorage.setItem(alternativeFontKey, "true")
-      expect(isUsingAlternativeFont()).toBe(true)
+    it("Should true if stored value is true", async() => {
+      setStore(alternativeFontKey, "true")
+      expect(await isUsingAlternativeFont()).toBe(true)
     })
 
-    it("Should false if stored value is a value other than true", () => {
-      localStorage.setItem(alternativeFontKey, "")
-      expect(isUsingAlternativeFont()).toBe(false)
+    it("Should false if stored value is a value other than true", async() => {
+      setStore(alternativeFontKey, "")
+      expect(await isUsingAlternativeFont()).toBe(false)
 
-      localStorage.setItem(alternativeFontKey, "false")
-      expect(isUsingAlternativeFont()).toBe(false)
+      setStore(alternativeFontKey, "false")
+      expect(await isUsingAlternativeFont()).toBe(false)
 
-      localStorage.setItem(alternativeFontKey, "test")
-      expect(isUsingAlternativeFont()).toBe(false)
+      setStore(alternativeFontKey, "test")
+      expect(await isUsingAlternativeFont()).toBe(false)
     })
   })
 
   describe("isUsingReduceAnimations", () => {
-    it("Should return false if no value is stored", () => {
-      expect(isUsingReduceAnimations()).toBe(false)
+    it("Should return false if no value is stored", async() => {
+      expect(await isUsingReduceAnimations()).toBe(false)
     })
 
-    it("Should true if stored value is true", () => {
-      localStorage.setItem(reduceAnimationsKey, "true")
-      expect(isUsingReduceAnimations()).toBe(true)
+    it("Should true if stored value is true", async() => {
+      setStore(reduceAnimationsKey, "true")
+      expect(await isUsingReduceAnimations()).toBe(true)
     })
 
-    it("Should false if stored value is a value other than true", () => {
-      localStorage.setItem(reduceAnimationsKey, "")
-      expect(isUsingReduceAnimations()).toBe(false)
+    it("Should false if stored value is a value other than true", async() => {
+      setStore(reduceAnimationsKey, "")
+      expect(await isUsingReduceAnimations()).toBe(false)
 
-      localStorage.setItem(reduceAnimationsKey, "false")
-      expect(isUsingReduceAnimations()).toBe(false)
+      setStore(reduceAnimationsKey, "false")
+      expect(await isUsingReduceAnimations()).toBe(false)
 
-      localStorage.setItem(reduceAnimationsKey, "test")
-      expect(isUsingReduceAnimations()).toBe(false)
+      setStore(reduceAnimationsKey, "test")
+      expect(await isUsingReduceAnimations()).toBe(false)
     })
   })
 
   describe("setAlternativeFont", () => {
-    it("Should set body class if isUsingAlternativeFont is true", () => {
-      localStorage.setItem(alternativeFontKey, "true")
-      setAlternativeFont()
+    it("Should set body class if isUsingAlternativeFont is true", async() => {
+      await setStore(alternativeFontKey, "true")
+      await setAlternativeFont()
 
       expect(document.body.classList).toContain("alternative-font")
     })
 
-    it("Should not set body class if isUsingAlternativeFont is not true", () => {
-      setAlternativeFont()
+    it("Should not set body class if isUsingAlternativeFont is not true", async() => {
+      await setAlternativeFont()
 
       expect(document.body.classList).not.toContain("alternative-font")
     })
 
-    it("Should remove body class if isUsingAlternativeFont is not true after being true", () => {
+    it("Should remove body class if isUsingAlternativeFont is not true after being true", async() => {
       document.body.classList.add("alternative-font")
 
-      localStorage.setItem(alternativeFontKey, "false")
-      setAlternativeFont()
+      await setStore(alternativeFontKey, "false")
+      await setAlternativeFont()
 
       expect(document.body.classList).not.toContain("alternative-font")
     })
   })
 
+  describe("setReduceAnimations", () => {
+    it("Should set body class if isUsingAlternativeFont is true", async() => {
+      await setStore(reduceAnimationsKey, "true")
+      await setReduceAnimations()
+
+      expect(document.body.classList).toContain("reduce-animations")
+    })
+
+    it("Should not set body class if isUsingAlternativeFont is not true", async() => {
+      await setReduceAnimations()
+
+      expect(document.body.classList).not.toContain("reduce-animations")
+    })
+
+    it("Should remove body class if isUsingAlternativeFont is not true after being true", async() => {
+      document.body.classList.add("reduce-animations")
+
+      await setStore(reduceAnimationsKey, "false")
+      await setReduceAnimations()
+
+      expect(document.body.classList).not.toContain("reduce-animations")
+    })
+  })
+
   describe("conditionalAnimation", () => {
-    it("Should return fallback object if isUsingReduceAnimations is true", () => {
-      localStorage.setItem(reduceAnimationsKey, "true")
+    it("Should return fallback object if isUsingReduceAnimations is true", async() => {
+      await setStore(reduceAnimationsKey, "true")
+      await setReduceAnimations()
 
       expect(conditionalAnimation({ key: "value" })).toEqual({ duration: 0 })
     })

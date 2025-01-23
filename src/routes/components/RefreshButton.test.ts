@@ -18,7 +18,9 @@ describe("RefreshButton.svelte", () => {
 
     await fireEvent.click(getByRole("button"))
 
-    expect(getByRole("button").classList).toContain("animate")
+    await waitFor(() => {
+      expect(getByRole("button").classList).toContain("animate")
+    })
 
     await waitFor(() => {
       expect(getByRole("button").classList).not.toContain("animate")
