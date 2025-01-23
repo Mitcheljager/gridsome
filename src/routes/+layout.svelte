@@ -14,6 +14,12 @@
 
     const { SplashScreen } = await import("@capacitor/splash-screen")
     await SplashScreen.hide()
+
+    const { StatusBar } = await import("@capacitor/status-bar")
+    await StatusBar.hide()
+
+    const { AndroidFullScreen } = await import("@awesome-cordova-plugins/android-full-screen")
+    AndroidFullScreen.isImmersiveModeSupported().then(() => AndroidFullScreen.immersiveMode())
   })
 </script>
 
