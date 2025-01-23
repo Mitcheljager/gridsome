@@ -1,36 +1,15 @@
-import { Capacitor } from "@capacitor/core"
+import { Preferences } from "@capacitor/preferences"
 
 export const alternativeFontKey = "use-alternative-font"
 export const reduceAnimationsKey = "use-reduced-animations"
 
-let reduceAnimations = false
-
 export async function setStore(key: string, value: string): Promise<void> {
-  if (Capacitor.isNativePlatform()) {
-    try {
-      const { Preferences } = await import("@capacitor/preferences")
-      Preferences.set({ key, value })
-      return
-    } catch(error) {
-      document.body.insertAdjacentText("afterbegin", JSON.stringify(error))
-    }
-  }
-
-  localStorage.setItem(key, value)
+  Preferences.set({ key, value })
 }
 
 export async function getStore(key: string): Promise<string> {
-  if (Capacitor.isNativePlatform()) {
-    try {
-      const { Preferences } = await import("@capacitor/preferences")
-      const result = await Preferences.get({ key })
-      return result.toString()
-    } catch(error) {
-      document.body.insertAdjacentText("afterbegin", JSON.stringify(error))
-    }
-  }
-
-  return localStorage.getItem(key) || ""
+  const result = await Preferences.get({ key })
+  return result.value || ""
 }
 
 export async function isUsingAlternativeFont(): Promise<boolean> {
@@ -38,15 +17,18 @@ export async function isUsingAlternativeFont(): Promise<boolean> {
 }
 
 export async function isUsingReduceAnimations(): Promise<boolean> {
-  reduceAnimations = await getStore(reduceAnimationsKey) === "true"
-  return reduceAnimations
+  return await getStore(reduceAnimationsKey) === "true"
 }
 
 export async function setAlternativeFont(): Promise<void> {
   document.body.classList.toggle("alternative-font", await isUsingAlternativeFont())
 }
 
+export async function setReduceAnimations(): Promise<void> {
+  document.body.classList.toggle("reduce-animations", await isUsingReduceAnimations())
+}
+
 export function conditionalAnimation(params: Record<string, any>): Record<string, any> {
-  if (reduceAnimations) return { duration: 0 }
+  if (document.body.classList.contains("reduce-animations")) return { duration: 0 }
   return params
 }
