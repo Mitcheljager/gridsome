@@ -40,7 +40,11 @@ body {
   font-weight: 700;
   font-size: 24px;
   text-transform: lowercase;
-  transition: background-color 200ms;
+  transition: background-color 250ms;
+}
+
+.reduce-animations {
+  transition: none;
 }
 
 .alternative-font {
