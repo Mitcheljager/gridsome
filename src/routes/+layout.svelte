@@ -1,15 +1,14 @@
 <script>
   import "$lib/global.css"
 	import { setAlternativeFont } from "$lib/settings"
-	import { browser } from "$lib/utils"
 	import { Capacitor } from "@capacitor/core"
 	import { onMount } from "svelte"
 
   const { children } = $props()
 
-  if (browser) setAlternativeFont()
-
   onMount(async() => {
+    setAlternativeFont()
+
     if (!Capacitor.isNativePlatform()) return
 
     const { SplashScreen } = await import("@capacitor/splash-screen")

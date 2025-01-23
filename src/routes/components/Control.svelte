@@ -1,11 +1,17 @@
 <script lang="ts">
 	import { isUsingReduceAnimations } from "$lib/settings"
+	import { onMount } from "svelte"
 
   interface Props { label: string, column?: number, row?: number, sign: "+" | "-", onclick(): void }
 
   const { label, column = 0, row = 0, sign, onclick } : Props = $props()
 
+  let reduceAnimations = $state(false)
   let isTouchEvent = false
+
+  onMount(async() => {
+    reduceAnimations = await isUsingReduceAnimations()
+  })
 
   function click(event: TouchEvent | MouseEvent): void {
     if (isTouchEvent && event.type === "mousedown") return
@@ -22,7 +28,7 @@
   style:--column={column}
   style:--row={row}
   style:--animation-delay="{Math.random() * 500}ms"
-  class:no-animations={isUsingReduceAnimations()}>
+  class:no-animations={reduceAnimations}>
   {sign}
 </button>
 

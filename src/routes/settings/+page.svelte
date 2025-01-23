@@ -1,19 +1,24 @@
 <script lang="ts">
 	import { fly, scale } from "svelte/transition"
-	import { browser } from "$lib/utils"
-	import { alternativeFontKey, conditionalAnimation, isUsingAlternativeFont, isUsingReduceAnimations, reduceAnimationsKey, setAlternativeFont } from "$lib/settings"
+	import { alternativeFontKey, conditionalAnimation, isUsingAlternativeFont, isUsingReduceAnimations, reduceAnimationsKey, setAlternativeFont, setStore } from "$lib/settings"
 	import BackButton from "../components/BackButton.svelte"
+	import { onMount } from "svelte"
 
-  let useAlternativeFont = $state(browser && isUsingAlternativeFont())
-  let useReduceAnimations = $state(browser && isUsingReduceAnimations())
+  let useAlternativeFont = $state(false)
+  let useReduceAnimations = $state(false)
 
-  function toggleAlternativeFont(): void {
-    localStorage.setItem(alternativeFontKey, useAlternativeFont.toString())
+  onMount(async() => {
+    useAlternativeFont = await isUsingAlternativeFont()
+    useReduceAnimations = await isUsingReduceAnimations()
+  })
+
+  async function toggleAlternativeFont(): Promise<void> {
+    await setStore(alternativeFontKey, useAlternativeFont.toString())
     setAlternativeFont()
   }
 
   function toggleReduceAnimations(): void {
-    localStorage.setItem(reduceAnimationsKey, useReduceAnimations.toString())
+    setStore(reduceAnimationsKey, useReduceAnimations.toString())
   }
 </script>
 

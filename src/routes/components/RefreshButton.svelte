@@ -8,12 +8,12 @@
 
   let animate = $state(false)
 
-  function refresh(): void {
+  async function refresh(): Promise<void> {
     if (animate) return
 
     onclick()
 
-    if (isUsingReduceAnimations()) return
+    if (await isUsingReduceAnimations()) return
 
     animate = true
     setTimeout(() => animate = false, 750)
