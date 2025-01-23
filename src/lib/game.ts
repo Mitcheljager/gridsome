@@ -1,15 +1,16 @@
 import type { CompletedLevel } from "../types"
+import { getStore, setStore } from "./settings"
 
 export const completedLevelsKey = "completed-levels"
 
-export function getCompletedLevels(): CompletedLevel[] {
-  return JSON.parse(localStorage.getItem(completedLevelsKey) || "[]")
+export async function getCompletedLevels(): Promise<CompletedLevel[]> {
+  return JSON.parse(await getStore(completedLevelsKey) || "[]")
 }
 
-export function completeLevel(id: string, numberOfMoves: number): void {
-  let completedLevels: CompletedLevel[] = getCompletedLevels()
+export async function completeLevel(id: string, numberOfMoves: number): Promise<void> {
+  let completedLevels: CompletedLevel[] = await getCompletedLevels()
 
-  const previousCompletedLevel = getCompletedLevel(id)
+  const previousCompletedLevel = getCompletedLevel(completedLevels, id)
   const score = Math.min(previousCompletedLevel?.score || 9999, numberOfMoves)
 
   if (previousCompletedLevel) completedLevels = completedLevels.filter(l => l.id !== id)
@@ -19,9 +20,9 @@ export function completeLevel(id: string, numberOfMoves: number): void {
     score
   })
 
-  localStorage.setItem(completedLevelsKey, JSON.stringify(completedLevels))
+  setStore(completedLevelsKey, JSON.stringify(completedLevels))
 }
 
-export function getCompletedLevel(id: string): CompletedLevel | null {
-  return getCompletedLevels().find(l => l.id === id) || null
+export function getCompletedLevel(completedLevels: CompletedLevel[], id: string): CompletedLevel | null {
+  return completedLevels.find(l => l.id === id) || null
 }

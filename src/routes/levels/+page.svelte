@@ -1,18 +1,25 @@
 <script lang="ts">
 	import { fly, scale } from "svelte/transition"
-	import { getCompletedLevel } from "$lib/game"
-	import { conditionalAnimation } from "$lib/settings"
-	import { browser } from "$lib/utils"
+	import { getCompletedLevel, getCompletedLevels } from "$lib/game"
+	import { conditionalAnimation, getStore, setStore } from "$lib/settings"
 	import { levels } from "$lib/levels"
 	import BackButton from "../components/BackButton.svelte"
+	import { onMount } from "svelte"
+	import type { CompletedLevel } from "../../types"
 
   const selectGridSizeKey = "last-selected-grid-size"
 
-  let selectedGridSize = $state(browser ? parseInt(localStorage.getItem(selectGridSizeKey) || "2") : 2)
+  let selectedGridSize = $state(2)
+  let completedLevels: CompletedLevel[] = $state([])
+
+  onMount(async() => {
+    selectedGridSize = parseInt(await getStore(selectGridSizeKey)) || selectedGridSize
+    completedLevels = await getCompletedLevels()
+  })
 
   function selectGridSize(size: number): void {
     selectedGridSize = size
-    localStorage.setItem(selectGridSizeKey, size.toString())
+    setStore(selectGridSizeKey, size.toString())
   }
 </script>
 
@@ -46,7 +53,7 @@
 
   <nav class="levels">
     {#each levels.filter(({ gridSize }) => selectedGridSize === gridSize) as { id }, i (id)}
-      {@const completed = browser && !!getCompletedLevel(id)}
+      {@const completed = getCompletedLevel(completedLevels, id)}
 
       <a
         class="tile"
