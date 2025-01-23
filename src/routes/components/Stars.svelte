@@ -83,8 +83,4 @@
     mix-blend-mode: unset;
     text-shadow: 2px 2px 0 var(--level-bg), -2px 2px 0 var(--level-bg), -2px -2px 0 var(--level-bg), 2px -2px 0 var(--level-bg);
   }
-
-  .active path {
-    stroke: white;
-  }
 </style>
