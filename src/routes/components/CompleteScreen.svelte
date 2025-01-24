@@ -29,7 +29,10 @@
     <div class="moves">
       <div in:fade={conditionalAnimation({ duration: 300, delay: 1200 })}>
         <span>Moves: {currentMoves}</span><br>
-        <span>Your best: {bestScore}</span>
+
+        {#if bestScore}
+          <span>Your best: {bestScore}</span>
+        {/if}
       </div>
 
       <div class="stars">
@@ -120,7 +123,7 @@
     --star-active-color: white;
     --star-label-color: rgba(255, 255, 255, 0.75);
     --star-label-active-color: black;
-    --level-bg-light: rgba(0, 0, 0, 0.35);
+    --star-color: rgba(0, 0, 0, 0.35);
     --star-size: clamp(5rem, 20vw, 8rem);
     --star-label-size: clamp(2.5rem, 10vw, 4rem);
     --star-label-mix-blend-mode: initial;

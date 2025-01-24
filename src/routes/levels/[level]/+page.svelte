@@ -45,8 +45,8 @@
     document.body.style.removeProperty("--level-bg-light")
   })
 
-  function complete(): void {
-    completeLevel(level, moves)
+  async function complete(): Promise<void> {
+    await completeLevel(level, moves)
     completed = true
   }
 
