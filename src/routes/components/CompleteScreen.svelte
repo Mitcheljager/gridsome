@@ -22,7 +22,7 @@
   })
 </script>
 
-<div class="screen" in:fade={conditionalAnimation({ duration: 200, delay: 1000 })}>
+<div class="screen" in:fade={{ duration: 200, delay: 1000 }}>
   <div class="dialog" role="dialog" in:scale={conditionalAnimation({ duration: 200, delay: 1100, start: 0.5 })}>
     <h1 in:scale={conditionalAnimation({ start: 0.8, duration: 200, delay: 1200 })}>Level complete</h1>
 
