@@ -39,7 +39,10 @@
   })
 
   onDestroy(() => {
-    if (browser) document.body.style.removeProperty("--level-bg")
+    if (!browser) return
+
+    document.body.style.removeProperty("--level-bg")
+    document.body.style.removeProperty("--level-bg-light")
   })
 
   function complete(): void {
