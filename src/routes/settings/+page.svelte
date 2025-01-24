@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { fly, scale } from "svelte/transition"
-	import { alternativeFontKey, conditionalAnimation, highContrastKey, isUsingAlternativeFont, isUsingReduceAnimations, reduceAnimationsKey, setAlternativeFont, setHighContrast, setReduceAnimations, setStore } from "$lib/settings"
+	import { alternativeFontKey, conditionalAnimation, highContrastKey, isUsingAlternativeFont, isUsingHighContrast, isUsingReduceAnimations, reduceAnimationsKey, setAlternativeFont, setHighContrast, setReduceAnimations, setStore } from "$lib/settings"
 	import BackButton from "../components/BackButton.svelte"
 	import { onMount } from "svelte"
 
@@ -11,6 +11,7 @@
   onMount(async() => {
     useAlternativeFont = await isUsingAlternativeFont()
     useReduceAnimations = await isUsingReduceAnimations()
+    useHighContrast = await isUsingHighContrast()
   })
 
   async function toggleAlternativeFont(): Promise<void> {
@@ -82,6 +83,10 @@
     margin: 0;
     background: #325763;
     transition: background-color 50ms, box-shadow 50ms;
+  }
+
+  :global(.high-contrast) .checkbox input {
+    background: #666;
   }
 
   .checkbox input:checked {

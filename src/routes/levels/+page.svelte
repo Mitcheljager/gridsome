@@ -120,6 +120,10 @@
     transition: transform 50ms, background-color 200ms;
   }
 
+  :global(.high-contrast) .tile {
+    color: black;
+  }
+
   .tile:hover,
   .tile:active {
     outline: 2px solid white;
@@ -142,6 +146,10 @@
     z-index: -1;
   }
 
+  :global(.high-contrast) .tile::before {
+    background: white;
+  }
+
   .tile:hover::before,
   .tile:active::before {
     border-color: transparent;
@@ -153,6 +161,11 @@
   }
 
   .completed::before {
+    background: var(--success);
+  }
+
+  :global(.high-contrast) .completed,
+  :global(.high-contrast) .completed::before {
     background: var(--success);
   }
 
@@ -187,6 +200,10 @@
     color: black;
   }
 
+  :global(.high-contrast) .option.active {
+    background: var(--success);
+  }
+
   .option.active::before {
     background: white;
   }
@@ -207,6 +224,7 @@
     transition: background-color 200ms;
   }
 
+  :global(.high-contrast) .cell,
   .active .cell {
     background: black;
   }

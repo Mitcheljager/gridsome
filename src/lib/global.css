@@ -32,7 +32,7 @@ body {
 }
 
 body {
-  background: var(--level-bg, var(--bg-base));
+  background: var(--level-bg, var(--bg-base)) !important;
   height: 100vh;
   width: 100vw;
   color: white;
@@ -41,6 +41,17 @@ body {
   font-size: 24px;
   text-transform: lowercase;
   transition: background-color 250ms;
+}
+
+body.high-contrast {
+  --bg-base: #101010;
+  --level-bg: #101010;
+  background: var(--bg-base) !important;
+}
+
+body.high-contrast *,
+body.high-contrast *::before {
+  mix-blend-mode: initial !important;
 }
 
 a,

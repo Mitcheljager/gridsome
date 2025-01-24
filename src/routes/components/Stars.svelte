@@ -55,6 +55,10 @@
     color: var(--star-color, var(--level-bg-light));
   }
 
+  :global(.high-contrast) .star {
+    color: #444;
+  }
+
   .label {
     position: absolute;
     top: 50%;

@@ -99,4 +99,8 @@
     border-radius: clamp(1rem, 2vw, 10rem);
     background: #30535f;
   }
+
+  :global(.high-contrast) .cell {
+    background: #222;
+  }
 </style>

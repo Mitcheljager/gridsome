@@ -78,6 +78,10 @@
     overflow: hidden;
   }
 
+  :global(.high-contrast) .cell {
+    color: black;
+  }
+
   .cell::before {
     content: "";
     display: block;
@@ -93,9 +97,17 @@
     transition: background-color 200ms, border 200ms;
   }
 
+  :global(.high-contrast) .cell::before {
+    background: white;
+  }
+
   .changing:before {
     transition: background-color 200ms, border 50ms;
-    border-color: rgb(255, 255, 255);
+    border-color: white;
+  }
+
+  :global(.high-contrast) .changing::before {
+    border-color: #555;
   }
 
   .active {
@@ -104,6 +116,10 @@
 
   .active::before {
     border-color: var(--success);
+    background: var(--success);
+  }
+
+  :global(.high-contrast) .active::before {
     background: var(--success);
   }
 </style>

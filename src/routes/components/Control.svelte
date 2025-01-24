@@ -93,6 +93,11 @@
     transition: transform 50ms, background-color 50ms, border 50ms;
   }
 
+  :global(.high-contrast) button::before {
+    border: 0.25rem solid currentcolor;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
   button:hover,
   button:active {
     color: white;
