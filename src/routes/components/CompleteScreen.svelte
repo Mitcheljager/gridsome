@@ -15,7 +15,7 @@
 
   const currentLevelIndex = levels.findIndex(l => l.id === currentLevelId)
   const nextLevelId = currentLevelIndex === -1 ? null : (levels[currentLevelIndex + 1]?.id || null)
-  const bestScore: number = $derived(completedLevels.find(l => l.id === currentLevelId)?.score || 0)
+  const storedScore: number = $derived(completedLevels.find(l => l.id === currentLevelId)?.score || 0)
 
   onMount(async() => {
     completedLevels = await getCompletedLevels()
@@ -30,8 +30,8 @@
       <div in:fade={conditionalAnimation({ duration: 300, delay: 1200 })}>
         <span>Moves: {currentMoves}</span><br>
 
-        {#if bestScore}
-          <span>Your best: {bestScore}</span>
+        {#if storedScore}
+          <span>Your best: {Math.min(storedScore, currentMoves)}</span>
         {/if}
       </div>
 
