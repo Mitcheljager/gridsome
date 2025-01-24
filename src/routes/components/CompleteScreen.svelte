@@ -35,9 +35,11 @@
         {/if}
       </div>
 
-      <div class="stars">
-        <Stars {currentLevelId} delay={1200} />
-      </div>
+      {#if currentLevelId}
+        <div class="stars">
+          <Stars {currentLevelId} delay={1200} />
+        </div>
+      {/if}
     </div>
 
     <nav in:fade={conditionalAnimation({ duration: 500, delay: 1600 })}>
