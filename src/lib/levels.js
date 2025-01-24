@@ -165,14 +165,14 @@ export const levels = [{
   start: [12, 12, 12, 12],
   goal: [7, 8, 9, 10],
   maxCellValue: 12,
-  stars: []
+  stars: [20, 12, 7]
 }, {
   id: "pow8k",
   gridSize: 2,
   start: [11, 1, 1, 11],
   goal: [10, 12, 6, 8],
   maxCellValue: 12,
-  stars: [20, 12, 7]
+  stars: [20, 15, 8]
 }, {
   id: "32ntg",
   gridSize: 2,
@@ -235,14 +235,14 @@ export const levels = [{
   start: [1, 1, 1, 1, 1, 1, 1, 1, 1],
   goal:  [1, 1, 1, 1, 2, 1, 1, 1, 1],
   maxCellValue: 2,
-  stars: []
+  stars: [15, 10, 5]
 }, {
   id: "1267a",
   gridSize: 3,
   start: [1, 3, 1, 2, 1, 2, 1, 3, 1],
   goal:  [3, 3, 3, 3, 3, 3, 3, 3, 3],
   maxCellValue: 3,
-  stars: [15, 10, 5]
+  stars: [10, 6, 3]
 }, {
   id: "b7177",
   gridSize: 3,
@@ -305,14 +305,14 @@ export const levels = [{
   start: [1, 2, 4, 1, 3, 1, 4, 2, 1],
   goal:  [1, 4, 3, 3, 3, 3, 3, 4, 1],
   maxCellValue: 5,
-  stars: []
+  stars: [28, 18, 8]
 }, {
   id: "poiiy",
   gridSize: 3,
   start: [1, 1, 1, 1, 1, 1, 1, 1, 1],
   goal:  [2, 5, 2, 6, 6, 6, 2, 5, 2],
   maxCellValue: 6,
-  stars: [24, 16, 8]
+  stars: [20, 10, 5]
 }, {
   id: "zooq2",
   gridSize: 3,
