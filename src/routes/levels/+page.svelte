@@ -65,7 +65,7 @@
 
         {#if completed}
           <div class="stars">
-            <Stars currentLevelId={id} />
+            <Stars currentLevelId={id} delay={600 + i * 50} />
           </div>
         {/if}
       </a>
