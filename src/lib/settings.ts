@@ -2,6 +2,7 @@ import { Preferences } from "@capacitor/preferences"
 
 export const alternativeFontKey = "use-alternative-font"
 export const reduceAnimationsKey = "use-reduced-animations"
+export const highContrastKey = "use-high-contrast"
 
 export async function setStore(key: string, value: string): Promise<void> {
   Preferences.set({ key, value })
@@ -20,12 +21,20 @@ export async function isUsingReduceAnimations(): Promise<boolean> {
   return await getStore(reduceAnimationsKey) === "true"
 }
 
+export async function isUsingHighContrast(): Promise<boolean> {
+  return await getStore(highContrastKey) === "true"
+}
+
 export async function setAlternativeFont(): Promise<void> {
   document.body.classList.toggle("alternative-font", await isUsingAlternativeFont())
 }
 
 export async function setReduceAnimations(): Promise<void> {
   document.body.classList.toggle("reduce-animations", await isUsingReduceAnimations())
+}
+
+export async function setHighContrast(): Promise<void> {
+  document.body.classList.toggle("high-contrast", await isUsingHighContrast())
 }
 
 export function conditionalAnimation(params: Record<string, any>): Record<string, any> {

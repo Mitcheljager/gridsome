@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { fly, scale } from "svelte/transition"
-	import { alternativeFontKey, conditionalAnimation, isUsingAlternativeFont, isUsingReduceAnimations, reduceAnimationsKey, setAlternativeFont, setReduceAnimations, setStore } from "$lib/settings"
+	import { alternativeFontKey, conditionalAnimation, highContrastKey, isUsingAlternativeFont, isUsingReduceAnimations, reduceAnimationsKey, setAlternativeFont, setHighContrast, setReduceAnimations, setStore } from "$lib/settings"
 	import BackButton from "../components/BackButton.svelte"
 	import { onMount } from "svelte"
 
   let useAlternativeFont = $state(false)
   let useReduceAnimations = $state(false)
+  let useHighContrast = $state(false)
 
   onMount(async() => {
     useAlternativeFont = await isUsingAlternativeFont()
@@ -20,6 +21,11 @@
   async function toggleReduceAnimations(): Promise<void> {
     await setStore(reduceAnimationsKey, useReduceAnimations.toString())
     setReduceAnimations()
+  }
+
+  async function toggleHighContrast(): Promise<void> {
+    await setStore(highContrastKey, useHighContrast.toString())
+    setHighContrast()
   }
 </script>
 
@@ -36,6 +42,11 @@
   <div class="checkbox" in:scale={conditionalAnimation({ duration: 100, delay: 300, start: 0.9 })}>
     <input type="checkbox" bind:checked={useReduceAnimations} onchange={toggleReduceAnimations} id="reduce-animations" />
     <label for="reduce-animations">Reduce animations</label>
+  </div>
+
+  <div class="checkbox" in:scale={conditionalAnimation({ duration: 100, delay: 400, start: 0.9 })}>
+    <input type="checkbox" bind:checked={useHighContrast} onchange={toggleHighContrast} id="high-contrast" />
+    <label for="high-contrast">Use high contrast</label>
   </div>
 </div>
 

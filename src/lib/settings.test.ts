@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it } from "vitest"
 
-import { getStore, alternativeFontKey, isUsingAlternativeFont, isUsingReduceAnimations, setAlternativeFont, conditionalAnimation, reduceAnimationsKey, setStore, setReduceAnimations } from "./settings"
+import { getStore, alternativeFontKey, isUsingAlternativeFont, isUsingReduceAnimations, setAlternativeFont, conditionalAnimation, reduceAnimationsKey, setStore, setReduceAnimations, highContrastKey, setHighContrast } from "./settings"
 
 describe("settings.ts", () => {
   beforeEach(() => {
@@ -95,26 +95,50 @@ describe("settings.ts", () => {
   })
 
   describe("setReduceAnimations", () => {
-    it("Should set body class if isUsingAlternativeFont is true", async() => {
+    it("Should set body class if isUsingReduceAnimations is true", async() => {
       await setStore(reduceAnimationsKey, "true")
       await setReduceAnimations()
 
       expect(document.body.classList).toContain("reduce-animations")
     })
 
-    it("Should not set body class if isUsingAlternativeFont is not true", async() => {
+    it("Should not set body class if isUsingReduceAnimations is not true", async() => {
       await setReduceAnimations()
 
       expect(document.body.classList).not.toContain("reduce-animations")
     })
 
-    it("Should remove body class if isUsingAlternativeFont is not true after being true", async() => {
+    it("Should remove body class if isUsingReduceAnimations is not true after being true", async() => {
       document.body.classList.add("reduce-animations")
 
       await setStore(reduceAnimationsKey, "false")
       await setReduceAnimations()
 
       expect(document.body.classList).not.toContain("reduce-animations")
+    })
+  })
+
+  describe("setHighContrast", () => {
+    it("Should set body class if isUsingHighContrast is true", async() => {
+      await setStore(highContrastKey, "true")
+      await setHighContrast()
+
+      expect(document.body.classList).toContain("high-contrast")
+    })
+
+    it("Should not set body class if isUsingHighContrast is not true", async() => {
+      await setHighContrast()
+
+      expect(document.body.classList).not.toContain("high-contrast")
+    })
+
+    it("Should remove body class if isUsingHighContrast is not true after being true", async() => {
+      document.body.classList.add("high-contrast")
+
+      await setStore(highContrastKey, "false")
+      await setHighContrast()
+
+      expect(document.body.classList).not.toContain("high-contrast")
     })
   })
 

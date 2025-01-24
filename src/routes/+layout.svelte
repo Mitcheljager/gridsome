@@ -1,6 +1,6 @@
 <script>
   import "$lib/global.css"
-	import { setAlternativeFont, setReduceAnimations } from "$lib/settings"
+	import { setAlternativeFont, setHighContrast, setReduceAnimations } from "$lib/settings"
 	import { Capacitor } from "@capacitor/core"
 	import { onMount } from "svelte"
 
@@ -9,6 +9,7 @@
   onMount(async() => {
     setAlternativeFont()
     setReduceAnimations()
+    setHighContrast()
 
     if (!Capacitor.isNativePlatform()) return
 
