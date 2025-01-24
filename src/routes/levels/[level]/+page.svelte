@@ -91,7 +91,7 @@
     height: 100vh;
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: 0 0.75rem 0.75rem;
+    padding: env(safe-area-inset-top, 0px) 0.75rem 0.75rem;
   }
 
   .moves {

@@ -35,7 +35,7 @@
     width: clamp(4rem, 15vw, 5rem);
     height: clamp(4rem, 15vw, 5rem);
     padding: 0.5rem;
-    top: 0.125rem;
+    top: calc(env(safe-area-inset-top, 0px) + 0.125rem);
     left: 0;
     background: transparent;
     border: 0;
