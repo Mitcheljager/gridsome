@@ -1,11 +1,12 @@
 <script lang="ts">
+	import type { CompletedLevel } from "../../types"
+	import { onMount } from "svelte"
 	import { fly, scale } from "svelte/transition"
 	import { getCompletedLevel, getCompletedLevels } from "$lib/game"
 	import { conditionalAnimation, getStore, setStore } from "$lib/settings"
 	import { levels } from "$lib/levels"
 	import BackButton from "../components/BackButton.svelte"
-	import { onMount } from "svelte"
-	import type { CompletedLevel } from "../../types"
+	import Stars from "../components/Stars.svelte"
 
   const selectGridSizeKey = "last-selected-grid-size"
 
@@ -61,6 +62,12 @@
         href="/levels/{id}"
         in:scale|global={conditionalAnimation({ duration: 200, delay: 150 + i * 50, start: 0.85 })}>
         {i + 1}
+
+        {#if completed}
+          <div class="stars">
+            <Stars currentLevelId={id} />
+          </div>
+        {/if}
       </a>
     {/each}
   </nav>
@@ -99,6 +106,7 @@
   .tile {
     position: relative;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     aspect-ratio: 1 / 1;
@@ -201,5 +209,15 @@
 
   .active .cell {
     background: black;
+  }
+
+  .stars {
+    --stars-gap: 0;
+    --star-label-size: 0;
+    --star-size: clamp(1rem, 5vw, 2rem);
+    --star-color: rgba(0, 0, 0, 0.25);
+    --star-active-color: white;
+    position: absolute;
+    bottom: clamp(0.5rem, 2vw, 1rem);
   }
 </style>

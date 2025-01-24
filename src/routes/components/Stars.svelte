@@ -22,7 +22,7 @@
 
 <div class="stars">
   {#each stars as star, i}
-    {@const active = bestScore <= star}
+    {@const active = bestScore && bestScore <= star}
 
     <div class="star" class:active in:scale|global={{ duration: 1000, delay: delay + 100 * i, start: 0.75, easing: elasticOut }}>
       <svg viewBox="0 0 24 24" fill="none">
@@ -43,7 +43,7 @@
 
   .stars {
     display: flex;
-    gap: 0.25rem;
+    gap: var(--stars-gap, 0.25rem);
   }
 
   .star {
@@ -51,7 +51,7 @@
     height: 1em;
     width: 1em;
     font-size: var(--star-size, clamp(3rem, 12vw, 4rem));
-    color: var(--level-bg-light);
+    color: var(--star-color, var(--level-bg-light));
   }
 
   .label {
