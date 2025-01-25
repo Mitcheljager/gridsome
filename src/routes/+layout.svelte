@@ -16,14 +16,14 @@
     const { AndroidFullScreen } = await import("@awesome-cordova-plugins/android-full-screen")
     AndroidFullScreen.isImmersiveModeSupported().then(() => AndroidFullScreen.immersiveMode())
 
-    const { SplashScreen } = await import("@capacitor/splash-screen")
-    await SplashScreen.hide()
-
     const { StatusBar } = await import("@capacitor/status-bar")
     await StatusBar.hide()
 
     const { ScreenOrientation } = await import("@capacitor/screen-orientation")
     await ScreenOrientation.lock({ orientation: "portrait" })
+
+    const { SplashScreen } = await import("@capacitor/splash-screen")
+    await SplashScreen.hide()
   })
 </script>
 
