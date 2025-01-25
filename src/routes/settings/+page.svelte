@@ -34,7 +34,11 @@
 <div class="layout">
   <BackButton />
 
-  <h1 in:fly={conditionalAnimation({ y: -(Math.min(window.innerWidth / 20, 40)), duration: 300 })}>{t("Settings")}</h1>
+  <h1
+    class:small={t("Settings").length > 10}
+    in:fly={conditionalAnimation({ y: -(Math.min(window.innerWidth / 20, 40)), duration: 300 })}>
+    {t("Settings")}
+  </h1>
 
   <div class="checkbox" in:scale={conditionalAnimation({ duration: 100, delay: 200, start: 0.9 })}>
     <input type="checkbox" bind:checked={useAlternativeFont} onchange={toggleAlternativeFont} id="alternative-font" />
@@ -58,6 +62,10 @@
     padding: 4rem 0 2rem 0;
     text-align: center;
     font-size: clamp(4rem, 20vw, 7rem);
+  }
+
+  h1.small {
+    font-size: clamp(2.5rem, 10vw, 5rem);
   }
 
   .layout {

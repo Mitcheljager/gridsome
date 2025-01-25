@@ -25,7 +25,11 @@
 
 <div class="screen" in:fade={{ duration: 200, delay: 1000 }}>
   <div class="dialog" role="dialog" in:scale={conditionalAnimation({ duration: 200, delay: 1100, start: 0.5 })}>
-    <h1 in:scale={conditionalAnimation({ start: 0.8, duration: 200, delay: 1200 })}>{t("Level Complete")}</h1>
+    <h1
+      class:small={t("Level Complete").split(" ").some(word => word.length > 8)}
+      in:scale={conditionalAnimation({ start: 0.8, duration: 200, delay: 1200 })}>
+      {t("Level Complete")}
+    </h1>
 
     <div class="moves">
       <div in:fade={conditionalAnimation({ duration: 300, delay: 1200 })}>
@@ -60,6 +64,11 @@
     margin: 0 auto 2rem;
     font-size: clamp(3rem, 10vw, 5rem);
     line-height: 1;
+  }
+
+  h1.small {
+    max-width: 500px;
+    font-size: clamp(2rem, 7vw, 3.5rem);
   }
 
   nav {
