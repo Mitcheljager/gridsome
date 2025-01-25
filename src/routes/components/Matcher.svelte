@@ -2,6 +2,7 @@
 	import { fly } from "svelte/transition"
 	import Grid from "./Grid.svelte"
 	import { conditionalAnimation } from "$lib/settings"
+	import { t } from "$lib/language"
 
   interface Props { cells: number[], goal: number[], gridSize: number, onmatch(): void }
 
@@ -13,7 +14,7 @@
 </script>
 
 <div class="matcher" in:fly|global={conditionalAnimation({ y: 20, duration: 300 })}>
-  <p>Match</p>
+  <p>{t("Match")}</p>
 
   <div class="goal">
     <Grid {gridSize} cells={goal} />

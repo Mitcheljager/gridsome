@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { t } from "$lib/language"
 	import { conditionalAnimation } from "$lib/settings"
 	import { onMount } from "svelte"
 	import { fade, scale } from "svelte/transition"
@@ -15,8 +16,8 @@
     <h1 in:fade={conditionalAnimation({ duration: 500, delay: 500 })}>Gridsome</h1>
 
     <nav>
-      <a href="/levels" in:scale={conditionalAnimation({ duration: 200, delay: 700, start: 0.85 })}>Play</a>
-      <a href="/settings" in:scale={conditionalAnimation({ duration: 200, delay: 900, start: 0.85 })}>Settings</a>
+      <a href="/levels" in:scale={conditionalAnimation({ duration: 200, delay: 700, start: 0.85 })}>{t("Play")}</a>
+      <a href="/settings" in:scale={conditionalAnimation({ duration: 200, delay: 900, start: 0.85 })}>{t("Settings")}</a>
     </nav>
   {/if}
 

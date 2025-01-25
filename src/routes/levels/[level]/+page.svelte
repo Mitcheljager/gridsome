@@ -4,6 +4,7 @@
 	import { completeLevel, getCompletedLevels } from "$lib/game"
 	import { browser, getLevelColor } from "$lib/utils"
 	import { levels } from "$lib/levels"
+	import { t } from "$lib/language"
 	import type { CompletedLevel, Level } from "../../../types"
 	import Controls from "../../components/Controls.svelte"
 	import Grid from "../../components/Grid.svelte"
@@ -72,7 +73,7 @@
 
   {#if hasPreviousCompletedLevel}
     <div class="moves">
-      <span class="current-moves">{moves} Move{moves === 1 ? "" : "s"}</span>
+      <span class="current-moves">{moves} {t(`Move${moves === 1 ? "" : "s"}`)}</span>
       <Stars currentLevelId={level} delay={500} />
     </div>
   {/if}

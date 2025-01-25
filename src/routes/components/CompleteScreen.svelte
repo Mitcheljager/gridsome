@@ -1,11 +1,12 @@
 <script lang="ts">
+	import { fade, scale } from "svelte/transition"
+	import { onMount } from "svelte"
 	import type { CompletedLevel } from "../../types"
 	import { levels } from "$lib/levels"
-	import { fade, scale } from "svelte/transition"
-	import Stars from "./Stars.svelte"
 	import { getCompletedLevels } from "$lib/game"
-	import { onMount } from "svelte"
+	import { t } from "$lib/language"
 	import { conditionalAnimation } from "$lib/settings"
+	import Stars from "./Stars.svelte"
 
   interface Props { currentLevelId: string, currentMoves: number }
 
@@ -24,14 +25,14 @@
 
 <div class="screen" in:fade={{ duration: 200, delay: 1000 }}>
   <div class="dialog" role="dialog" in:scale={conditionalAnimation({ duration: 200, delay: 1100, start: 0.5 })}>
-    <h1 in:scale={conditionalAnimation({ start: 0.8, duration: 200, delay: 1200 })}>Level complete</h1>
+    <h1 in:scale={conditionalAnimation({ start: 0.8, duration: 200, delay: 1200 })}>{t("Level Complete")}</h1>
 
     <div class="moves">
       <div in:fade={conditionalAnimation({ duration: 300, delay: 1200 })}>
-        <span>Moves: {currentMoves}</span><br>
+        <span>{t("Moves")}: {currentMoves}</span><br>
 
         {#if storedScore}
-          <span>Your best: {Math.min(storedScore, currentMoves)}</span>
+          <span>{t("Your Best")}: {Math.min(storedScore, currentMoves)}</span>
         {/if}
       </div>
 
@@ -44,11 +45,11 @@
 
     <nav in:fade={conditionalAnimation({ duration: 500, delay: 1600 })}>
       {#if nextLevelId}
-        <a href="/levels/{nextLevelId}">Next level</a>
+        <a href="/levels/{nextLevelId}">{t("Next Level")}</a>
       {/if}
 
-      <a href="/levels">Level select</a>
-      <a href="/">Main menu</a>
+      <a href="/levels">{t("Level Select")}</a>
+      <a href="/">{t("Main Menu")}</a>
     </nav>
   </div>
 </div>

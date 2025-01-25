@@ -1,9 +1,10 @@
 <script>
+	import { t } from "$lib/language"
 	import { conditionalAnimation } from "$lib/settings"
-import { fade } from "svelte/transition"
+  import { fade } from "svelte/transition"
 </script>
 
-<a href="/" aria-label="Return to main menu" in:fade|global={conditionalAnimation({ duration: 300, delay: 200 })}>
+<a href="/" aria-label={t("Return To Main Menu")} in:fade|global={conditionalAnimation({ duration: 300, delay: 200 })}>
   <div class="line"></div>
   <div class="line"></div>
   <div class="line"></div>

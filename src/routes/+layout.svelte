@@ -1,35 +1,51 @@
 <script>
   import "$lib/global.css"
+	import { language, setLanguage } from "$lib/language"
 	import { setAlternativeFont, setHighContrast, setReduceAnimations } from "$lib/settings"
 	import { Capacitor } from "@capacitor/core"
 	import { onMount } from "svelte"
 
   const { children } = $props()
 
+  let loading = $state(true)
+
   onMount(async() => {
     setAlternativeFont()
     setReduceAnimations()
     setHighContrast()
 
-    if (!Capacitor.isNativePlatform()) return
+    setLanguage("nl")
 
-    const { AndroidFullScreen } = await import("@awesome-cordova-plugins/android-full-screen")
-    AndroidFullScreen.isImmersiveModeSupported().then(() => AndroidFullScreen.immersiveMode())
+    if (!Capacitor.isNativePlatform()) {
+      loading = false
+      return
+    }
 
-    const { StatusBar } = await import("@capacitor/status-bar")
-    await StatusBar.hide()
+    try {
+      const { AndroidFullScreen } = await import("@awesome-cordova-plugins/android-full-screen")
+      AndroidFullScreen.isImmersiveModeSupported().then(() => AndroidFullScreen.immersiveMode())
 
-    const { ScreenOrientation } = await import("@capacitor/screen-orientation")
-    await ScreenOrientation.lock({ orientation: "portrait" })
+      const { StatusBar } = await import("@capacitor/status-bar")
+      await StatusBar.hide()
 
-    const { SplashScreen } = await import("@capacitor/splash-screen")
-    await SplashScreen.hide()
+      const { ScreenOrientation } = await import("@capacitor/screen-orientation")
+      await ScreenOrientation.lock({ orientation: "portrait" })
+
+      const { SplashScreen } = await import("@capacitor/splash-screen")
+      await SplashScreen.hide()
+    } finally {
+      loading = false
+    }
   })
 </script>
 
-<main data-sveltekit-preload-code="viewport">
-  {@render children()}
-</main>
+{#key language}
+  {#if !loading}
+    <main data-sveltekit-preload-code="viewport" lang={language}>
+      {@render children()}
+    </main>
+  {/if}
+{/key}
 
 <style>
   main {

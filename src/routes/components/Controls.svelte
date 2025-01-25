@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { t } from "$lib/language"
 	import Control from "./Control.svelte"
 
   interface Props { gridSize: number, maxCellValue: number, cells: number[], onchange(cells: number[]): void }
@@ -47,23 +48,23 @@
 </script>
 
 {#each { length: gridSize } as _, i}
-  <Control label="Add to column {i + 1}" onclick={() : void => setColumn(1, i)} sign="+" column={i + 1} />
+  <Control label="{t("Add To Column")} {i + 1}" onclick={() : void => setColumn(1, i)} sign="+" column={i + 1} />
 {/each}
 
 {#each { length: gridSize } as _, i}
-  <Control label="Subtract from column {i + 1}" onclick={() : void => setColumn(-1, i)} column={i + 1} row={gridSize + 1} sign="-" />
+  <Control label="{t("Subtract From Column")} {i + 1}" onclick={() : void => setColumn(-1, i)} column={i + 1} row={gridSize + 1} sign="-" />
 {/each}
 
 {#each { length: gridSize } as _, i}
-  <Control label="Add to row {i + 1}" onclick={() : void => setRow(1, i)} row={i + 1} column={gridSize + 1} sign="+" />
+  <Control label="{t("Add To Row")} {i + 1}" onclick={() : void => setRow(1, i)} row={i + 1} column={gridSize + 1} sign="+" />
 {/each}
 
 {#each { length: gridSize } as _, i}
-  <Control label="Subtract from row {i + 1}" onclick={() : void => setRow(-1, i)} row={i + 1} sign="-" />
+  <Control label="{t("Subtract From Row")} {i + 1}" onclick={() : void => setRow(-1, i)} row={i + 1} sign="-" />
 {/each}
 
-<Control label="Add to main diagonal" onclick={() : void => setDiagonal(1, "main")} column={gridSize + 1} row={gridSize + 1} sign="+" />
-<Control label="Subtract from main diagonal" onclick={() : void => setDiagonal(-1, "main")} sign="-" />
+<Control label={t("Add To Main Diagonal")} onclick={() : void => setDiagonal(1, "main")} column={gridSize + 1} row={gridSize + 1} sign="+" />
+<Control label={t("Subtract From Main Diagonal")} onclick={() : void => setDiagonal(-1, "main")} sign="-" />
 
-<Control label="Add to anti diagonal" onclick={() : void => setDiagonal(1, "anti")} column={gridSize + 1} sign="+" />
-<Control label="Subtract from anti diagonal" onclick={() : void => setDiagonal(-1, "anti")} row={gridSize + 1} sign="-" />
+<Control label={t("Add To Anti Diagonal")} onclick={() : void => setDiagonal(1, "anti")} column={gridSize + 1} sign="+" />
+<Control label={t("Subtract From Anti Diagonal")} onclick={() : void => setDiagonal(-1, "anti")} row={gridSize + 1} sign="-" />

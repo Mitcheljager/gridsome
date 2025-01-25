@@ -5,6 +5,7 @@
 	import { getCompletedLevel, getCompletedLevels } from "$lib/game"
 	import { conditionalAnimation, getStore, setStore } from "$lib/settings"
 	import { levels } from "$lib/levels"
+	import { t } from "$lib/language"
 	import BackButton from "../components/BackButton.svelte"
 	import Stars from "../components/Stars.svelte"
 
@@ -27,9 +28,9 @@
 <div class="layout">
   <BackButton />
 
-  <h1 in:fly={conditionalAnimation({ y: -(Math.min(window.innerWidth / 20, 40)), duration: 300 })}>Levels</h1>
+  <h1 in:fly={conditionalAnimation({ y: -(Math.min(window.innerWidth / 20, 40)), duration: 300 })}>{t("Levels")}</h1>
 
-  <h2>Type</h2>
+  <h2>{t("Levels")}</h2>
 
   <nav class="options">
     {#each [2, 3] as option, i}
@@ -50,7 +51,7 @@
     {/each}
   </nav>
 
-  <h2>Level</h2>
+  <h2>{t("Level")}</h2>
 
   <nav class="levels">
     {#each levels.filter(({ gridSize }) => selectedGridSize === gridSize) as { id }, i (id)}
