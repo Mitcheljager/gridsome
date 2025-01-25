@@ -30,7 +30,7 @@
 
   <h1 in:fly={conditionalAnimation({ y: -(Math.min(window.innerWidth / 20, 40)), duration: 300 })}>{t("Levels")}</h1>
 
-  <h2>{t("Levels")}</h2>
+  <h2>{t("Type")}</h2>
 
   <nav class="options">
     {#each [2, 3] as option, i}
