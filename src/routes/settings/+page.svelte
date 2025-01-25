@@ -34,7 +34,7 @@
 <div class="layout">
   <BackButton />
 
-  <h1 in:fly={conditionalAnimation({ y: -(Math.min(window.innerWidth / 20, 40)), duration: 300 })}>Settings</h1>
+  <h1 in:fly={conditionalAnimation({ y: -(Math.min(window.innerWidth / 20, 40)), duration: 300 })}>{t("Settings")}</h1>
 
   <div class="checkbox" in:scale={conditionalAnimation({ duration: 100, delay: 200, start: 0.9 })}>
     <input type="checkbox" bind:checked={useAlternativeFont} onchange={toggleAlternativeFont} id="alternative-font" />
