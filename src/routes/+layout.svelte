@@ -14,9 +14,8 @@
     setReduceAnimations()
     setHighContrast()
 
-    setLanguage("nl")
-
     if (!Capacitor.isNativePlatform()) {
+      setLanguage(navigator.language.slice(0, 2))
       loading = false
       return
     }
@@ -30,6 +29,9 @@
 
       const { ScreenOrientation } = await import("@capacitor/screen-orientation")
       await ScreenOrientation.lock({ orientation: "portrait" })
+
+      const { Device } = await import("@capacitor/device")
+      setLanguage((await Device.getLanguageCode()).value)
 
       const { SplashScreen } = await import("@capacitor/splash-screen")
       await SplashScreen.hide()
