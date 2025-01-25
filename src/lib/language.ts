@@ -11,5 +11,9 @@ export function setLanguage(code: string): void {
 }
 
 export function t(key: string): string {
-  return translations[key]?.[language] || translations[key]?.[defaultLanguage] || key
+  const value = translations[key]?.[language] || translations[key]?.[defaultLanguage]
+
+  if (!value) console.error("Missing translation for key: " + key)
+
+  return value || key
 }
