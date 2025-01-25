@@ -1,7 +1,11 @@
 import { translations } from "./translations"
 
 export const defaultLanguage = "en"
-export const supportedLanguages = ["en", "nl"]
+export const supportedLanguages = [
+  "en", "nl", "de", "fr", "ja", "ru", "ko", "es", "pt", "it", "pl",
+  "sv", "no", "tr", "is", "hi", "id", "ur", "ar", "sw", "fi", "el",
+  "uk", "cs", "ro", "da", "he", "zh"
+]
 
 export let language = defaultLanguage
 
