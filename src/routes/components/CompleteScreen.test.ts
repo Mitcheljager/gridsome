@@ -4,6 +4,7 @@ import { describe, expect, it } from "vitest"
 import CompleteScreen from "./CompleteScreen.svelte"
 import { levels } from "$lib/levels"
 import { completeLevel } from "$lib/game"
+import { setLanguage } from "$lib/language"
 
 describe("CompleteScreen.svelte", () => {
   it("Should contain relevant links", () => {
@@ -53,5 +54,21 @@ describe("CompleteScreen.svelte", () => {
 
     expect(getByText("Moves: 2")).toBeTruthy()
     await waitFor(() => expect(getByText("Your best: 2")).toBeTruthy())
+  })
+
+  it("Should use smaller title when using language with long words", async() => {
+    setLanguage("de")
+
+    const { getByText } = render(CompleteScreen, { currentLevelId: "", currentMoves: 1 })
+
+    expect(getByText("Level abgeschlossen").classList).toContain("small")
+  })
+
+  it("Should use regular title when using language with shorter words", async() => {
+    setLanguage("en")
+
+    const { getByText } = render(CompleteScreen, { currentLevelId: "", currentMoves: 1 })
+
+    expect(getByText("Level complete").classList).not.toContain("small")
   })
 })
