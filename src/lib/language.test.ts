@@ -1,18 +1,6 @@
-import { beforeEach, describe, expect, it, vi } from "vitest"
+import { beforeEach, describe, expect, it } from "vitest"
 
 import { defaultLanguage, language, setLanguage, t } from "./language"
-
-vi.mock("./translations", () => ({
-  translations: {
-    "Some Key": {
-      en: "Some value",
-      nl: "Some dutch value"
-    },
-    "Some Other Key": {
-      en: "Some other value"
-    }
-  }
-}))
 
 describe("game.ts", () => {
   beforeEach(() => {

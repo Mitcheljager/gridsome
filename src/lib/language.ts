@@ -1,4 +1,4 @@
-import { translations } from "./translations"
+import { translations } from "$lib/translations"
 
 export const defaultLanguage = "en"
 export const supportedLanguages = [

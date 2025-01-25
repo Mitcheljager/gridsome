@@ -1,3 +1,4 @@
+import { defaultLanguage, setLanguage } from "$lib/language"
 import { cleanup } from "@testing-library/svelte"
 import { afterEach, beforeAll, vi } from "vitest"
 
@@ -27,4 +28,5 @@ beforeAll(() => {
 
 afterEach(() => {
   cleanup()
+  setLanguage(defaultLanguage)
 })
