@@ -73,7 +73,12 @@
 
   {#if hasPreviousCompletedLevel}
     <div class="moves">
-      <span class="current-moves">{moves} {t(`Move${moves === 1 ? "" : "s"}`)}</span>
+      <span class="current-moves">
+        {#if moves}
+          {moves} {t(`Move${moves === 1 ? "" : "s"}`)}
+        {/if}
+      </span>
+
       <Stars currentLevelId={level} delay={500} />
     </div>
   {/if}
