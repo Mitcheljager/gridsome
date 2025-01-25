@@ -95,7 +95,7 @@ describe("Controls.svelte", () => {
 
       const { getByLabelText } = render(Controls, { gridSize: 2, maxCellValue: 3, cells, onchange: mock })
 
-      await fireEvent.mouseDown(getByLabelText("Add to anti diagonal"))
+      await fireEvent.mouseDown(getByLabelText("Add to anti-diagonal"))
       expect(cells).toEqual([1, 2, 2, 1])
     })
 
@@ -105,7 +105,7 @@ describe("Controls.svelte", () => {
 
       const { getByLabelText } = render(Controls, { gridSize: 2, maxCellValue: 3, cells, onchange: mock })
 
-      await fireEvent.mouseDown(getByLabelText("Subtract from anti diagonal"))
+      await fireEvent.mouseDown(getByLabelText("Subtract from anti-diagonal"))
       expect(cells).toEqual([2, 1, 1, 2])
     })
   })
