@@ -12,7 +12,7 @@
 	import CompleteScreen from "../../components/CompleteScreen.svelte"
 	import RefreshButton from "../../components/RefreshButton.svelte"
 	import Stars from "../../components/Stars.svelte"
-	import { solver } from "$lib/solver"
+	// import { solver } from "$lib/solver"
 
   const { level } = page.params
   const { start, gridSize, maxCellValue, goal } = $derived(levels.find((l: Level) => l.id === level)!)
@@ -32,10 +32,10 @@
 
     completedLevels = await getCompletedLevels()
 
-    console.log("Solving...")
-    await new Promise(res => setTimeout(res))
-    const solve = solver(gridSize, maxCellValue, start, goal)
-    console.log(solve)
+    // console.log("Solving...")
+    // await new Promise(res => setTimeout(res))
+    // const solve = solver(gridSize, maxCellValue, start, goal)
+    // console.log(solve)
   })
 
   onDestroy(() => {
