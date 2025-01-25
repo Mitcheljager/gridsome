@@ -8,7 +8,7 @@ export const translations: Record<string, Record<string, string>> = {
     ru: "Настройки",
     ko: "설정",
     es: "Ajustes",
-    pt: "Configurações",
+    pt: "Config",
     it: "Impostazioni",
     pl: "Ustawienia",
     sv: "Inställningar",
