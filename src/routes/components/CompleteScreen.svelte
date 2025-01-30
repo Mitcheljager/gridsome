@@ -26,7 +26,7 @@
   onMount(async() => {
     completedLevels = await getCompletedLevels()
 
-    setTimeout(() => playAudio("/audio/success.mp3"), delay + 50)
+    setTimeout(() => playAudio("/audio/success.mp3", 0.75), delay + 50)
   })
 </script>
 
