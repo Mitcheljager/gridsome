@@ -1,19 +1,14 @@
 export async function playAudio(src: string, volume: number = 1, pitchRange = [1, 1]): Promise<void> {
-  const audioContext = new AudioContext()
-  const response = await fetch(src)
-  const arrayBuffer = await response.arrayBuffer()
-  const audioBuffer = await audioContext.decodeAudioData(arrayBuffer)
-  const source = audioContext.createBufferSource()
-  const gainNode = audioContext.createGain()
+  const element = document.createElement("audio")
+  element.volume = volume
+  element.src = src
 
-  gainNode.gain.value = volume
+  const [pitchMin, pitchMax] = pitchRange
+  element.playbackRate = Math.random() * (pitchMax - pitchMin) + pitchMin
 
-  const [minPitch, maxPitch] = pitchRange
-  source.playbackRate.value = Math.random() * (maxPitch - minPitch) + minPitch
+  await new Promise(res => setTimeout(res))
 
-  source.buffer = audioBuffer
-  source.connect(gainNode)
-  gainNode.connect(audioContext.destination)
+  element.play()
 
-  source.start()
+  element.addEventListener("ended", () => element.remove(), { once: true })
 }

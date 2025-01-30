@@ -2,7 +2,7 @@ import { playAudio } from "$lib/audio"
 
 export function tap(node: Node, { src }: { src: string } = { src: "/audio/tap-dull.mp3" }): void {
   async function play(): Promise<void> {
-    playAudio(src, 0.25, [0.75, 1.25])
+    playAudio(src, 0.25, [0.5, 3])
   }
 
   $effect(() => {
