@@ -8,6 +8,7 @@
   const { label, column = 0, row = 0, sign, onclick } : Props = $props()
 
   let reduceAnimations = $state(false)
+  let isDown = $state(false)
   let isTouchEvent = false
 
   onMount(async() => {
@@ -18,7 +19,11 @@
     if (isTouchEvent && event.type === "mousedown") return
     isTouchEvent = event.type === "touchstart"
 
+    isDown = true
+
     onclick()
+  function up(): void {
+    isDown = false
   }
 </script>
 
@@ -26,9 +31,12 @@
   aria-label={label}
   onmousedown={click}
   ontouchstart={click}
+  onmouseup={up}
+  ontouchend={up}
   style:--column={column}
   style:--row={row}
   style:--animation-delay="{Math.random() * 500}ms"
+  class:is-down={isDown}
   class:no-animations={reduceAnimations}
   use:haptics>
   {sign}
@@ -100,13 +108,12 @@
     background: rgba(255, 255, 255, 0.05);
   }
 
-  button:hover,
-  button:active {
+  button:hover {
     color: white;
     animation-fill-mode: none;
   }
 
-  button:active {
+  button.is-down {
     font-size: calc(var(--cell-width) * 0.7);
   }
 
@@ -116,7 +123,7 @@
     transform: scale(1.025);
   }
 
-  button:active::before {
+  button.is-down::before {
     animation-fill-mode: none;
     transform: scale(0.9);
     background: rgba(255, 255, 255, 0.35);
