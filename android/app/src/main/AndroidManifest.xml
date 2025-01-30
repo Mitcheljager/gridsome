@@ -30,7 +30,8 @@
 
         <meta-data
             android:name="com.google.android.gms.games.LANGUAGE"
-            android:value="en,nl,de,fr,ja,ru,ko,es,pt,it,pl,sv,no,tr,is,hi,id,ur,ar,sw,fi,el,uk,cs,ro,da,he,zh" />
+            android:value="en,nl,de,fr,ja,ru,ko,es,pt,it,pl,sv,no,tr,is,hi,id,ur,ar,sw,fi,el,uk,cs,ro,da,he,zh"
+        />
     </application>
 
     <!-- Permissions -->
