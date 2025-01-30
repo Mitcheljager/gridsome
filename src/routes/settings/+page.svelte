@@ -5,6 +5,7 @@
 	import { t } from "$lib/language"
 	import BackButton from "../components/BackButton.svelte"
 	import { haptics } from "../actions/haptics.svelte"
+	import { tap } from "../actions/tap.svelte"
 
   let useAlternativeFont = $state(false)
   let useReduceAnimations = $state(false)
@@ -41,17 +42,17 @@
     {t("Settings")}
   </h1>
 
-  <div use:haptics class="checkbox" in:scale={conditionalAnimation({ duration: 100, delay: 200, start: 0.9 })}>
+  <div use:haptics use:tap={{ src: "/audio/tap-sharp.mp3" }} class="checkbox" in:scale={conditionalAnimation({ duration: 100, delay: 200, start: 0.9 })}>
     <input type="checkbox" bind:checked={useAlternativeFont} onchange={toggleAlternativeFont} id="alternative-font" />
     <label for="alternative-font">{t("Use Alternative Font")}</label>
   </div>
 
-  <div use:haptics class="checkbox" in:scale={conditionalAnimation({ duration: 100, delay: 300, start: 0.9 })}>
+  <div use:haptics use:tap={{ src: "/audio/tap-sharp.mp3" }} class="checkbox" in:scale={conditionalAnimation({ duration: 100, delay: 300, start: 0.9 })}>
     <input type="checkbox" bind:checked={useReduceAnimations} onchange={toggleReduceAnimations} id="reduce-animations" />
     <label for="reduce-animations">{t("Reduce Animations")}</label>
   </div>
 
-  <div use:haptics class="checkbox" in:scale={conditionalAnimation({ duration: 100, delay: 400, start: 0.9 })}>
+  <div use:haptics use:tap={{ src: "/audio/tap-sharp.mp3" }} class="checkbox" in:scale={conditionalAnimation({ duration: 100, delay: 400, start: 0.9 })}>
     <input type="checkbox" bind:checked={useHighContrast} onchange={toggleHighContrast} id="high-contrast" />
     <label for="high-contrast">{t("Use High Contrast")}</label>
   </div>

@@ -2,6 +2,7 @@
 	import { isUsingReduceAnimations } from "$lib/settings"
 	import { onMount } from "svelte"
 	import { haptics } from "../actions/haptics.svelte"
+	import { tap } from "../actions/tap.svelte"
 
   interface Props { label: string, column?: number, row?: number, sign: "+" | "-", onclick(): void }
 
@@ -22,6 +23,8 @@
     isDown = true
 
     onclick()
+  }
+
   function up(): void {
     isDown = false
   }
@@ -38,6 +41,7 @@
   style:--animation-delay="{Math.random() * 500}ms"
   class:is-down={isDown}
   class:no-animations={reduceAnimations}
+  use:tap
   use:haptics>
   {sign}
 </button>

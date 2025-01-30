@@ -8,10 +8,13 @@
 	import { conditionalAnimation } from "$lib/settings"
 	import Stars from "./Stars.svelte"
 	import { haptics } from "../actions/haptics.svelte"
+	import { playAudio } from "$lib/audio"
 
   interface Props { currentLevelId: string, currentMoves: number }
 
   const { currentLevelId, currentMoves } : Props = $props()
+
+  const delay = 1000
 
   let completedLevels: CompletedLevel[] = $state([])
 
@@ -21,10 +24,12 @@
 
   onMount(async() => {
     completedLevels = await getCompletedLevels()
+
+    setTimeout(() => playAudio("/audio/success.mp3"), delay + 50)
   })
 </script>
 
-<div class="screen" in:fade={{ duration: 200, delay: 1000 }}>
+<div class="screen" in:fade={{ duration: 200, delay }}>
   <div class="dialog" role="dialog" in:scale={conditionalAnimation({ duration: 200, delay: 1100, start: 0.5 })}>
     <h1
       class:small={t("Level Complete").split(" ").some(word => word.length > 8)}

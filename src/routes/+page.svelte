@@ -4,6 +4,7 @@
 	import { onMount } from "svelte"
 	import { fade, scale } from "svelte/transition"
 	import { haptics } from "./actions/haptics.svelte"
+	import { tap } from "./actions/tap.svelte"
 
   let showContent = $state(false)
 
@@ -17,8 +18,8 @@
     <h1 in:fade={conditionalAnimation({ duration: 500, delay: 500 })}>Gridsome</h1>
 
     <nav>
-      <a use:haptics href="/levels" in:scale={conditionalAnimation({ duration: 200, delay: 700, start: 0.85 })}>{t("Play")}</a>
-      <a use:haptics href="/settings" in:scale={conditionalAnimation({ duration: 200, delay: 900, start: 0.85 })}>{t("Settings")}</a>
+      <a use:haptics use:tap href="/levels" in:scale={conditionalAnimation({ duration: 200, delay: 700, start: 0.85 })}>{t("Play")}</a>
+      <a use:haptics use:tap href="/settings" in:scale={conditionalAnimation({ duration: 200, delay: 900, start: 0.85 })}>{t("Settings")}</a>
     </nav>
   {/if}
 

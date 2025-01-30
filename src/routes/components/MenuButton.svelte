@@ -3,9 +3,10 @@
 	import { conditionalAnimation } from "$lib/settings"
   import { fade } from "svelte/transition"
 	import { haptics } from "../actions/haptics.svelte"
+	import { tap } from "../actions/tap.svelte"
 </script>
 
-<a use:haptics href="/" aria-label={t("Return To Main Menu")} in:fade|global={conditionalAnimation({ duration: 300, delay: 200 })}>
+<a use:haptics use:tap href="/" aria-label={t("Return To Main Menu")} in:fade|global={conditionalAnimation({ duration: 300, delay: 200 })}>
   <div class="line"></div>
   <div class="line"></div>
   <div class="line"></div>

@@ -8,6 +8,8 @@
 	import { t } from "$lib/language"
 	import BackButton from "../components/BackButton.svelte"
 	import Stars from "../components/Stars.svelte"
+	import { haptics } from "../actions/haptics.svelte"
+	import { tap } from "../actions/tap.svelte"
 
   const selectGridSizeKey = "last-selected-grid-size"
 
@@ -38,6 +40,8 @@
         class="tile option"
         class:active={option === selectedGridSize}
         onclick={(): void => { selectGridSize(option) }}
+        use:haptics
+        use:tap={{ src: "/audio/tap-sharp.mp3" }}
         in:scale|global={conditionalAnimation({ duration: 200, delay: 150 + i * 50, start: 0.85 })}>
 
         <div class="grid" style:--grid-size={option}>
@@ -61,6 +65,8 @@
         class="tile"
         class:completed
         href="/levels/{id}"
+        use:haptics
+        use:tap
         in:scale|global={conditionalAnimation({ duration: 200, delay: 150 + i * 50, start: 0.85 })}>
         {i + 1}
 
