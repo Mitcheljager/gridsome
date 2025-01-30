@@ -9,6 +9,7 @@
 	import Stars from "./Stars.svelte"
 	import { haptics } from "../actions/haptics.svelte"
 	import { playAudio } from "$lib/audio"
+	import { tap } from "../actions/tap.svelte"
 
   interface Props { currentLevelId: string, currentMoves: number }
 
@@ -55,11 +56,11 @@
 
     <nav in:fade={conditionalAnimation({ duration: 500, delay: 1600 })}>
       {#if nextLevelId}
-        <a use:haptics href="/levels/{nextLevelId}">{t("Next Level")}</a>
+        <a use:haptics use:tap href="/levels/{nextLevelId}">{t("Next Level")}</a>
       {/if}
 
-      <a use:haptics href="/levels">{t("Level Select")}</a>
-      <a use:haptics href="/">{t("Main Menu")}</a>
+      <a use:haptics use:tap href="/levels">{t("Level Select")}</a>
+      <a use:haptics use:tap href="/">{t("Main Menu")}</a>
     </nav>
   </div>
 </div>
