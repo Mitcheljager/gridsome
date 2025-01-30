@@ -2,9 +2,10 @@
 	import { t } from "$lib/language"
 	import { conditionalAnimation } from "$lib/settings"
   import { fly } from "svelte/transition"
+	import { haptics } from "../actions/haptics.svelte"
 </script>
 
-<a href="/" aria-label={t("Return To Main Menu")} in:fly={conditionalAnimation({ x: 20, duration: 300 })}>
+<a use:haptics href="/" aria-label={t("Return To Main Menu")} in:fly={conditionalAnimation({ x: 20, duration: 300 })}>
   <div class="line top"></div>
   <div class="line bottom"></div>
 </a>

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { isUsingReduceAnimations } from "$lib/settings"
 	import { onMount } from "svelte"
+	import { haptics } from "../actions/haptics.svelte"
 
   interface Props { label: string, column?: number, row?: number, sign: "+" | "-", onclick(): void }
 
@@ -28,7 +29,8 @@
   style:--column={column}
   style:--row={row}
   style:--animation-delay="{Math.random() * 500}ms"
-  class:no-animations={reduceAnimations}>
+  class:no-animations={reduceAnimations}
+  use:haptics>
   {sign}
 </button>
 
