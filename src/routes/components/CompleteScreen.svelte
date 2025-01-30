@@ -133,12 +133,12 @@
 
   .stars {
     --star-active-color: white;
-    --star-label-color: rgba(255, 255, 255, 0.75);
+    --star-label-color: rgba(255, 255, 255, 0.65);
     --star-label-active-color: black;
     --star-color: rgba(0, 0, 0, 0.35);
     --star-size: clamp(5rem, 20vw, 8rem);
     --star-label-size: clamp(2.5rem, 10vw, 4rem);
-    --star-label-mix-blend-mode: initial;
+    --star-label-mix-blend-mode: normal;
     --star-label-active-text-shadow: none;
     margin-top: 1rem;
   }
