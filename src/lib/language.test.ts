@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it } from "vitest"
 
 import { defaultLanguage, language, setLanguage, t } from "./language"
 
-describe("game.ts", () => {
+describe("language.ts", () => {
   beforeEach(() => {
     setLanguage(defaultLanguage)
   })
