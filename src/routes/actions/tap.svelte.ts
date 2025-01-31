@@ -8,10 +8,13 @@ export function tap(node: Node, { src }: { src: string } = { src: "/audio/tap-du
   }
 
   $effect(() => {
-    node.addEventListener("touchstart", play)
+    const isTouch = window.matchMedia("(pointer: coarse)").matches
+    const eventName = isTouch ? "touchstart" : "mousedown"
+
+    node.addEventListener(eventName, play)
 
     return (): void => {
-      node.removeEventListener("touchstart", play)
+      node.removeEventListener(eventName, play)
     }
   })
 }
