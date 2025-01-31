@@ -4,84 +4,84 @@ export const levels = [{
   start: [1, 1, 1, 1],
   goal: [1, 1, 2, 2],
   maxCellValue: 2,
-  stars: [4, 2, 1]
+  stars: [6, 3, 1]
 }, {
   id: "guag3",
   gridSize: 2,
   start: [1, 2, 2, 1],
   goal: [2, 1, 1, 2],
   maxCellValue: 2,
-  stars: [5, 3, 2]
+  stars: [10, 5, 2]
 }, {
   id: "okzm15",
   gridSize: 2,
   start: [1, 2, 2, 1],
   goal: [3, 1, 1, 3],
   maxCellValue: 3,
-  stars: [5, 3, 2]
+  stars: [10, 5, 2]
 }, {
   id: "187bb",
   gridSize: 2,
   start: [1, 2, 1, 2],
   goal: [3, 3, 3, 1],
   maxCellValue: 3,
-  stars: [7, 5, 3]
+  stars: [12, 6, 3]
 }, {
   id: "l9076",
   gridSize: 2,
   start: [3, 2, 2, 3],
   goal: [3, 2, 2, 2],
   maxCellValue: 3,
-  stars: [7, 5, 3]
+  stars: [15, 8, 3]
 }, {
   id: "l9x98",
   gridSize: 2,
   start: [4, 3, 2, 1],
   goal: [1, 2, 3, 4],
   maxCellValue: 4,
-  stars: [6, 4, 2]
+  stars: [10, 6, 2]
 }, {
   id: "ioja1",
   gridSize: 2,
   start: [4, 2, 2, 4],
   goal: [3, 2, 3, 2],
   maxCellValue: 4,
-  stars: [9, 6, 3]
+  stars: [14, 8, 3]
 }, {
   id: "hngy2",
   gridSize: 2,
   start: [4, 2, 2, 4],
   goal: [3, 4, 3, 2],
   maxCellValue: 4,
-  stars: [10, 7, 4]
+  stars: [15, 10, 4]
 }, {
   id: "iasd6",
   gridSize: 2,
   start: [2, 2, 2, 2],
   goal: [1, 5, 5, 1],
   maxCellValue: 5,
-  stars: [9, 6, 3]
+  stars: [15, 9, 3]
 }, {
   id: "09mas",
   gridSize: 2,
   start: [1, 2, 2, 3],
   goal: [5, 3, 3, 5],
   maxCellValue: 5,
-  stars: [8, 6, 4]
+  stars: [12, 8, 4]
 }, {
   id: "873t4",
   gridSize: 2,
   start: [2, 3, 2, 5],
   goal: [5, 4, 3, 2],
   maxCellValue: 5,
-  stars: [10, 8, 5]
+  stars: [15, 10, 5]
 }, {
   id: "gojkd",
   gridSize: 2,
   start: [1, 2, 3, 4],
   goal: [6, 6, 6, 6],
   maxCellValue: 6,
-  stars: [12, 8, 5]
+  stars: [15, 10, 5]
 }, {
   id: "g91al",
   gridSize: 2,
@@ -102,21 +102,21 @@ export const levels = [{
   start: [6, 3, 6, 6],
   goal: [2, 6, 3, 4],
   maxCellValue: 6,
-  stars: [14, 10, 6]
+  stars: [18, 12, 6]
 }, {
   id: "0ls53",
   gridSize: 2,
   start: [2, 4, 6, 8],
   goal: [1, 1, 1, 1],
   maxCellValue: 8,
-  stars: [16, 12, 6]
+  stars: [18, 12, 6]
 }, {
   id: "289gf",
   gridSize: 2,
   start: [1, 3, 5, 7],
   goal: [5, 5, 5, 5],
   maxCellValue: 8,
-  stars: [16, 12, 6]
+  stars: [18, 12, 6]
 }, {
   id: "izjxc",
   gridSize: 2,
@@ -130,7 +130,7 @@ export const levels = [{
   start: [2, 8, 9, 1],
   goal: [2, 9, 5, 3],
   maxCellValue: 9,
-  stars: [16, 12, 6]
+  stars: [18, 12, 6]
 }, {
   id: "byq74",
   gridSize: 2,
@@ -214,7 +214,7 @@ export const levels = [{
   start: [1, 1, 1, 1, 1, 1, 1, 1, 1],
   goal:  [1, 2, 2, 1, 1, 1, 2, 2, 1],
   maxCellValue: 2,
-  stars: [10, 6, 2]
+  stars: [16, 8, 2]
 }, {
   id: "y12ah",
   gridSize: 3,
@@ -228,7 +228,7 @@ export const levels = [{
   start: [1, 1, 1, 1, 1, 1, 1, 1, 1],
   goal:  [2, 1, 1, 2, 2, 2, 1, 1, 2],
   maxCellValue: 2,
-  stars: [9, 6, 3]
+  stars: [13, 8, 3]
 }, {
   id: "a7ona",
   gridSize: 3,
@@ -242,28 +242,28 @@ export const levels = [{
   start: [1, 3, 1, 2, 1, 2, 1, 3, 1],
   goal:  [3, 3, 3, 3, 3, 3, 3, 3, 3],
   maxCellValue: 3,
-  stars: [10, 6, 3]
+  stars: [13, 8, 3]
 }, {
   id: "b7177",
   gridSize: 3,
   start: [2, 1, 1, 3, 1, 3, 1, 1, 2],
   goal:  [3, 2, 1, 3, 2, 1, 3, 2, 1],
   maxCellValue: 3,
-  stars: [12, 8, 4]
+  stars: [15, 10, 4]
 }, {
   id: "loaio",
   gridSize: 3,
   start: [2, 2, 3, 3, 1, 3, 3, 2, 2],
   goal:  [1, 1, 1, 1, 1, 1, 1, 1, 1],
   maxCellValue: 3,
-  stars: [8, 6, 4]
+  stars: [12, 8, 4]
 }, {
   id: "ze981",
   gridSize: 3,
   start: [3, 3, 3, 3, 3, 3, 3, 3, 3],
   goal:  [2, 1, 2, 1, 3, 1, 2, 1, 2],
   maxCellValue: 3,
-  stars: [10, 8, 4]
+  stars: [12, 8, 4]
 }, {
   id: "18gnh",
   gridSize: 3,
