@@ -5,7 +5,7 @@
   interface Props { cell: number, active?: boolean, maxCellValue?: number, animate?: boolean }
 
   const { cell, active = false, maxCellValue = 0, animate = false } : Props = $props()
-  const transitionDuration = 50
+  const transitionDuration = 100
   const changedBorderDuration = 300
 
   let isTransitioning = $state(false)
