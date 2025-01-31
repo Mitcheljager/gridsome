@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it } from "vitest"
 
-import { getStore, alternativeFontKey, isUsingAlternativeFont, isUsingReduceAnimations, setAlternativeFont, conditionalAnimation, reduceAnimationsKey, setStore, setReduceAnimations, highContrastKey, setHighContrast } from "./settings"
+import { getStore, alternativeFontKey, isUsingAlternativeFont, isUsingReduceAnimations, setAlternativeFont, conditionalAnimation, reduceAnimationsKey, setStore, setReduceAnimations, highContrastKey, setHighContrast, isUsingDisableAudio, isUsingDisableHaptics, disableAudioKey, disableHapticsKey } from "./settings"
 
 describe("settings.ts", () => {
   beforeEach(() => {
@@ -67,6 +67,50 @@ describe("settings.ts", () => {
 
       setStore(reduceAnimationsKey, "test")
       expect(await isUsingReduceAnimations()).toBe(false)
+    })
+  })
+
+  describe("isUsingDisableAudio", () => {
+    it("Should return false if no value is stored", async() => {
+      expect(await isUsingDisableAudio()).toBe(false)
+    })
+
+    it("Should true if stored value is true", async() => {
+      setStore(disableAudioKey, "true")
+      expect(await isUsingDisableAudio()).toBe(true)
+    })
+
+    it("Should false if stored value is a value other than true", async() => {
+      setStore(disableAudioKey, "")
+      expect(await isUsingDisableAudio()).toBe(false)
+
+      setStore(disableAudioKey, "false")
+      expect(await isUsingDisableAudio()).toBe(false)
+
+      setStore(disableAudioKey, "test")
+      expect(await isUsingDisableAudio()).toBe(false)
+    })
+  })
+
+  describe("isUsingDisableHaptics", () => {
+    it("Should return false if no value is stored", async() => {
+      expect(await isUsingDisableHaptics()).toBe(false)
+    })
+
+    it("Should true if stored value is true", async() => {
+      setStore(disableHapticsKey, "true")
+      expect(await isUsingDisableHaptics()).toBe(true)
+    })
+
+    it("Should false if stored value is a value other than true", async() => {
+      setStore(disableHapticsKey, "")
+      expect(await isUsingDisableHaptics()).toBe(false)
+
+      setStore(disableHapticsKey, "false")
+      expect(await isUsingDisableHaptics()).toBe(false)
+
+      setStore(disableHapticsKey, "test")
+      expect(await isUsingDisableHaptics()).toBe(false)
     })
   })
 

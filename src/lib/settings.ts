@@ -3,6 +3,8 @@ import { Preferences } from "@capacitor/preferences"
 export const alternativeFontKey = "use-alternative-font"
 export const reduceAnimationsKey = "use-reduced-animations"
 export const highContrastKey = "use-high-contrast"
+export const disableAudioKey = "disable-audio"
+export const disableHapticsKey = "disable-haptics"
 
 export async function setStore(key: string, value: string): Promise<void> {
   Preferences.set({ key, value })
@@ -23,6 +25,14 @@ export async function isUsingReduceAnimations(): Promise<boolean> {
 
 export async function isUsingHighContrast(): Promise<boolean> {
   return await getStore(highContrastKey) === "true"
+}
+
+export async function isUsingDisableAudio(): Promise<boolean> {
+  return await getStore(disableAudioKey) === "true"
+}
+
+export async function isUsingDisableHaptics(): Promise<boolean> {
+  return await getStore(disableHapticsKey) === "true"
 }
 
 export async function setAlternativeFont(): Promise<void> {

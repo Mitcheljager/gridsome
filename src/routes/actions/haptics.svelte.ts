@@ -1,7 +1,9 @@
+import { isUsingDisableHaptics } from "$lib/settings"
 import { Haptics, ImpactStyle } from "@capacitor/haptics"
 
 export function haptics(node: Node, { style = ImpactStyle.Light }: { style: ImpactStyle.Light | ImpactStyle.Heavy } = { style: ImpactStyle.Light }): void {
   async function impact(): Promise<void> {
+    if (await isUsingDisableHaptics()) return
     if (!navigator.vibrate) return
 
     return await Haptics.impact({ style })

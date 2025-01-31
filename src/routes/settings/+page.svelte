@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from "svelte"
 	import { fly, scale } from "svelte/transition"
-	import { alternativeFontKey, conditionalAnimation, highContrastKey, isUsingAlternativeFont, isUsingHighContrast, isUsingReduceAnimations, reduceAnimationsKey, setAlternativeFont, setHighContrast, setReduceAnimations, setStore } from "$lib/settings"
+	import { alternativeFontKey, conditionalAnimation, disableAudioKey, disableHapticsKey, highContrastKey, isUsingAlternativeFont, isUsingDisableAudio, isUsingDisableHaptics, isUsingHighContrast, isUsingReduceAnimations, reduceAnimationsKey, setAlternativeFont, setHighContrast, setReduceAnimations, setStore } from "$lib/settings"
 	import { t } from "$lib/language"
 	import BackButton from "../components/BackButton.svelte"
 	import { haptics } from "../actions/haptics.svelte"
@@ -10,11 +10,15 @@
   let useAlternativeFont = $state(false)
   let useReduceAnimations = $state(false)
   let useHighContrast = $state(false)
+  let useDisableAudio = $state(false)
+  let useDisableHaptics = $state(false)
 
   onMount(async() => {
     useAlternativeFont = await isUsingAlternativeFont()
     useReduceAnimations = await isUsingReduceAnimations()
     useHighContrast = await isUsingHighContrast()
+    useDisableAudio = await isUsingDisableAudio()
+    useDisableHaptics = await isUsingDisableHaptics()
   })
 
   async function toggleAlternativeFont(): Promise<void> {
@@ -31,6 +35,14 @@
     await setStore(highContrastKey, useHighContrast.toString())
     setHighContrast()
   }
+
+  async function toggleDisableAudio(): Promise<void> {
+    await setStore(disableAudioKey, useDisableAudio.toString())
+  }
+
+  async function toggleDisableHaptics(): Promise<void> {
+    await setStore(disableHapticsKey, useDisableHaptics.toString())
+  }
 </script>
 
 <div class="layout">
@@ -41,6 +53,16 @@
     in:fly={conditionalAnimation({ y: -(Math.min(window.innerWidth / 20, 40)), duration: 300 })}>
     {t("Settings")}
   </h1>
+
+  <div use:haptics use:tap={{ src: "/audio/tap-sharp.mp3" }} class="checkbox" in:scale={conditionalAnimation({ duration: 100, delay: 500, start: 0.9 })}>
+    <input type="checkbox" bind:checked={useDisableAudio} onchange={toggleDisableAudio} id="disable-audio" />
+    <label for="disable-audio">{t("Disable Audio")}</label>
+  </div>
+
+  <div use:haptics use:tap={{ src: "/audio/tap-sharp.mp3" }} class="checkbox" in:scale={conditionalAnimation({ duration: 100, delay: 500, start: 0.9 })}>
+    <input type="checkbox" bind:checked={useDisableHaptics} onchange={toggleDisableHaptics} id="disable-haptics" />
+    <label for="disable-haptics">{t("Disable Haptics")}</label>
+  </div>
 
   <div use:haptics use:tap={{ src: "/audio/tap-sharp.mp3" }} class="checkbox" in:scale={conditionalAnimation({ duration: 100, delay: 200, start: 0.9 })}>
     <input type="checkbox" bind:checked={useAlternativeFont} onchange={toggleAlternativeFont} id="alternative-font" />
