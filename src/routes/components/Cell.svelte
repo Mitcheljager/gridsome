@@ -101,11 +101,6 @@
     background: white;
   }
 
-  .changing:before {
-    transition: background-color 200ms, border 50ms;
-    border-color: white;
-  }
-
   :global(.high-contrast) .changing::before {
     border-color: #555;
   }
@@ -121,5 +116,10 @@
 
   :global(.high-contrast) .active::before {
     background: var(--success);
+  }
+
+  .changing:before {
+    transition: background-color 200ms, border 50ms;
+    border-color: white;
   }
 </style>
