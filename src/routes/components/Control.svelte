@@ -67,6 +67,7 @@
     left: calc(var(--cell-width) * var(--column, 0));
     width: var(--cell-width);
     height: var(--cell-width);
+    padding: 0;
     border: 0;
     background: transparent;
     color: transparent;
