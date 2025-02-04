@@ -38,7 +38,7 @@
   ontouchend={up}
   style:--column={column}
   style:--row={row}
-  style:--animation-delay="{Math.random() * 500}ms"
+  style:--animation-delay="{Math.round(Math.random() * 500)}ms"
   class:is-down={isDown}
   class:no-animations={reduceAnimations}
   use:tap
