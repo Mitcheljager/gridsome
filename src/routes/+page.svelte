@@ -70,7 +70,7 @@
     flex-direction: column;
     justify-content: center;
     position: relative;
-    height: 100vh;
+    height: var(--dvh, 100vh);
     width: 100vw;
     overflow: hidden;
   }
