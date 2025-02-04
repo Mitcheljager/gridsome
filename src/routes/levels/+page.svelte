@@ -131,7 +131,12 @@
     color: black;
   }
 
-  .tile:hover,
+  @media (hover: hover) {
+    .tile:hover {
+      outline: 2px solid white;
+    }
+  }
+
   .tile:active {
     outline: 2px solid white;
   }
