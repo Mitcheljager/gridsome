@@ -18,6 +18,7 @@
   const delay = 1000
 
   let completedLevels: CompletedLevel[] = $state([])
+  let interactable = $state(false)
 
   const currentLevelIndex = levels.findIndex(l => l.id === currentLevelId)
   const nextLevelId = currentLevelIndex === -1 ? null : (levels[currentLevelIndex + 1]?.id || null)
@@ -26,12 +27,15 @@
   onMount(async() => {
     completedLevels = await getCompletedLevels()
 
-    setTimeout(() => playAudio("/audio/success.mp3", 0.75), delay + 50)
+    setTimeout(() => {
+      interactable = true
+      playAudio("/audio/success.mp3", 0.75)
+    }, delay + 50)
   })
 </script>
 
 <div class="screen" in:fade={{ duration: 200, delay }}>
-  <div class="dialog" role="dialog" in:scale={conditionalAnimation({ duration: 200, delay: 1100, start: 0.5 })}>
+  <div class="dialog" class:interactable role="dialog" in:scale={conditionalAnimation({ duration: 200, delay: 1100, start: 0.5 })}>
     <h1
       class:small={t("Level Complete").split(" ").some(word => word.length > 8)}
       in:scale={conditionalAnimation({ start: 0.8, duration: 200, delay: 1200 })}>
@@ -129,6 +133,11 @@
     background: var(--success);
     color: black;
     text-align: center;
+    pointer-events: none;
+  }
+
+  .dialog.interactable {
+    pointer-events: initial;
   }
 
   .moves {
