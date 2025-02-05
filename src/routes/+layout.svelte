@@ -12,7 +12,7 @@
 
   onMount(async() => {
     setViewHeight()
-    
+
     setAlternativeFont()
     setReduceAnimations()
     setHighContrast()
@@ -62,7 +62,6 @@
   main {
     height: var(--dvh, 100vh);
     margin: 0 auto;
-    padding-top: env(safe-area-inset-top);
     overflow-y: auto;
     overflow-x: hidden;
   }
