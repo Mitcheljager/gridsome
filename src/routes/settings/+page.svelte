@@ -96,7 +96,7 @@
     position: relative;
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: env(safe-area-inset-top, 0px) 1rem;
+    padding: var(--env-safe-area-inset-top, env(safe-area-inset-top, 0px)) 1rem;
   }
 
   .checkbox {

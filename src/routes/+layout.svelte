@@ -23,6 +23,9 @@
     }
 
     try {
+      const { SafeArea } = await import("capacitor-plugin-safe-area")
+      SafeArea.getSafeAreaInsets().then(({ insets }) => document.body.style.setProperty("--env-safe-area-inset-top", insets.top + "px"))
+
       const { AndroidFullScreen } = await import("@awesome-cordova-plugins/android-full-screen")
       AndroidFullScreen.isImmersiveModeSupported().then(() => AndroidFullScreen.immersiveMode())
 

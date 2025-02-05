@@ -19,7 +19,7 @@
     gap: 0.25rem;
     position: absolute;
     padding: 1rem;
-    top: env(safe-area-inset-top, 0px);
+    top: var(--env-safe-area-inset-top, env(safe-area-inset-top, 0px));
     right: 0;
     width: clamp(4rem, 15vw, 5rem);
     height: clamp(4rem, 15vw, 5rem);

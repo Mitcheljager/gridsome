@@ -18,7 +18,7 @@
     gap: 0.25rem;
     position: absolute;
     padding: 1rem;
-    top: env(safe-area-inset-top, 0px);
+    top: var(--env-safe-area-inset-top, env(safe-area-inset-top, 0px));
     left: -0.5rem;
     width: 4rem;
     height: 4rem;

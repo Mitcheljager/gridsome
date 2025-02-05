@@ -31,7 +31,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: env(safe-area-inset-top, 0px);
+    padding-top:  var(--env-safe-area-inset-top, env(safe-area-inset-top, 0px));
     line-height: 1.5;
   }
 
