@@ -8,7 +8,6 @@
   const { children } = $props()
 
   let loading = $state(true)
-  let dvh = $state(window.innerHeight)
 
   onMount(async() => {
     setViewHeight()
