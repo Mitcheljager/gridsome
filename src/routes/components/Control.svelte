@@ -1,32 +1,32 @@
 <script lang="ts">
-	import { isUsingReduceAnimations } from "$lib/settings"
-	import { onMount } from "svelte"
-	import { haptics } from "../actions/haptics.svelte"
-	import { tap } from "../actions/tap.svelte"
+	import { isUsingReduceAnimations } from "$lib/settings";
+	import { onMount } from "svelte";
+	import { haptics } from "../actions/haptics.svelte";
+	import { tap } from "../actions/tap.svelte";
 
   interface Props { label: string, column?: number, row?: number, sign: "+" | "-", onclick(): void }
 
-  const { label, column = 0, row = 0, sign, onclick } : Props = $props()
+  const { label, column = 0, row = 0, sign, onclick } : Props = $props();
 
-  let reduceAnimations = $state(false)
-  let isDown = $state(false)
-  let isTouchEvent = false
+  let reduceAnimations = $state(false);
+  let isDown = $state(false);
+  let isTouchEvent = false;
 
   onMount(async() => {
-    reduceAnimations = await isUsingReduceAnimations()
-  })
+    reduceAnimations = await isUsingReduceAnimations();
+  });
 
   function click(event: TouchEvent | MouseEvent): void {
-    if (isTouchEvent && event.type === "mousedown") return
-    isTouchEvent = event.type === "touchstart"
+    if (isTouchEvent && event.type === "mousedown") return;
+    isTouchEvent = event.type === "touchstart";
 
-    isDown = true
+    isDown = true;
 
-    onclick()
+    onclick();
   }
 
   function up(): void {
-    isDown = false
+    isDown = false;
   }
 </script>
 

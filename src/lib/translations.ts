@@ -846,4 +846,4 @@ export const translations: Record<string, Record<string, string>> = {
     he: "הסר מהאלכסון המשני",
     zh: "从副对角线中减去"
   }
-}
+};

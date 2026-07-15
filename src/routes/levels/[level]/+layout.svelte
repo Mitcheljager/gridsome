@@ -1,7 +1,7 @@
 <script>
-	import { page } from "$app/state"
+	import { page } from "$app/state";
 
-  const { children } = $props()
+  const { children } = $props();
 </script>
 
 {#key page.params.level}

@@ -1,9 +1,9 @@
 <script>
-	import { t } from "$lib/language"
-	import { conditionalAnimation } from "$lib/settings"
-  import { fly } from "svelte/transition"
-	import { haptics } from "../actions/haptics.svelte"
-	import { tap } from "../actions/tap.svelte"
+	import { t } from "$lib/language";
+	import { conditionalAnimation } from "$lib/settings";
+  import { fly } from "svelte/transition";
+	import { haptics } from "../actions/haptics.svelte";
+	import { tap } from "../actions/tap.svelte";
 </script>
 
 <a use:haptics use:tap href="/" aria-label={t("Return To Main Menu")} in:fly={conditionalAnimation({ x: 20, duration: 300 })}>

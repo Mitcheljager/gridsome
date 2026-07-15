@@ -1,25 +1,25 @@
 <script lang="ts">
-	import { t } from "$lib/language"
-	import { conditionalAnimation, isUsingReduceAnimations } from "$lib/settings"
-	import { fade } from "svelte/transition"
-	import { tap } from "../actions/tap.svelte"
-	import { haptics } from "../actions/haptics.svelte"
+	import { t } from "$lib/language";
+	import { conditionalAnimation, isUsingReduceAnimations } from "$lib/settings";
+	import { fade } from "svelte/transition";
+	import { tap } from "../actions/tap.svelte";
+	import { haptics } from "../actions/haptics.svelte";
 
   interface Props { onclick(): void }
 
-  const { onclick } : Props = $props()
+  const { onclick } : Props = $props();
 
-  let animate = $state(false)
+  let animate = $state(false);
 
   async function refresh(): Promise<void> {
-    if (animate) return
+    if (animate) return;
 
-    onclick()
+    onclick();
 
-    if (await isUsingReduceAnimations()) return
+    if (await isUsingReduceAnimations()) return;
 
-    animate = true
-    setTimeout(() => animate = false, 750)
+    animate = true;
+    setTimeout(() => animate = false, 750);
   }
 </script>
 

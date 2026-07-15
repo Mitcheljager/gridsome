@@ -1,6 +1,6 @@
-import { defaultLanguage, setLanguage } from "$lib/language"
-import { cleanup } from "@testing-library/svelte"
-import { afterEach, beforeAll, vi } from "vitest"
+import { defaultLanguage, setLanguage } from "$lib/language";
+import { cleanup } from "@testing-library/svelte";
+import { afterEach, beforeAll, vi } from "vitest";
 
 beforeAll(() => {
   global.AudioContext = vi.fn().mockImplementation(() => ({
@@ -20,41 +20,41 @@ beforeAll(() => {
       connect: vi.fn()
     })),
     decodeAudioData: vi.fn().mockImplementation((buffer, successCallback = vi.fn()) => {
-      successCallback(buffer)
+      successCallback(buffer);
     }),
     destination: {}
-  }))
+  }));
 
   // @ts-expect-error It's just a mock
   global.fetch = vi.fn(async() => ({
     // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
     arrayBuffer: async() => new ArrayBuffer(8)
-  }))
+  }));
 
   Element.prototype.animate ??= vi.fn().mockReturnValue({
     finished: Promise.resolve(),
     cancel: vi.fn(),
     startTime: null,
     currentTime: null
-  })
+  });
 
   let store: Record<string, string> = {}
 
   ;(window as any).localStorage = {
     getItem: (key: string): string => store[key] ?? null,
     setItem: (key: string, value: string): void => {
-      store[key] = value.toString()
+      store[key] = value.toString();
     },
     removeItem: (key: string): void => {
-      delete store[key]
+      delete store[key];
     },
     clear: (): void => {
-      store = {}
+      store = {};
     }
-  }
-})
+  };
+});
 
 afterEach(() => {
-  cleanup()
-  setLanguage(defaultLanguage)
-})
+  cleanup();
+  setLanguage(defaultLanguage);
+});

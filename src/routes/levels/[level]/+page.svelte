@@ -1,64 +1,64 @@
 <script lang="ts">
-	import { onDestroy, onMount } from "svelte"
-	import { page } from "$app/state"
-	import { completeLevel, getCompletedLevels } from "$lib/game"
-	import { browser, getLevelColor } from "$lib/utils"
-	import { levels } from "$lib/levels"
-	import { t } from "$lib/language"
-	import type { CompletedLevel, Level } from "../../../types"
-	import Controls from "../../components/Controls.svelte"
-	import Grid from "../../components/Grid.svelte"
-	import Matcher from "../../components/Matcher.svelte"
-	import MenuButton from "../../components/MenuButton.svelte"
-	import CompleteScreen from "../../components/CompleteScreen.svelte"
-	import RefreshButton from "../../components/RefreshButton.svelte"
-	import Stars from "../../components/Stars.svelte"
+	import { onDestroy, onMount } from "svelte";
+	import { page } from "$app/state";
+	import { completeLevel, getCompletedLevels } from "$lib/game";
+	import { browser, getLevelColor } from "$lib/utils";
+	import { levels } from "$lib/levels";
+	import { t } from "$lib/language";
+	import type { CompletedLevel, Level } from "../../../types";
+	import Controls from "../../components/Controls.svelte";
+	import Grid from "../../components/Grid.svelte";
+	import Matcher from "../../components/Matcher.svelte";
+	import MenuButton from "../../components/MenuButton.svelte";
+	import CompleteScreen from "../../components/CompleteScreen.svelte";
+	import RefreshButton from "../../components/RefreshButton.svelte";
+	import Stars from "../../components/Stars.svelte";
 	// import { solver } from "$lib/solver"
 
-  const { level } = page.params
-  const { start, gridSize, maxCellValue, goal } = $derived(levels.find((l: Level) => l.id === level)!)
+  const { level } = page.params;
+  const { start, gridSize, maxCellValue, goal } = $derived(levels.find((l: Level) => l.id === level)!);
 
   // svelte-ignore state_referenced_locally
-  let cells: number[] = $state(start)
-  let clientWidth = $state(0)
-  let moves = $state(0)
-  let completedLevels: CompletedLevel[] = $state([])
-  let completed = $state(false)
+  let cells: number[] = $state(start);
+  let clientWidth = $state(0);
+  let moves = $state(0);
+  let completedLevels: CompletedLevel[] = $state([]);
+  let completed = $state(false);
 
-  const hasPreviousCompletedLevel = $derived(completedLevels.find(l => l.id === level))
+  const hasPreviousCompletedLevel = $derived(completedLevels.find(l => l.id === level));
 
   onMount(async() => {
-    document.body.style.setProperty("--level-bg", getLevelColor(level))
-    document.body.style.setProperty("--level-bg-light", getLevelColor(level, 1.35))
+    document.body.style.setProperty("--level-bg", getLevelColor(level));
+    document.body.style.setProperty("--level-bg-light", getLevelColor(level, 1.35));
 
-    completedLevels = await getCompletedLevels()
+    completedLevels = await getCompletedLevels();
 
     // console.log("Solving...")
     // await new Promise(res => setTimeout(res))
     // const solve = solver(gridSize, maxCellValue, start, goal)
     // console.log(solve)
-  })
+  });
 
   onDestroy(() => {
-    if (!browser) return
+    if (!browser) return;
 
-    document.body.style.removeProperty("--level-bg")
-    document.body.style.removeProperty("--level-bg-light")
-  })
+    document.body.style.removeProperty("--level-bg");
+    document.body.style.removeProperty("--level-bg-light");
+  });
 
   async function complete(): Promise<void> {
-    await completeLevel(level, moves)
-    completed = true
+    await completeLevel(level, moves);
+    completed = true;
   }
 
   function reset(): void {
-    cells = start
-    moves = 0
+    cells = start;
+    moves = 0;
   }
 
   function change(value: number[]): void {
-    cells = value
-    moves++
+    cells = value;
+    moves++;
   }
 </script>
 

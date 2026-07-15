@@ -1,47 +1,47 @@
 <script lang="ts">
-	import { onMount } from "svelte"
-	import { fly, scale } from "svelte/transition"
-	import { alternativeFontKey, conditionalAnimation, disableAudioKey, disableHapticsKey, highContrastKey, isUsingAlternativeFont, isUsingDisableAudio, isUsingDisableHaptics, isUsingHighContrast, isUsingReduceAnimations, reduceAnimationsKey, setAlternativeFont, setHighContrast, setReduceAnimations, setStore } from "$lib/settings"
-	import { t } from "$lib/language"
-	import BackButton from "../components/BackButton.svelte"
-	import { haptics } from "../actions/haptics.svelte"
-	import { tap } from "../actions/tap.svelte"
+	import { onMount } from "svelte";
+	import { fly, scale } from "svelte/transition";
+	import { alternativeFontKey, conditionalAnimation, disableAudioKey, disableHapticsKey, highContrastKey, isUsingAlternativeFont, isUsingDisableAudio, isUsingDisableHaptics, isUsingHighContrast, isUsingReduceAnimations, reduceAnimationsKey, setAlternativeFont, setHighContrast, setReduceAnimations, setStore } from "$lib/settings";
+	import { t } from "$lib/language";
+	import BackButton from "../components/BackButton.svelte";
+	import { haptics } from "../actions/haptics.svelte";
+	import { tap } from "../actions/tap.svelte";
 
-  let useAlternativeFont = $state(false)
-  let useReduceAnimations = $state(false)
-  let useHighContrast = $state(false)
-  let useDisableAudio = $state(false)
-  let useDisableHaptics = $state(false)
+  let useAlternativeFont = $state(false);
+  let useReduceAnimations = $state(false);
+  let useHighContrast = $state(false);
+  let useDisableAudio = $state(false);
+  let useDisableHaptics = $state(false);
 
   onMount(async() => {
-    useAlternativeFont = await isUsingAlternativeFont()
-    useReduceAnimations = await isUsingReduceAnimations()
-    useHighContrast = await isUsingHighContrast()
-    useDisableAudio = await isUsingDisableAudio()
-    useDisableHaptics = await isUsingDisableHaptics()
-  })
+    useAlternativeFont = await isUsingAlternativeFont();
+    useReduceAnimations = await isUsingReduceAnimations();
+    useHighContrast = await isUsingHighContrast();
+    useDisableAudio = await isUsingDisableAudio();
+    useDisableHaptics = await isUsingDisableHaptics();
+  });
 
   async function toggleAlternativeFont(): Promise<void> {
-    await setStore(alternativeFontKey, useAlternativeFont.toString())
-    setAlternativeFont()
+    await setStore(alternativeFontKey, useAlternativeFont.toString());
+    setAlternativeFont();
   }
 
   async function toggleReduceAnimations(): Promise<void> {
-    await setStore(reduceAnimationsKey, useReduceAnimations.toString())
-    setReduceAnimations()
+    await setStore(reduceAnimationsKey, useReduceAnimations.toString());
+    setReduceAnimations();
   }
 
   async function toggleHighContrast(): Promise<void> {
-    await setStore(highContrastKey, useHighContrast.toString())
-    setHighContrast()
+    await setStore(highContrastKey, useHighContrast.toString());
+    setHighContrast();
   }
 
   async function toggleDisableAudio(): Promise<void> {
-    await setStore(disableAudioKey, useDisableAudio.toString())
+    await setStore(disableAudioKey, useDisableAudio.toString());
   }
 
   async function toggleDisableHaptics(): Promise<void> {
-    await setStore(disableHapticsKey, useDisableHaptics.toString())
+    await setStore(disableHapticsKey, useDisableHaptics.toString());
   }
 </script>
 

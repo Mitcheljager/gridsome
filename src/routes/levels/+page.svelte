@@ -1,29 +1,29 @@
 <script lang="ts">
-	import type { CompletedLevel } from "../../types"
-	import { onMount } from "svelte"
-	import { fly, scale } from "svelte/transition"
-	import { getCompletedLevel, getCompletedLevels } from "$lib/game"
-	import { conditionalAnimation, getStore, setStore } from "$lib/settings"
-	import { levels } from "$lib/levels"
-	import { t } from "$lib/language"
-	import BackButton from "../components/BackButton.svelte"
-	import Stars from "../components/Stars.svelte"
-	import { haptics } from "../actions/haptics.svelte"
-	import { tap } from "../actions/tap.svelte"
+	import type { CompletedLevel } from "../../types";
+	import { onMount } from "svelte";
+	import { fly, scale } from "svelte/transition";
+	import { getCompletedLevel, getCompletedLevels } from "$lib/game";
+	import { conditionalAnimation, getStore, setStore } from "$lib/settings";
+	import { levels } from "$lib/levels";
+	import { t } from "$lib/language";
+	import BackButton from "../components/BackButton.svelte";
+	import Stars from "../components/Stars.svelte";
+	import { haptics } from "../actions/haptics.svelte";
+	import { tap } from "../actions/tap.svelte";
 
-  const selectGridSizeKey = "last-selected-grid-size"
+  const selectGridSizeKey = "last-selected-grid-size";
 
-  let selectedGridSize = $state(2)
-  let completedLevels: CompletedLevel[] = $state([])
+  let selectedGridSize = $state(2);
+  let completedLevels: CompletedLevel[] = $state([]);
 
   onMount(async() => {
-    selectedGridSize = parseInt(await getStore(selectGridSizeKey)) || selectedGridSize
-    completedLevels = await getCompletedLevels()
-  })
+    selectedGridSize = parseInt(await getStore(selectGridSizeKey)) || selectedGridSize;
+    completedLevels = await getCompletedLevels();
+  });
 
   function selectGridSize(size: number): void {
-    selectedGridSize = size
-    setStore(selectGridSizeKey, size.toString())
+    selectedGridSize = size;
+    setStore(selectGridSizeKey, size.toString());
   }
 </script>
 
@@ -39,7 +39,7 @@
       <button
         class="tile option"
         class:active={option === selectedGridSize}
-        onclick={(): void => { selectGridSize(option) }}
+        onclick={(): void => { selectGridSize(option); }}
         use:haptics
         use:tap={{ src: "/audio/tap-sharp.mp3" }}
         in:scale|global={conditionalAnimation({ duration: 200, delay: 150 + i * 50, start: 0.85 })}>

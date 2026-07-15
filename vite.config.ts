@@ -1,6 +1,6 @@
-import path from "path"
-import { defineConfig } from "vitest/config"
-import { sveltekit } from "@sveltejs/kit/vite"
+import path from "path";
+import { defineConfig } from "vitest/config";
+import { sveltekit } from "@sveltejs/kit/vite";
 
 export default defineConfig({
   plugins: [sveltekit()],
@@ -17,4 +17,4 @@ export default defineConfig({
       "$lib": path.resolve(__dirname, "./src/lib")
     }
   }
-})
+});

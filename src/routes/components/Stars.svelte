@@ -1,24 +1,24 @@
 <script lang="ts">
-	import type { CompletedLevel } from "../../types"
-	import { getCompletedLevels } from "$lib/game"
-	import { onMount } from "svelte"
-	import { levels } from "$lib/levels"
-	import { conditionalAnimation } from "$lib/settings"
-	import { elasticOut } from "svelte/easing"
-	import { scale } from "svelte/transition"
+	import type { CompletedLevel } from "../../types";
+	import { getCompletedLevels } from "$lib/game";
+	import { onMount } from "svelte";
+	import { levels } from "$lib/levels";
+	import { conditionalAnimation } from "$lib/settings";
+	import { elasticOut } from "svelte/easing";
+	import { scale } from "svelte/transition";
 
   interface Props { currentLevelId: string, delay?: number }
 
-  const { currentLevelId, delay = 0 } : Props = $props()
+  const { currentLevelId, delay = 0 } : Props = $props();
 
-  let completedLevels: CompletedLevel[] = $state([])
+  let completedLevels: CompletedLevel[] = $state([]);
 
-  const stars: number[] = $derived(levels.find(l => l.id === currentLevelId)!.stars)
-  const bestScore: number = $derived(completedLevels.find(l => l.id === currentLevelId)?.score || 0)
+  const stars: number[] = $derived(levels.find(l => l.id === currentLevelId)!.stars);
+  const bestScore: number = $derived(completedLevels.find(l => l.id === currentLevelId)?.score || 0);
 
   onMount(async() => {
-    completedLevels = await getCompletedLevels()
-  })
+    completedLevels = await getCompletedLevels();
+  });
 </script>
 
 <div class="stars">

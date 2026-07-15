@@ -1,16 +1,16 @@
 <script lang="ts">
-	import { t } from "$lib/language"
-	import { conditionalAnimation } from "$lib/settings"
-	import { onMount } from "svelte"
-	import { fade, scale } from "svelte/transition"
-	import { haptics } from "./actions/haptics.svelte"
-	import { tap } from "./actions/tap.svelte"
+	import { t } from "$lib/language";
+	import { conditionalAnimation } from "$lib/settings";
+	import { onMount } from "svelte";
+	import { fade, scale } from "svelte/transition";
+	import { haptics } from "./actions/haptics.svelte";
+	import { tap } from "./actions/tap.svelte";
 
-  let showContent = $state(false)
+  let showContent = $state(false);
 
   onMount(() => {
-    requestAnimationFrame(() => showContent = true)
-  })
+    requestAnimationFrame(() => showContent = true);
+  });
 </script>
 
 <div class="menu">

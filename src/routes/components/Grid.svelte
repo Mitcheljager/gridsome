@@ -1,9 +1,9 @@
 <script lang="ts">
-	import Cell from "./Cell.svelte"
+	import Cell from "./Cell.svelte";
 
   interface Props { gridSize: number, cells: number[], goal?: number[], maxCellValue?: number, animate?: boolean }
 
-  const { gridSize, cells, goal = [], maxCellValue = 0, animate = false } : Props = $props()
+  const { gridSize, cells, goal = [], maxCellValue = 0, animate = false } : Props = $props();
 </script>
 
 <div class="grid">

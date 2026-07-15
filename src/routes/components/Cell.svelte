@@ -1,46 +1,46 @@
 <script lang="ts">
-	import { conditionalAnimation } from "$lib/settings"
-	import { fly, scale } from "svelte/transition"
+	import { conditionalAnimation } from "$lib/settings";
+	import { fly, scale } from "svelte/transition";
 
   interface Props { cell: number, active?: boolean, maxCellValue?: number, animate?: boolean }
 
-  const { cell, active = false, maxCellValue = 0, animate = false } : Props = $props()
-  const transitionDuration = 100
-  const changedBorderDuration = 300
+  const { cell, active = false, maxCellValue = 0, animate = false } : Props = $props();
+  const transitionDuration = 100;
+  const changedBorderDuration = 300;
 
-  let isTransitioning = $state(false)
-  let hasRecentlyChanged = $state(false)
+  let isTransitioning = $state(false);
+  let hasRecentlyChanged = $state(false);
   // eslint-disable-next-line no-undef
-  let previousChangedTimeout: NodeJS.Timeout | number | null = null
-  let previousCell = $state(cell)
-  let previousDistance = 0
+  let previousChangedTimeout: NodeJS.Timeout | number | null = null;
+  let previousCell = $state(cell);
+  let previousDistance = 0;
 
   function getTransitionDistance(): number {
-    setRecentlyChanged()
+    setRecentlyChanged();
 
-    if (isTransitioning) return previousDistance
+    if (isTransitioning) return previousDistance;
 
-    const distance = Math.min(window.innerWidth / 20, 30)
+    const distance = Math.min(window.innerWidth / 20, 30);
 
-    let direction = previousCell > cell ? 1 : -1
+    let direction = previousCell > cell ? 1 : -1;
 
-    if (previousCell === maxCellValue && cell === 1) direction = -1
-    if (previousCell === 1 && cell === maxCellValue) direction = 1
+    if (previousCell === maxCellValue && cell === 1) direction = -1;
+    if (previousCell === 1 && cell === maxCellValue) direction = 1;
 
-    previousCell = cell
-    previousDistance = distance * direction
+    previousCell = cell;
+    previousDistance = distance * direction;
 
-    isTransitioning = true
-    setTimeout(() => isTransitioning = false, transitionDuration)
+    isTransitioning = true;
+    setTimeout(() => isTransitioning = false, transitionDuration);
 
-    return distance * direction
+    return distance * direction;
   }
 
   function setRecentlyChanged(): void {
-    if (previousChangedTimeout) clearTimeout(previousChangedTimeout)
+    if (previousChangedTimeout) clearTimeout(previousChangedTimeout);
 
-    hasRecentlyChanged = true
-    previousChangedTimeout = setTimeout(() => hasRecentlyChanged = false, changedBorderDuration)
+    hasRecentlyChanged = true;
+    previousChangedTimeout = setTimeout(() => hasRecentlyChanged = false, changedBorderDuration);
   }
 </script>
 

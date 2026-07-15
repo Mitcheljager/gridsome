@@ -1,4 +1,4 @@
-import type { CapacitorConfig } from "@capacitor/cli"
+import type { CapacitorConfig } from "@capacitor/cli";
 
 const config: CapacitorConfig = {
   appId: "com.quitequiet.gridsome",
@@ -13,6 +13,6 @@ const config: CapacitorConfig = {
       splashImmersive: true
     }
   }
-}
+};
 
-export default config
+export default config;

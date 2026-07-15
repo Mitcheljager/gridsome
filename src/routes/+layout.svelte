@@ -1,52 +1,52 @@
 <script lang="ts">
-  import "$lib/global.css"
-	import { language, setLanguage } from "$lib/language"
-	import { setAlternativeFont, setHighContrast, setReduceAnimations } from "$lib/settings"
-	import { Capacitor } from "@capacitor/core"
-	import { onMount } from "svelte"
+  import "$lib/global.css";
+	import { language, setLanguage } from "$lib/language";
+	import { setAlternativeFont, setHighContrast, setReduceAnimations } from "$lib/settings";
+	import { Capacitor } from "@capacitor/core";
+	import { onMount } from "svelte";
 
-  const { children } = $props()
+  const { children } = $props();
 
-  let loading = $state(true)
+  let loading = $state(true);
 
   onMount(async() => {
-    setViewHeight()
+    setViewHeight();
 
-    setAlternativeFont()
-    setReduceAnimations()
-    setHighContrast()
+    setAlternativeFont();
+    setReduceAnimations();
+    setHighContrast();
 
     if (!Capacitor.isNativePlatform()) {
-      setLanguage(navigator.language.slice(0, 2))
-      loading = false
-      return
+      setLanguage(navigator.language.slice(0, 2));
+      loading = false;
+      return;
     }
 
     try {
-      const { SafeArea } = await import("capacitor-plugin-safe-area")
-      SafeArea.getSafeAreaInsets().then(({ insets }) => document.body.style.setProperty("--env-safe-area-inset-top", insets.top + "px"))
+      const { SafeArea } = await import("capacitor-plugin-safe-area");
+      SafeArea.getSafeAreaInsets().then(({ insets }) => document.body.style.setProperty("--env-safe-area-inset-top", insets.top + "px"));
 
-      const { AndroidFullScreen } = await import("@awesome-cordova-plugins/android-full-screen")
-      AndroidFullScreen.isImmersiveModeSupported().then(() => AndroidFullScreen.immersiveMode())
+      const { AndroidFullScreen } = await import("@awesome-cordova-plugins/android-full-screen");
+      AndroidFullScreen.isImmersiveModeSupported().then(() => AndroidFullScreen.immersiveMode());
 
-      const { StatusBar } = await import("@capacitor/status-bar")
-      await StatusBar.hide()
+      const { StatusBar } = await import("@capacitor/status-bar");
+      await StatusBar.hide();
 
-      const { ScreenOrientation } = await import("@capacitor/screen-orientation")
-      await ScreenOrientation.lock({ orientation: "portrait" })
+      const { ScreenOrientation } = await import("@capacitor/screen-orientation");
+      await ScreenOrientation.lock({ orientation: "portrait" });
 
-      const { Device } = await import("@capacitor/device")
-      setLanguage((await Device.getLanguageCode()).value)
+      const { Device } = await import("@capacitor/device");
+      setLanguage((await Device.getLanguageCode()).value);
 
-      const { SplashScreen } = await import("@capacitor/splash-screen")
-      await SplashScreen.hide()
+      const { SplashScreen } = await import("@capacitor/splash-screen");
+      await SplashScreen.hide();
     } finally {
-      loading = false
+      loading = false;
     }
-  })
+  });
 
   function setViewHeight(): void {
-    document.body.style.setProperty("--dvh", window.innerHeight + "px")
+    document.body.style.setProperty("--dvh", window.innerHeight + "px");
   }
 </script>
 

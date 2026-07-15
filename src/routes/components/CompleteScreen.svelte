@@ -1,37 +1,37 @@
 <script lang="ts">
-	import { fade, scale } from "svelte/transition"
-	import { onMount } from "svelte"
-	import type { CompletedLevel } from "../../types"
-	import { levels } from "$lib/levels"
-	import { getCompletedLevels } from "$lib/game"
-	import { t } from "$lib/language"
-	import { conditionalAnimation } from "$lib/settings"
-	import Stars from "./Stars.svelte"
-	import { haptics } from "../actions/haptics.svelte"
-	import { playAudio } from "$lib/audio"
-	import { tap } from "../actions/tap.svelte"
+	import { fade, scale } from "svelte/transition";
+	import { onMount } from "svelte";
+	import type { CompletedLevel } from "../../types";
+	import { levels } from "$lib/levels";
+	import { getCompletedLevels } from "$lib/game";
+	import { t } from "$lib/language";
+	import { conditionalAnimation } from "$lib/settings";
+	import Stars from "./Stars.svelte";
+	import { haptics } from "../actions/haptics.svelte";
+	import { playAudio } from "$lib/audio";
+	import { tap } from "../actions/tap.svelte";
 
   interface Props { currentLevelId: string, currentMoves: number }
 
-  const { currentLevelId, currentMoves } : Props = $props()
+  const { currentLevelId, currentMoves } : Props = $props();
 
-  const delay = 1000
+  const delay = 1000;
 
-  let completedLevels: CompletedLevel[] = $state([])
-  let interactable = $state(false)
+  let completedLevels: CompletedLevel[] = $state([]);
+  let interactable = $state(false);
 
-  const currentLevelIndex = levels.findIndex(l => l.id === currentLevelId)
-  const nextLevelId = currentLevelIndex === -1 ? null : (levels[currentLevelIndex + 1]?.id || null)
-  const storedScore: number = $derived(completedLevels.find(l => l.id === currentLevelId)?.score || 0)
+  const currentLevelIndex = levels.findIndex(l => l.id === currentLevelId);
+  const nextLevelId = currentLevelIndex === -1 ? null : (levels[currentLevelIndex + 1]?.id || null);
+  const storedScore: number = $derived(completedLevels.find(l => l.id === currentLevelId)?.score || 0);
 
   onMount(async() => {
-    completedLevels = await getCompletedLevels()
+    completedLevels = await getCompletedLevels();
 
     setTimeout(() => {
-      interactable = true
-      playAudio("/audio/success.mp3", 0.75)
-    }, delay + 50)
-  })
+      interactable = true;
+      playAudio("/audio/success.mp3", 0.75);
+    }, delay + 50);
+  });
 </script>
 
 <div class="screen" in:fade={{ duration: 200, delay }}>

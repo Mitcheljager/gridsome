@@ -1,8 +1,8 @@
-import adapter from "@sveltejs/adapter-static"
-import { sveltePreprocess  } from "svelte-preprocess"
-import { levels } from "./src/lib/levels.js"
+import adapter from "@sveltejs/adapter-static";
+import { sveltePreprocess  } from "svelte-preprocess";
+import { levels } from "./src/lib/levels.js";
 
-const dev = process.argv.includes("dev")
+const dev = process.argv.includes("dev");
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -30,6 +30,6 @@ const config = {
       ]
     }
   }
-}
+};
 
-export default config
+export default config;

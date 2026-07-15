@@ -418,4 +418,4 @@ export const levels = [{
   goal:  [4, 1, 4, 9, 3, 9, 4, 1, 4],
   maxCellValue: 9,
   stars: [50, 30, 13]
-}]
+}];

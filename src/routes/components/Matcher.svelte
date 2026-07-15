@@ -1,16 +1,16 @@
 <script lang="ts">
-	import { fly } from "svelte/transition"
-	import Grid from "./Grid.svelte"
-	import { conditionalAnimation } from "$lib/settings"
-	import { t } from "$lib/language"
+	import { fly } from "svelte/transition";
+	import Grid from "./Grid.svelte";
+	import { conditionalAnimation } from "$lib/settings";
+	import { t } from "$lib/language";
 
   interface Props { cells: number[], goal: number[], gridSize: number, onmatch(): void }
 
-  const { cells, goal, gridSize, onmatch } : Props = $props()
+  const { cells, goal, gridSize, onmatch } : Props = $props();
 
   $effect(() => {
-    if (JSON.stringify(cells) === JSON.stringify(goal)) onmatch()
-  })
+    if (JSON.stringify(cells) === JSON.stringify(goal)) onmatch();
+  });
 </script>
 
 <div class="matcher" in:fly|global={conditionalAnimation({ y: 20, duration: 300 })}>
